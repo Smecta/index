@@ -1,27 +1,40 @@
 <template>
   <div class="home">
-    <div class="home-header">
-      <div class="header-left">
-        <div class="header-logo">logo</div>
-        <div class="header-title">成都市水务数据资源交换开放门户</div>
+    <!-- 头部 -->
+    <div class="header-page">
+    <div class="header-left">
+      <div class="header-logo">
+        <img src="../assets/img/img-logo.png" alt="" />
       </div>
-      <div class="header-right">
-        <div class="header-nav">
-          <a href="#">首页</a>
-          <a href="#">资源目录</a>
-          <a href="#">数据目录</a>
-          <a href="#">用户工作台</a>
-        </div>
-        <div class="header-search">
-          <!-- <i class="header-line"></i> -->
-          <input type="text" placeholder="搜索服务内容" />
-          <img src="" alt="" />
-          <!-- <i class="header-line"></i> -->
-        </div>
-        <div class="header-login">登录</div>
-        <div class="header-zhuce">立即注册</div>
+      <div class="header-name">
+        {{ systemName }}
       </div>
     </div>
+    <div class="header-nav">
+      <div class="nav-items" v-for="(item, index) in messageNav" :key="index">
+        <router-link :to="item.url" class="nav-item">{{
+          item.name
+        }}</router-link>
+      </div>
+    </div>
+    <div class="header-search">
+      <span class="search-line search-line-left"></span>
+      <div class="search-element">
+        <!-- <input type="text" placeholder="搜索服务内容"> -->
+        搜索服务内容
+        <i class="el-icon-search"></i>
+      </div>
+
+      <span class="search-line search-line-right"></span>
+    </div>
+    <div class="header-login">
+        <router-link to="/login" class="login-item">登录</router-link>
+        <div class="register">
+            <button>立即注册</button>
+        </div>
+    </div>
+  </div>
+    <!-- 轮播图 -->
     <div class="home-body">
       <el-carousel :interval="5000" arrow="always" height="624px">
         <el-carousel-item v-for="(item, index) in imgList" :key="index">
@@ -158,6 +171,55 @@
 export default {
   data() {
     return {
+      //系统名称
+      systemName: "成都市水务数据资源交换开放门户",
+      //nav_item
+      messageNav: [
+        //首页显示的导航栏
+        {
+          name: "首页",
+          url: "/index",
+          active: "index",
+        },
+        {
+          name: "资源目录",
+          url: "/resourceCatalog/list",
+          active: "resourceCatalog",
+        },
+        {
+          name: "数据目录",
+          // url: "/service/resourceService/list",
+          url: "/data/gisService/list",
+          active: "data",
+          // children: [
+          //   {
+          //     name: "政务资源服务目录",
+          //     url: "/service/resourceService/list",
+          //     active: "resourceService"
+          //   },
+          //   {
+          //     name: "地理GIS服务目录",
+          //     url: "/service/gisService/list",
+          //     active: "service"
+          //   },
+          //   {
+          //     name: "视频流媒体",
+          //     url: "/service/videoService/list",
+          //     active: "service"
+          //   },
+          //   // {
+          //   //   name: "指标结果服务目录",
+          //   //   url: "/service/videoService/list",
+          //   //   active: "service"
+          //   // }
+          // ]
+        },
+        {
+          name: "用户工作台",
+          url: "",
+          active: "/workbench",
+        },
+      ],
       imgList: [
         {
           id: 0,
@@ -215,56 +277,107 @@ export default {
 </script>
 
 <style scoped>
-.home {
-  min-width: 1024px;
-  position: relative;
+.header-nav .nav-item,.search-element,.header-login .login-item{
+    font-family: MicrosoftYaHeiUI;
+    font-size: 16px;
+    color: #ffffff;
 }
-.home-header {
+.header-page {
+  height: 80px;
+  width: 100%;
+  /* min-width: 1220px; */
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-  height: 80px;
+  z-index: 100;
+
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4);
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-bottom: 2px solid #000;
-  color: #fff;
 }
 .header-left {
   display: flex;
-  margin-left: 70px;
+  align-items: center;
 }
-.header-logo {
-  margin-right: 10px;
+.header-logo img {
+  width: 56px;
+  height: 55px;
 }
-.header-title {
-  font-weight: 700;
+.header-name {
+  font-family: MicrosoftYaHeiUI-Bold;
   font-size: 18px;
-  letter-spacing: 0.2px;
+  color: #ffffff;
+  letter-spacing: 1.5px;
+  padding-left: 8px;
 }
-.header-right {
-  display: flex;
-}
+
+/* nav css */
 .header-nav {
   display: flex;
 }
-.header-nav a {
-  list-style-type: none;
-  margin-right: 30px;
+.header-nav .nav-item {
+  padding: 0 24px;
+  letter-spacing: 1.33px;
 }
-.header-search::before {
-  content: "";
+/* search css */
+.header-search {
+  display: flex;
+  align-items: center;
 }
-.header-line {
-  display: inline-block;
-  height: 100%;
-  border: 1 solid #000;
+
+.search-line {
+  height: 81px;
+  opacity: 0.4;
+  border: 1px solid #ffffff;
 }
-.header-search input {
-  outline-style: none;
-  border: 0;
+.search-line-left{
+    margin-right:19.5px;
+}
+.search-line-right{
+    margin-left:23.5px;
+}
+.search-element {
+  opacity: 0.6;
+  letter-spacing: 1.33px;
+}
+/* .search-element input{
+	background:none;  
+	outline:none;  
+    border:1px solid #ccc;
+    -webkit-text-fill-color: #fff;
+}
+
+.search-element input:focus{   
+	border:none;
+} */
+
+.search-element i {
+  padding-left: 19px;
+}
+.search-line{
+    padding-left:19.5
+}
+
+/* login css */
+.header-login{
+    display:flex;
+    align-items: center;
+    
+}
+.header-login .login-item{
+    padding-right:20px;
+    letter-spacing: 1.33px;
+}
+.header-login button{
+    width: 104px;
+    height: 40px;
+    font-family: MicrosoftYaHeiUISemibold;
+    font-size: 16px;
+    color: #FFFFFF;
+    border: none;
+    background: linear-gradient(to right, #20b3d9 , #093ebd);;
+    outline: none; 
 }
 
 /* 跑马灯样式 */
@@ -440,6 +553,7 @@ export default {
 }
 /* 资源 */
 .ziyuan {
+  /* width: 100%; */
   position: relative;
   height: 795px;
   background: url("../assets/img/bg-ziyuan.png");
@@ -447,13 +561,16 @@ export default {
   background-size: 100% 100%;
 }
 .ziyuan .ziyuan-foot {
-  /* width: 100%; */
+  width: 100%;
   /* background: url("../assets/img/bg-ziyuan.png");
   background-repeat:no-repeat ;
   background-size: 100% 100%; */
   position: absolute;
   left: 0;
   bottom: 0;
+}
+.ziyuan .ziyuan-foot img{
+  width:100%;
 }
 /* 底部 */
 .home-footer {
