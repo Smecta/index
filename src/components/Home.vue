@@ -2,38 +2,38 @@
   <div class="home">
     <!-- 头部 -->
     <div class="header-page">
-    <div class="header-left">
-      <div class="header-logo">
-        <img src="../assets/img/img-logo.png" alt="" />
+      <div class="header-left">
+        <div class="header-logo">
+          <img src="../assets/img/img-logo.png" alt="" />
+        </div>
+        <div class="header-name">
+          {{ systemName }}
+        </div>
       </div>
-      <div class="header-name">
-        {{ systemName }}
+      <div class="header-nav">
+        <div class="nav-items" v-for="(item, index) in messageNav" :key="index">
+          <router-link :to="item.url" class="nav-item">{{
+            item.name
+          }}</router-link>
+        </div>
       </div>
-    </div>
-    <div class="header-nav">
-      <div class="nav-items" v-for="(item, index) in messageNav" :key="index">
-        <router-link :to="item.url" class="nav-item">{{
-          item.name
-        }}</router-link>
-      </div>
-    </div>
-    <div class="header-search">
-      <span class="search-line search-line-left"></span>
-      <div class="search-element">
-        <!-- <input type="text" placeholder="搜索服务内容"> -->
-        搜索服务内容
-        <i class="el-icon-search"></i>
-      </div>
+      <div class="header-search">
+        <span class="search-line search-line-left"></span>
+        <div class="search-element">
+          <!-- <input type="text" placeholder="搜索服务内容"> -->
+          搜索服务内容
+          <i class="el-icon-search"></i>
+        </div>
 
-      <span class="search-line search-line-right"></span>
-    </div>
-    <div class="header-login">
+        <span class="search-line search-line-right"></span>
+      </div>
+      <div class="header-login">
         <router-link to="/login" class="login-item">登录</router-link>
         <div class="register">
-            <button>立即注册</button>
+          <button>立即注册</button>
         </div>
+      </div>
     </div>
-  </div>
     <!-- 轮播图 -->
     <div class="home-body">
       <el-carousel :interval="5000" arrow="always" height="624px">
@@ -58,10 +58,8 @@
     <div class="hedao">
       <div class="container">
         <div class="card active">
-          <div class="img">
-            <div class="logo">
-              <img src="" alt="" />
-            </div>
+          <div class="logo img-logo">
+            <img src="../assets/img/hedao.png" alt="" />
           </div>
           <div class="title">
             <h1>河道</h1>
@@ -277,10 +275,12 @@ export default {
 </script>
 
 <style scoped>
-.header-nav .nav-item,.search-element,.header-login .login-item{
-    font-family: MicrosoftYaHeiUI;
-    font-size: 16px;
-    color: #ffffff;
+.header-nav .nav-item,
+.search-element,
+.header-login .login-item {
+  font-family: MicrosoftYaHeiUI;
+  font-size: 16px;
+  color: #ffffff;
 }
 .header-page {
   height: 80px;
@@ -331,11 +331,11 @@ export default {
   opacity: 0.4;
   border: 1px solid #ffffff;
 }
-.search-line-left{
-    margin-right:19.5px;
+.search-line-left {
+  margin-right: 19.5px;
 }
-.search-line-right{
-    margin-left:23.5px;
+.search-line-right {
+  margin-left: 23.5px;
 }
 .search-element {
   opacity: 0.6;
@@ -355,29 +355,28 @@ export default {
 .search-element i {
   padding-left: 19px;
 }
-.search-line{
-    padding-left:19.5
+.search-line {
+  padding-left: 19.5;
 }
 
 /* login css */
-.header-login{
-    display:flex;
-    align-items: center;
-    
+.header-login {
+  display: flex;
+  align-items: center;
 }
-.header-login .login-item{
-    padding-right:20px;
-    letter-spacing: 1.33px;
+.header-login .login-item {
+  padding-right: 20px;
+  letter-spacing: 1.33px;
 }
-.header-login button{
-    width: 104px;
-    height: 40px;
-    font-family: MicrosoftYaHeiUISemibold;
-    font-size: 16px;
-    color: #FFFFFF;
-    border: none;
-    background: linear-gradient(to right, #20b3d9 , #093ebd);;
-    outline: none; 
+.header-login button {
+  width: 104px;
+  height: 40px;
+  font-family: MicrosoftYaHeiUISemibold;
+  font-size: 16px;
+  color: #ffffff;
+  border: none;
+  background: linear-gradient(to right, #20b3d9, #093ebd);
+  outline: none;
 }
 
 /* 跑马灯样式 */
@@ -493,13 +492,35 @@ export default {
   align-items: center;
 }
 .hedao .container .card:hover {
-  background-image: linear-gradient(135deg, #22bcdc 0%, #0427b7 100%);
+  /* background-image: linear-gradient(135deg, #22bcdc 0%, #0427b7 100%); */
   box-shadow: 0 10px 24px 0 rgba(16, 51, 198, 0.4);
 }
 .hedao .container .card.active {
   background-image: linear-gradient(135deg, #22bcdc 0%, #0427b7 100%);
   box-shadow: 0 10px 24px 0 rgba(16, 51, 198, 0.4);
 }
+.hedao .container .card .img-logo:hover {
+  width: 120px;
+  height: 120px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  
+}
+.hedao .container .card .title {
+  text-align: center;
+}
+
+
+
+.hedao .container .card .logo img {
+  width: 72.1px;
+  height: 72.1px;
+}
+
 .left-lunbo {
   position: absolute;
   top: 50%;
@@ -569,8 +590,8 @@ export default {
   left: 0;
   bottom: 0;
 }
-.ziyuan .ziyuan-foot img{
-  width:100%;
+.ziyuan .ziyuan-foot img {
+  width: 100%;
 }
 /* 底部 */
 .home-footer {
