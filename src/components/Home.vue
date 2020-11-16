@@ -65,18 +65,14 @@
             <h1>河道</h1>
             <h2>River course</h2>
           </div>
-          <div class="goin">
-            <div class="img">
-              <div class="arror">
-                ->
-              </div>
-            </div>
+          <div class="goin active">
+            <img src="../assets/img/ic-enter.png" alt=""> 
           </div>
         </div>
         <div class="card">
           <div class="img">
             <div class="logo">
-              <img src="" alt="" />
+              <img src="../assets/img/hedao.png" alt="" />
             </div>
           </div>
           <div class="title">
@@ -84,17 +80,13 @@
             <h2>River course</h2>
           </div>
           <div class="goin">
-            <div class="img">
-              <div class="arror">
-                ->
-              </div>
-            </div>
+            <img src="../assets/img/ic-enter.png" alt=""> 
           </div>
         </div>
         <div class="card">
           <div class="img">
             <div class="logo">
-              <img src="" alt="" />
+              <img src="../assets/img/hedao.png" alt="" />
             </div>
           </div>
           <div class="title">
@@ -102,17 +94,13 @@
             <h2>River course</h2>
           </div>
           <div class="goin">
-            <div class="img">
-              <div class="arror">
-                ->
-              </div>
-            </div>
+            <img src="../assets/img/ic-enter.png" alt=""> 
           </div>
         </div>
         <div class="card">
           <div class="img">
             <div class="logo">
-              <img src="" alt="" />
+              <img src="../assets/img/hedao.png" alt="" />
             </div>
           </div>
           <div class="title">
@@ -120,11 +108,7 @@
             <h2>River course</h2>
           </div>
           <div class="goin">
-            <div class="img">
-              <div class="arror">
-                ->
-              </div>
-            </div>
+            <img src="../assets/img/ic-enter.png" alt=""> 
           </div>
         </div>
 
@@ -490,16 +474,17 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 1s;
 }
 .hedao .container .card:hover {
-  /* background-image: linear-gradient(135deg, #22bcdc 0%, #0427b7 100%); */
+  background: #333;
   box-shadow: 0 10px 24px 0 rgba(16, 51, 198, 0.4);
 }
 .hedao .container .card.active {
   background-image: linear-gradient(135deg, #22bcdc 0%, #0427b7 100%);
   box-shadow: 0 10px 24px 0 rgba(16, 51, 198, 0.4);
 }
-.hedao .container .card .img-logo:hover {
+.hedao .container .card .logo {
   width: 120px;
   height: 120px;
   background: #ffffff;
@@ -510,11 +495,36 @@ export default {
   cursor: pointer;
   
 }
+.hedao .container .card:hover .logo,.hedao .container .active .logo{
+  transform: translateY(-20px);
+}
 .hedao .container .card .title {
+  font-size: 18px;
   text-align: center;
 }
-
-
+.hedao .container .card:hover .title,.hedao .container .active .title{
+  font-weight: bold;
+  transform: translateY(-10px);
+}
+.hedao .container .card .goin{
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  background: rgba(226,229,241,.1);
+}
+.hedao .container .card .active{
+  display: flex;
+}
+.hedao .container .card:hover .goin{
+  display: flex;
+}
+.hedao .container .card .goin:hover{
+  background: rgba(226,229,241,.3);
+}
 
 .hedao .container .card .logo img {
   width: 72.1px;
