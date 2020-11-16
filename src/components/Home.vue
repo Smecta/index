@@ -57,8 +57,13 @@
     <!-- 河道 -->
     <div class="hedao">
       <div class="container">
-        <div class="card" v-for="(item, index) in hedaoList" :key="index"
-             :class="{active:item === selected}" @click="selectHedao(item)">
+        <div
+          class="card"
+          v-for="(item, index) in hedaoList"
+          :key="index"
+          :class="{ active: item === selected }"
+          @click="selectHedao(item)"
+        >
           <div class="logo">
             <!-- <img :src="item.img" alt="" /> -->
             <img src="../assets/img/hedao.png" alt="" />
@@ -149,6 +154,59 @@
 
     <!-- 资源 -->
     <div class="ziyuan">
+      <div class="ziyuan-menu">
+        <div class="ziyuan-top">
+          <div class="ziyuan-top-btn">
+            <div
+              class="ziyuan-name"
+              :class="{ active: item.uid === defaultSel }"
+              v-for="(item, index) in ziyuanList"
+              :key="index"
+              @click="selectZiYuan(item)"
+            >
+              {{ item.name }}
+            </div>
+          </div>
+          <div class="ziyuan-more">
+            <p>更多</p>
+            <img src="../assets/img/ic-more.png" alt="" />
+          </div>
+        </div>
+        <div class="ziyuan-bottom">
+          <div class="ziyuan-bottom-card" v-show="defaultSel === 1">
+            <el-row>
+              <el-col
+                class="ziyuan-style"
+                :span="12"
+                v-for="(item, index) in 8"
+                :key="index"
+              >
+                <div class="ziyuan-card">
+                  <div class="ziyuan-card-left">
+                    <div class="day">26</div>
+                    <div class="month">09月</div>
+                  </div>
+                  <div class="center">
+                    <div class="title">【成都市水务数据资源交换中心】山洪灾害预测日报…</div>
+                    <div class="form">来源：成都市水务局</div>
+                  </div>
+                  <div class="ziyuan-card-right">
+                    <div class="category">资源目录</div>
+                  </div>
+
+                  
+                </div>
+              </el-col>
+            </el-row>
+          </div>
+          <div class="ziyuan-bottom-card" v-show="defaultSel === 2">
+            111最新资源
+          </div>
+          <div class="ziyuan-bottom-card" v-show="defaultSel === 3">
+            111热门服务
+          </div>
+        </div>
+      </div>
       <div class="ziyuan-foot">
         <img src="../assets/img/bg-jianbianlantiao.png" alt="" />
       </div>
@@ -266,11 +324,11 @@ export default {
         },
       ],
       //默认选中的，默认第一个河道
-      selected:{
-          img: require("../assets/img/hedao.png"),
-          title: "河道",
-          describe: "River course",
-        },
+      selected: {
+        img: require("../assets/img/hedao.png"),
+        title: "河道",
+        describe: "River course",
+      },
       hedaoList: [
         {
           img: require("../assets/img/hedao.png"),
@@ -293,7 +351,9 @@ export default {
           describe: "Rain Condition",
         },
       ],
+      // 设置机构默认展示
       sel: 1,
+      // 机构数据
       jigouList: [
         {
           uid: 1,
@@ -311,17 +371,37 @@ export default {
           label: "直属单位",
         },
       ],
+      ziyuanList: [
+        {
+          uid: 1,
+          name: "热门资源",
+        },
+        {
+          uid: 2,
+          name: "最新资源",
+        },
+        {
+          uid: 3,
+          name: "热门服务",
+        },
+      ],
+      defaultSel: 1,
     };
   },
   components: {},
   methods: {
+    // 设置河道的下标
+    selectHedao(item) {
+      this.selected = item;
+    },
+    // 设置机构的下标
     select(item) {
       this.sel = item.uid;
     },
-    selectHedao(item){
-      console.log(item);
-      this.selected = item;
-    }
+    // 设置资源的下标
+    selectZiYuan(item) {
+      this.defaultSel = item.uid;
+    },
   },
 };
 </script>
@@ -461,11 +541,6 @@ export default {
   transform: translate(-50%, -50%);
   z-index: 999;
 
-  /* display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  justify-items: center;
-  align-items: center; */
-  /* width: 1200px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -526,8 +601,6 @@ export default {
 }
 .hedao > .container {
   padding-top: 54px;
-  /* padding-left:118.5px; */
-  /* padding: 124px 120px 80px 118.5px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -544,12 +617,7 @@ export default {
   align-items: center;
   transition: all 1s;
 }
-.hedao .container .card:hover {
-  background-image: linear-gradient(135deg, #22bcdc 0%, #0427b7 100%);
-  box-shadow: 0 10px 24px 0 rgba(16, 51, 198, 0.4);
-}
-
-/* 暂时不添加 active */
+.hedao .container .card:hover,
 .hedao .container .card.active {
   background-image: linear-gradient(135deg, #22bcdc 0%, #0427b7 100%);
   box-shadow: 0 10px 24px 0 rgba(16, 51, 198, 0.4);
@@ -604,12 +672,11 @@ export default {
   background: rgba(226, 229, 241, 0.1);
   cursor: pointer;
 }
-.hedao .container .card.active .goin{
-  display: flex;
-}
+.hedao .container .card.active .goin,
 .hedao .container .card:hover .goin {
   display: flex;
 }
+
 .hedao .container .card .goin:hover {
   background: rgba(226, 229, 241, 0.3);
 }
@@ -734,17 +801,54 @@ export default {
 .ziyuan {
   /* width: 100%; */
   position: relative;
-  height: 795px;
+  min-height: 795px;
   background: url("../assets/img/bg-ziyuan.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
+.ziyuan-more {
+  display: flex;
+}
+.ziyuan-menu .ziyuan-top {
+  display: flex;
+  justify-content: space-between;
+  /* background: #20b3d9; */
+  padding: 80px 120px 58px 120px;
+}
+.ziyuan-top .ziyuan-top-btn {
+  display: flex;
+  align-items: center;
+}
+.ziyuan-top .ziyuan-top-btn .ziyuan-name {
+  width: 160px;
+  height: 56px;
+  text-align: center;
+  line-height: 56px;
+  font-family: MicrosoftYaHeiUI;
+  font-size: 16px;
+  color: #252323;
+  background: #fff;
+}
+.ziyuan-top .ziyuan-top-btn .ziyuan-name.active {
+  background: url("../assets/img/im-ziyuan-xuanzhong.png") no-repeat center
+    center;
+  font-family: MicrosoftYaHeiUI-Bold;
+  color: #ffffff;
+}
+
+.ziyuan-top .ziyuan-more {
+  display: flex;
+  align-items: center;
+}
+.ziyuan-top .ziyuan-more img {
+  width: 20px;
+  height: 20px;
+  padding-left: 4px;
+}
+
 .ziyuan .ziyuan-foot {
   width: 100%;
-  /* background: url("../assets/img/bg-ziyuan.png");
-  background-repeat:no-repeat ;
-  background-size: 100% 100%; */
   position: absolute;
   left: 0;
   bottom: 0;
@@ -752,6 +856,18 @@ export default {
 .ziyuan .ziyuan-foot img {
   width: 100%;
 }
+
+.ziyuan-menu .ziyuan-bottom {
+  background: #20b3d9;
+  padding: 0 130px 80px 120px;
+}
+/*
+.ziyuan-bottom .ziyuan-style {
+  width:580px;
+  height: 108px;
+}*/
+
+
 /* 底部 */
 .home-footer {
   height: 160px;
