@@ -177,7 +177,7 @@
             <el-row>
               <el-col
                 class="ziyuan-style"
-                :span="11" 
+                :span="10" 
                 v-for="(item, index) in 8"
                 :key="index"
               >
@@ -861,6 +861,7 @@ export default {
 }
 .ziyuan-style{
   display: flex;
+  margin-right: 10px;
 }
 .ziyuan-card {
   width: 580px;
@@ -932,6 +933,7 @@ export default {
   font-family: MicrosoftYaHeiUI;
   font-size: 12px;
   color: #FFFFFF;
+  margin-top: -6px;
 }
 
 /* 底部 */
