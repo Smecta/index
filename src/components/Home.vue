@@ -693,10 +693,6 @@ export default {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.bottom-class .bottom-card {
-  display: flex;
-  justify-content: space-around;
-}
 
 .bottom-card1 .card-content {
   display: flex;
