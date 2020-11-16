@@ -57,7 +57,7 @@
     <!-- 河道 -->
     <div class="hedao">
       <div class="container">
-        <div class="card" v-for="item in hedaoList" :key="item">
+        <div class="card" v-for="(item, index) in hedaoList" :key="index">
           <div class="logo">
             <!-- <img :src="item.img" alt="" /> -->
             <img src="../assets/img/hedao.png" alt="" />
@@ -94,8 +94,8 @@
         <div
           class="top-card"
           :class="{ active: item.uid === sel }"
-          v-for="item in jigouList"
-          :key="item"
+          v-for="(item, index) in jigouList"
+          :key="index"
           @click="select(item)"
         >
           <img :src="item.img" alt="" />
@@ -105,8 +105,13 @@
       </div>
       <div class="bottom-class">
         <div class="bottom-card" v-show="sel === 1">
-          <el-row >
-            <el-col class="card-style" :span="4" v-for="item in 12" :key="item">
+          <el-row>
+            <el-col
+              class="card-style"
+              :span="4"
+              v-for="(item, index) in 12"
+              :key="index"
+            >
               <img src="../assets/img/ic-jigou.png" alt="" />
               <p>内部机构</p>
             </el-col>
@@ -114,7 +119,12 @@
         </div>
         <div class="bottom-card" v-show="sel === 2">
           <el-row>
-            <el-col class="card-style" :span="4" v-for="item in 2" :key="item">
+            <el-col
+              class="card-style"
+              :span="4"
+              v-for="(item, index) in 2"
+              :key="index"
+            >
               <img src="../assets/img/ic-jigou.png" alt="" />
               <p>内部机构</p>
             </el-col>
@@ -122,13 +132,17 @@
         </div>
         <div class="bottom-card" v-show="sel === 3">
           <el-row>
-            <el-col class="card-style" :span="4" v-for="item in 6" :key="item">
+            <el-col
+              class="card-style"
+              :span="4"
+              v-for="(item, index) in 6"
+              :key="index"
+            >
               <img src="../assets/img/ic-jigou.png" alt="" />
               <p>内部机构</p>
             </el-col>
           </el-row>
         </div>
-        
       </div>
     </div>
 
@@ -290,14 +304,9 @@ export default {
           label: "直属单位",
         },
       ],
-      tabs: [
-        { label: "内部机构", num: 0, id: 1 },
-        { label: "已下发", num: 0, id: 2 },
-        { label: "维修中", num: 0, id: 3 },
-        { label: "已完工", num: 0, id: 4 },
-      ],
     };
   },
+  components: {},
   methods: {
     select(item) {
       this.sel = item.uid;
@@ -698,6 +707,7 @@ export default {
   align-items: center;
   padding-top: 25.5px;
   min-width: 84px;
+  cursor: pointer;
 }
 
 .bottom-class .bottom-card .card-style img {
@@ -720,6 +730,7 @@ export default {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+
 .ziyuan .ziyuan-foot {
   width: 100%;
   /* background: url("../assets/img/bg-ziyuan.png");
