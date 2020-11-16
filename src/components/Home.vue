@@ -105,23 +105,30 @@
       </div>
       <div class="bottom-class">
         <div class="bottom-card" v-show="sel === 1">
-          <img src="../assets/img/ic-jigou.png" alt="" />
-          <p>内部机构</p>
-          <img src="../assets/img/ic-jigou.png" alt="" />
-          <p>内部机构</p>
+          <el-row >
+            <el-col class="card-style" :span="4" v-for="item in 12" :key="item">
+              <img src="../assets/img/ic-jigou.png" alt="" />
+              <p>内部机构</p>
+            </el-col>
+          </el-row>
         </div>
         <div class="bottom-card" v-show="sel === 2">
-          <img src="../assets/img/ic-jigou.png" alt="" />
-          <p>内部机构</p>
+          <el-row>
+            <el-col class="card-style" :span="4" v-for="item in 2" :key="item">
+              <img src="../assets/img/ic-jigou.png" alt="" />
+              <p>内部机构</p>
+            </el-col>
+          </el-row>
         </div>
         <div class="bottom-card" v-show="sel === 3">
-          <img src="../assets/img/ic-jigou.png" alt="" />
-          <p>内部机构</p>
-          <img src="../assets/img/ic-jigou.png" alt="" />
-          <p>内部机构</p>
-          <img src="../assets/img/ic-jigou.png" alt="" />
-          <p>内部机构</p>
+          <el-row>
+            <el-col class="card-style" :span="4" v-for="item in 6" :key="item">
+              <img src="../assets/img/ic-jigou.png" alt="" />
+              <p>内部机构</p>
+            </el-col>
+          </el-row>
         </div>
+        
       </div>
     </div>
 
@@ -627,7 +634,7 @@ export default {
 
 /* 机构 */
 .jigou {
-  height: 428px;
+  min-height: 428px;
 }
 .jigou > .top-menu {
   height: 258px;
@@ -664,18 +671,45 @@ export default {
   position: absolute;
   bottom: 0;
 }
+.jigou .top-menu .top-card.active .jigou-name {
+  color: #0427b7;
+}
 
 .jigou .top-menu .top-card .jigou-name {
   padding-top: 20px;
 }
 .jigou > .bottom-class {
-  height: 170px;
+  min-height: 170px;
   background: url("../assets/img/bg-zijigou.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.bottom-class .bottom-card {
+  display: flex;
+  justify-content: space-around;
+}
 
+.bottom-card1 .card-content {
+  display: flex;
+}
+.bottom-class .bottom-card .card-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25.5px;
+  min-width: 84px;
+}
 
+.bottom-class .bottom-card .card-style img {
+  width: 20px;
+  height: 20px;
+}
+.bottom-class .bottom-card .card-style p {
+  padding-left: 8px;
+  font-family: MicrosoftYaHeiUI;
+  font-size: 14px;
+  color: #252323;
+}
 
 /* 资源 */
 .ziyuan {
