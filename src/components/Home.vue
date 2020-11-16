@@ -63,8 +63,8 @@
             <img src="../assets/img/hedao.png" alt="" />
           </div>
           <div class="title">
-            <div class="title-h1">{{item.title}}</div>
-            <div class="title-h2">{{item.describe}}</div>
+            <div class="title-h1">{{ item.title }}</div>
+            <div class="title-h2">{{ item.describe }}</div>
           </div>
           <div class="goin">
             <img src="../assets/img/ic-enter.png" alt="" />
@@ -90,8 +90,39 @@
 
     <!-- 机构 -->
     <div class="jigou">
-      <div class="top"></div>
-      <div class="bottom"></div>
+      <div class="top-menu">
+        <div
+          class="top-card"
+          :class="{ active: item.uid === sel }"
+          v-for="item in jigouList"
+          :key="item"
+          @click="select(item)"
+        >
+          <img :src="item.img" alt="" />
+          <div class="jigou-name">{{ item.label }}</div>
+          <span></span>
+        </div>
+      </div>
+      <div class="bottom-class">
+        <div class="bottom-card" v-show="sel === 1">
+          <img src="../assets/img/ic-jigou.png" alt="" />
+          <p>内部机构</p>
+          <img src="../assets/img/ic-jigou.png" alt="" />
+          <p>内部机构</p>
+        </div>
+        <div class="bottom-card" v-show="sel === 2">
+          <img src="../assets/img/ic-jigou.png" alt="" />
+          <p>内部机构</p>
+        </div>
+        <div class="bottom-card" v-show="sel === 3">
+          <img src="../assets/img/ic-jigou.png" alt="" />
+          <p>内部机构</p>
+          <img src="../assets/img/ic-jigou.png" alt="" />
+          <p>内部机构</p>
+          <img src="../assets/img/ic-jigou.png" alt="" />
+          <p>内部机构</p>
+        </div>
+      </div>
     </div>
 
     <!-- 资源 -->
@@ -212,29 +243,58 @@ export default {
           unit: "条",
         },
       ],
-      hedaoList:[
+      hedaoList: [
         {
-          img:require("../assets/img/hedao.png"),
-          title:"河道",
-          describe:"River course",
+          img: require("../assets/img/hedao.png"),
+          title: "河道",
+          describe: "River course",
         },
         {
-          img:require("../assets/img/shuiku.png"),
-          title:"水库水位",
-          describe:"Reservoir water level",
+          img: require("../assets/img/shuiku.png"),
+          title: "水库水位",
+          describe: "Reservoir water level",
         },
         {
-          img:require("../assets/img/shuizhi.png"),
-          title:"水质",
-          describe:"Water Quality",
+          img: require("../assets/img/shuizhi.png"),
+          title: "水质",
+          describe: "Water Quality",
         },
         {
-          img:require("../assets/img/yuqing.png"),
-          title:"雨情",
-          describe:"Rain Condition",
-        }
-      ]
+          img: require("../assets/img/yuqing.png"),
+          title: "雨情",
+          describe: "Rain Condition",
+        },
+      ],
+      sel: 1,
+      jigouList: [
+        {
+          uid: 1,
+          img: require("../assets/img/ic-neibujigou.png"),
+          label: "内部机构",
+        },
+        {
+          uid: 2,
+          img: require("../assets/img/ic-waibujigou.png"),
+          label: "外部机构",
+        },
+        {
+          uid: 3,
+          img: require("../assets/img/ic-zhishudanwei.png"),
+          label: "直属单位",
+        },
+      ],
+      tabs: [
+        { label: "内部机构", num: 0, id: 1 },
+        { label: "已下发", num: 0, id: 2 },
+        { label: "维修中", num: 0, id: 3 },
+        { label: "已完工", num: 0, id: 4 },
+      ],
     };
+  },
+  methods: {
+    select(item) {
+      this.sel = item.uid;
+    },
   },
 };
 </script>
@@ -569,18 +629,54 @@ export default {
 .jigou {
   height: 428px;
 }
-.jigou > .top {
+.jigou > .top-menu {
   height: 258px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
   background: url("../assets/img/bg-jigou.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.jigou > .bottom {
+.jigou .top-menu .top-card {
+  padding-top: 111px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.top-menu .top-card .jigou-name {
+  font-family: MicrosoftYaHeiUI-Bold;
+  font-size: 18px;
+  color: #252323;
+  text-align: center;
+}
+
+.top-card.active::before {
+  content: "";
+  display: inline-block;
+  width: 181px;
+  height: 8px;
+  background: url("../assets/img/ic-xuanzhong.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.jigou .top-menu .top-card .jigou-name {
+  padding-top: 20px;
+}
+.jigou > .bottom-class {
   height: 170px;
   background: url("../assets/img/bg-zijigou.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+
+
+
 /* 资源 */
 .ziyuan {
   /* width: 100%; */
