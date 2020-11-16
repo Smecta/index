@@ -177,7 +177,7 @@
             <el-row>
               <el-col
                 class="ziyuan-style"
-                :span="12"
+                :span="11" 
                 v-for="(item, index) in 8"
                 :key="index"
               >
@@ -186,15 +186,14 @@
                     <div class="day">26</div>
                     <div class="month">09月</div>
                   </div>
+                  <div class="line"></div>
                   <div class="center">
                     <div class="title">【成都市水务数据资源交换中心】山洪灾害预测日报…</div>
-                    <div class="form">来源：成都市水务局</div>
+                    <div class="from">来源：成都市水务局</div>
                   </div>
                   <div class="ziyuan-card-right">
                     <div class="category">资源目录</div>
-                  </div>
-
-                  
+                  </div> 
                 </div>
               </el-col>
             </el-row>
@@ -858,15 +857,82 @@ export default {
 }
 
 .ziyuan-menu .ziyuan-bottom {
-  background: #20b3d9;
   padding: 0 130px 80px 120px;
 }
-/*
-.ziyuan-bottom .ziyuan-style {
-  width:580px;
+.ziyuan-style{
+  display: flex;
+}
+.ziyuan-card {
+  width: 580px;
   height: 108px;
-}*/
-
+  position: relative;
+  background: white;
+  margin-bottom: 20px;
+}
+.ziyuan-card .ziyuan-card-left{
+  width: 87px;
+  height: 108px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.ziyuan-card .ziyuan-card-left .day{
+  font-family: MicrosoftYaHeiUI-Bold;
+  font-size: 24px;
+  color: #252323;
+}
+.ziyuan-card .ziyuan-card-left .month,
+.ziyuan-card .center .from{
+  font-family: MicrosoftYaHeiUI;
+  font-size: 14px;
+  color: #777575;
+}
+.ziyuan-card .line{
+  width: 1px;
+  height: 48px;
+  background:#D8D8D8;
+  position: absolute;
+  left: 87px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.ziyuan-card .center{
+  height: 108px;
+  position: absolute;
+  left: 112px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.ziyuan-card .center .title{
+  font-family: MicrosoftYaHeiUI-Bold;
+  font-size: 16px;
+  color: #252323;
+}
+.ziyuan-card .center .from{
+  margin-left: 8px;
+}
+.ziyuan-card .ziyuan-card-right{
+  width: 73px;
+  height: 35px;
+  background: url("../assets/img/tag-ziyuan.png") no-repeat 100% 100%;
+  position: absolute;
+  top: 10px;
+  right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ziyuan-card .ziyuan-card-right .category{
+  font-family: MicrosoftYaHeiUI;
+  font-size: 12px;
+  color: #FFFFFF;
+}
 
 /* 底部 */
 .home-footer {
