@@ -57,7 +57,8 @@
     <!-- 河道 -->
     <div class="hedao">
       <div class="container">
-        <div class="card" v-for="(item, index) in hedaoList" :key="index">
+        <div class="card" v-for="(item, index) in hedaoList" :key="index"
+             :class="{active:item === selected}" @click="selectHedao(item)">
           <div class="logo">
             <!-- <img :src="item.img" alt="" /> -->
             <img src="../assets/img/hedao.png" alt="" />
@@ -264,6 +265,12 @@ export default {
           unit: "条",
         },
       ],
+      //默认选中的，默认第一个河道
+      selected:{
+          img: require("../assets/img/hedao.png"),
+          title: "河道",
+          describe: "River course",
+        },
       hedaoList: [
         {
           img: require("../assets/img/hedao.png"),
@@ -311,6 +318,10 @@ export default {
     select(item) {
       this.sel = item.uid;
     },
+    selectHedao(item){
+      console.log(item);
+      this.selected = item;
+    }
   },
 };
 </script>
@@ -553,8 +564,8 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.hedao .container .card:hover .logo,
-.hedao .container .active .logo {
+.hedao .container .card .logo,
+.hedao .container .card.active .logo {
   transform: translateY(-20px);
 }
 .hedao .container .card .title .title-h1 {
@@ -570,11 +581,13 @@ export default {
   color: #777575;
   text-align: center;
 }
-.hedao .container .card:hover .title .title-h1 {
+.hedao .container .card:hover .title .title-h1,
+.hedao .container .card.active .title .title-h1 {
   color: #ffffff;
   transform: translateY(-10px);
 }
-.hedao .container .card:hover .title .title-h2 {
+.hedao .container .card:hover .title .title-h2,
+.hedao .container .card.active .title .title-h2 {
   opacity: 0.45;
   color: #ffffff;
   transform: translateY(-10px);
@@ -591,7 +604,7 @@ export default {
   background: rgba(226, 229, 241, 0.1);
   cursor: pointer;
 }
-.hedao .container .card .active {
+.hedao .container .card.active .goin{
   display: flex;
 }
 .hedao .container .card:hover .goin {
