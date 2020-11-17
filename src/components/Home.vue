@@ -174,10 +174,10 @@
         </div>
         <div class="ziyuan-bottom">
           <div class="ziyuan-bottom-card" v-show="defaultSel === 1">
-            <el-row>
+            <el-row :gutter="30">
               <el-col
                 class="ziyuan-style"
-                :span="10" 
+                :span="12" 
                 v-for="(item, index) in 8"
                 :key="index"
               >
@@ -199,10 +199,54 @@
             </el-row>
           </div>
           <div class="ziyuan-bottom-card" v-show="defaultSel === 2">
-            111最新资源
+           <el-row :gutter="30">
+              <el-col
+                class="ziyuan-style"
+                :span="12" 
+                v-for="(item, index) in 2"
+                :key="index"
+              >
+                <div class="ziyuan-card">
+                  <div class="ziyuan-card-left">
+                    <div class="day">26</div>
+                    <div class="month">09月</div>
+                  </div>
+                  <div class="line"></div>
+                  <div class="center">
+                    <div class="title">【成都市水务数据资源交换中心】山洪灾害预测日报…</div>
+                    <div class="from">来源：成都市水务局</div>
+                  </div>
+                  <div class="ziyuan-card-right">
+                    <div class="category">资源目录</div>
+                  </div> 
+                </div>
+              </el-col>
+            </el-row>
           </div>
           <div class="ziyuan-bottom-card" v-show="defaultSel === 3">
-            111热门服务
+            <el-row :gutter="30">
+              <el-col
+                class="ziyuan-style"
+                :span="12" 
+                v-for="(item, index) in 1"
+                :key="index"
+              >
+                <div class="ziyuan-card">
+                  <div class="ziyuan-card-left">
+                    <div class="day">26</div>
+                    <div class="month">09月</div>
+                  </div>
+                  <div class="line"></div>
+                  <div class="center">
+                    <div class="title">【成都市水务数据资源交换中心】山洪灾害预测日报…</div>
+                    <div class="from">来源：成都市水务局</div>
+                  </div>
+                  <div class="ziyuan-card-right">
+                    <div class="category">资源目录</div>
+                  </div> 
+                </div>
+              </el-col>
+            </el-row>
           </div>
         </div>
       </div>
@@ -861,7 +905,6 @@ export default {
 }
 .ziyuan-style{
   display: flex;
-  margin-right: 10px;
 }
 .ziyuan-card {
   width: 580px;
