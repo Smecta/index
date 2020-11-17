@@ -5,4 +5,9 @@
 </template>
 
 <style>
+#app{
+  margin: 0 auto;
+  max-width: 1440px;
+  min-width: 1440px;
+}
 </style>

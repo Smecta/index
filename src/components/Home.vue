@@ -177,7 +177,7 @@
             <el-row :gutter="30">
               <el-col
                 class="ziyuan-style"
-                :span="12" 
+                :span="12"
                 v-for="(item, index) in 8"
                 :key="index"
               >
@@ -188,21 +188,23 @@
                   </div>
                   <div class="line"></div>
                   <div class="center">
-                    <div class="title">【成都市水务数据资源交换中心】山洪灾害预测日报…</div>
+                    <div class="title">
+                      【成都市水务数据资源交换中心】山洪灾害预测日报…
+                    </div>
                     <div class="from">来源：成都市水务局</div>
                   </div>
                   <div class="ziyuan-card-right">
                     <div class="category">资源目录</div>
-                  </div> 
+                  </div>
                 </div>
               </el-col>
             </el-row>
           </div>
           <div class="ziyuan-bottom-card" v-show="defaultSel === 2">
-           <el-row :gutter="30">
+            <el-row :gutter="30">
               <el-col
                 class="ziyuan-style"
-                :span="12" 
+                :span="12"
                 v-for="(item, index) in 2"
                 :key="index"
               >
@@ -213,12 +215,14 @@
                   </div>
                   <div class="line"></div>
                   <div class="center">
-                    <div class="title">【成都市水务数据资源交换中心】山洪灾害预测日报…</div>
+                    <div class="title">
+                      【成都市水务数据资源交换中心】山洪灾害预测日报…
+                    </div>
                     <div class="from">来源：成都市水务局</div>
                   </div>
                   <div class="ziyuan-card-right">
                     <div class="category">资源目录</div>
-                  </div> 
+                  </div>
                 </div>
               </el-col>
             </el-row>
@@ -227,7 +231,7 @@
             <el-row :gutter="30">
               <el-col
                 class="ziyuan-style"
-                :span="12" 
+                :span="12"
                 v-for="(item, index) in 1"
                 :key="index"
               >
@@ -238,12 +242,14 @@
                   </div>
                   <div class="line"></div>
                   <div class="center">
-                    <div class="title">【成都市水务数据资源交换中心】山洪灾害预测日报…</div>
+                    <div class="title">
+                      【成都市水务数据资源交换中心】山洪灾害预测日报…
+                    </div>
                     <div class="from">来源：成都市水务局</div>
                   </div>
                   <div class="ziyuan-card-right">
                     <div class="category">资源目录</div>
-                  </div> 
+                  </div>
                 </div>
               </el-col>
             </el-row>
@@ -256,8 +262,20 @@
     </div>
     <!-- 底部 -->
     <div class="home-footer">
-      <div class="top">43px</div>
-      <div class="bottom">117px</div>
+      <div class="top"></div>
+      <div class="bottom">
+        <div class="footer-text">
+          <div class="about-us">
+            <a>关于我们</a>
+          </div>
+          <div class="contact-us">
+            <a>联系我们</a>
+          </div>
+        </div>
+        <div class="all-rights-reserved">
+          <p>Copyrigh © 2020-2032 成都市水务数据版权所有</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -459,8 +477,7 @@ export default {
 }
 .header-page {
   height: 80px;
-  width: 100%;
-  /* min-width: 1220px; */
+  min-width: 1440px;
   position: absolute;
   top: 0;
   z-index: 100;
@@ -468,12 +485,13 @@ export default {
   background: rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4);
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
 }
 .header-left {
   display: flex;
   align-items: center;
+  padding-left: 91px;
 }
 .header-logo img {
   width: 56px;
@@ -490,6 +508,7 @@ export default {
 /* nav css */
 .header-nav {
   display: flex;
+  padding-left: 24px;
 }
 .header-nav .nav-item {
   padding: 0 24px;
@@ -540,9 +559,13 @@ export default {
   align-items: center;
 }
 .header-login .login-item {
+  padding-left: 47.5px;
   padding-right: 20px;
   letter-spacing: 1.33px;
 }
+/* .header-login .register {
+  padding-right: 91px;
+} */
 .header-login button {
   width: 104px;
   height: 40px;
@@ -903,7 +926,7 @@ export default {
 .ziyuan-menu .ziyuan-bottom {
   padding: 0 130px 80px 120px;
 }
-.ziyuan-style{
+.ziyuan-style {
   display: flex;
 }
 .ziyuan-card {
@@ -913,7 +936,7 @@ export default {
   background: white;
   margin-bottom: 20px;
 }
-.ziyuan-card .ziyuan-card-left{
+.ziyuan-card .ziyuan-card-left {
   width: 87px;
   height: 108px;
   position: absolute;
@@ -924,28 +947,28 @@ export default {
   justify-content: center;
   flex-direction: column;
 }
-.ziyuan-card .ziyuan-card-left .day{
+.ziyuan-card .ziyuan-card-left .day {
   font-family: MicrosoftYaHeiUI-Bold;
   font-size: 24px;
   color: #252323;
 }
 .ziyuan-card .ziyuan-card-left .month,
-.ziyuan-card .center .from{
+.ziyuan-card .center .from {
   font-family: MicrosoftYaHeiUI;
   font-size: 14px;
   color: #777575;
 }
-.ziyuan-card .line{
+.ziyuan-card .line {
   width: 1px;
   height: 48px;
-  background:#D8D8D8;
+  background: #d8d8d8;
   position: absolute;
   left: 87px;
   top: 0;
   bottom: 0;
   margin: auto;
 }
-.ziyuan-card .center{
+.ziyuan-card .center {
   height: 108px;
   position: absolute;
   left: 112px;
@@ -953,15 +976,15 @@ export default {
   justify-content: center;
   flex-direction: column;
 }
-.ziyuan-card .center .title{
+.ziyuan-card .center .title {
   font-family: MicrosoftYaHeiUI-Bold;
   font-size: 16px;
   color: #252323;
 }
-.ziyuan-card .center .from{
+.ziyuan-card .center .from {
   margin-left: 8px;
 }
-.ziyuan-card .ziyuan-card-right{
+.ziyuan-card .ziyuan-card-right {
   width: 73px;
   height: 35px;
   background: url("../assets/img/tag-ziyuan.png") no-repeat 100% 100%;
@@ -972,10 +995,10 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.ziyuan-card .ziyuan-card-right .category{
+.ziyuan-card .ziyuan-card-right .category {
   font-family: MicrosoftYaHeiUI;
   font-size: 12px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-top: -6px;
 }
 
@@ -992,5 +1015,28 @@ export default {
 }
 .home-footer .bottom {
   height: 117px;
+  display: flex;
+  padding-top: 48px;
+  justify-content: space-between;
+}
+.home-footer .bottom .footer-text {
+  display: flex;
+  padding: 0 0 49px 120px;
+}
+.home-footer .bottom .about-us {
+  padding-right: 80px;
+}
+.home-footer .bottom .about-us,
+.home-footer .bottom .contact-us {
+  font-family: MicrosoftYaHeiUI;
+  font-size: 16px;
+  color: #ffffff;
+}
+.all-rights-reserved p {
+  padding-right: 120px;
+  opacity: 0.6;
+  font-family: MicrosoftYaHeiUI;
+  font-size: 14px;
+  color: #ffffff;
 }
 </style>
