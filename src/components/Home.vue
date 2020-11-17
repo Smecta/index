@@ -60,10 +60,10 @@
       <div class="service-container">
         <div
           class="service-card"
-          v-for="(item, index) in hedaoList"
+          v-for="(item, index) in serviceList"
           :key="index"
           :class="{ active: item === selected }"
-          @click="selectHedao(item)"
+          @click="selectService(item)"
         >
           <div class="service-card-logo">
             <!-- <img :src="item.img" alt="" /> -->
@@ -94,7 +94,6 @@
     <div class="home-map">
       <img src="../assets/img/img-ditu.png" alt="" />
     </div>
-
     <!-- 部门单位 -->
     <!-- department unit -->
     <div class="home-department">
@@ -153,7 +152,6 @@
         </div>
       </div>
     </div>
-
     <!-- 资源 -->
     <!-- resource information -->
     <div class="home-resource">
@@ -372,13 +370,13 @@ export default {
           unit: "条",
         },
       ],
-      //默认选中的，默认第一个河道
+      //默认选中的，默认第一个服务
       selected: {
         img: require("../assets/img/hedao.png"),
         title: "河道",
         describe: "River course",
       },
-      hedaoList: [
+      serviceList: [
         {
           img: require("../assets/img/hedao.png"),
           title: "河道",
@@ -440,8 +438,8 @@ export default {
   },
   components: {},
   methods: {
-    // 设置河道的下标
-    selectHedao(item) {
+    // 设置服务的下标
+    selectService(item) {
       this.selected = item;
     },
     // 设置机构的下标
@@ -552,9 +550,6 @@ export default {
   padding-right: 20px;
   letter-spacing: 1.33px;
 }
-/* .header-login .register {
-  padding-right: 91px;
-} */
 .header-login button {
   width: 104px;
   height: 40px;
@@ -587,7 +582,7 @@ export default {
   background-color: #d3dce6;
 }
 
-/* 卡片数据 */
+/* --------------卡片数据-------------- */
 .home-numbers-card {
   position: absolute;
   left: 50%;
@@ -646,11 +641,8 @@ export default {
   }
 }
 
-/* 服务指南 */
-// service guild
-// hedao --> home-service
-
-// container --> service-container
+/* --------------服务指南-------------- */
+// service guild 
 .home-service {
   width: 100%;
   height: 557px;
@@ -776,8 +768,8 @@ export default {
   }
 }
 
-/* ---------------部门单位--------------- */
-// department unit
+/* --------------部门单位-------------- */
+// department unit 
 .home-department {
   min-height: 428px;
   .department-menu {
