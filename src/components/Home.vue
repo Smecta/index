@@ -44,47 +44,48 @@
       </el-carousel>
     </div>
     <!-- 卡片数据 -->
-    <div class="card-numbers">
-      <div class="card-number" v-for="(item, index) in dataList" :key="index">
-        <div class="card-top">{{ item.title }}</div>
-        <div class="card">
+    <div class="home-numbers-card">
+      <div class="numbers-card" v-for="(item, index) in dataList" :key="index">
+        <div class="card-name">{{ item.title }}</div>
+        <div class="card-style">
           <div class="card-num">{{ item.num }}</div>
           <div class="card-unit">{{ item.unit }}</div>
         </div>
         <span></span>
       </div>
     </div>
-    <!-- 河道 -->
-    <div class="hedao">
-      <div class="container">
+    <!-- 服务指南 -->
+    <!-- service guild -->
+    <div class="home-service">
+      <div class="service-container">
         <div
-          class="card"
+          class="service-card"
           v-for="(item, index) in hedaoList"
           :key="index"
           :class="{ active: item === selected }"
           @click="selectHedao(item)"
         >
-          <div class="logo">
+          <div class="service-card-logo">
             <!-- <img :src="item.img" alt="" /> -->
             <img src="../assets/img/hedao.png" alt="" />
           </div>
-          <div class="title">
-            <div class="title-h1">{{ item.title }}</div>
-            <div class="title-h2">{{ item.describe }}</div>
+          <div>
+            <div class="service-card-title-top">{{ item.title }}</div>
+            <div class="service-card-title-bottom">{{ item.describe }}</div>
           </div>
-          <div class="goin">
+          <div class="service-card-goin">
             <img src="../assets/img/ic-enter.png" alt="" />
           </div>
         </div>
-        <!-- 河道左右箭头部分 -->
-        <div class="left-lunbo lunbo-card">
+        <!-- 服务左右箭头部分 -->
+        <div class="service-left-select select-card">
           <img
-            class="mirrorRotateLevel"
+            class="service-mirrorRotateLevel"
             src="../assets/img/ic-lunbo-right.png"
             alt=""
           />
         </div>
-        <div class="right-lunbo lunbo-card">
+        <div class="service-right-select select-card">
           <img src="../assets/img/ic-lunbo-right.png" alt="" />
         </div>
       </div>
@@ -587,63 +588,70 @@ export default {
 }
 
 /* 卡片数据 */
-.card-numbers {
-  /* display: flex; */
+.home-numbers-card {
   position: absolute;
-  /* top: 100%; */
   left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 999;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 1204px;
   height: 120px;
+  transform: translate(-50%, -50%);
+  z-index: 999;
   background: #fff;
   box-shadow: 0px 0px 10px #999999;
-}
-.card-number {
-  display: flex;
-  width: 172px;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-.card-number .card {
-  display: flex;
-  align-items: center;
-  padding-top: 8px;
-}
-.card-number .card .card-num {
-  font-family: DINAlternate-Bold;
-  font-size: 28px;
-  color: #1250c8;
-  letter-spacing: 1.2px;
-}
-.card-number .card .card-unit {
-  padding: 4px 0 0 4px;
-  font-family: ArialMT;
-  font-size: 14px;
-  color: #777575;
+  .numbers-card {
+    display: flex;
+    width: 172px;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    .card-name {
+      font-family: MicrosoftYaHeiUI;
+      font-size: 16px;
+      color: #252323;
+      text-align: center;
+    }
+    .card-style {
+      display: flex;
+      align-items: center;
+      padding-top: 8px;
+      .card-num {
+        font-family: DINAlternate-Bold;
+        font-size: 28px;
+        color: #1250c8;
+        letter-spacing: 1.2px;
+      }
+      .card-unit {
+        padding: 4px 0 0 4px;
+        font-family: ArialMT;
+        font-size: 14px;
+        color: #777575;
+      }
+    }
+    span {
+      display: inline-block;
+      width: 1px;
+      height: 40px;
+      background: #ccc;
+      position: absolute;
+      right: 0px;
+      top: 10px;
+    }
+    &:nth-child(7) {
+      span {
+        display: none;
+      }
+    }
+  }
 }
 
-.card-number > span {
-  display: inline-block;
-  width: 2px;
-  height: 40px;
-  background: #ccc;
-  position: absolute;
-  right: 0px;
-  top: 10px;
-}
-.card-number:nth-child(7) > span {
-  display: none;
-}
+/* 服务指南 */
+// service guild
+// hedao --> home-service
 
-/* 河道样式 */
-.hedao {
+// container --> service-container
+.home-service {
   width: 100%;
   height: 557px;
   background: url("../assets/img/bg-qianlan.jpg");
@@ -652,119 +660,110 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.hedao > .container {
-  padding-top: 54px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-.hedao .container .card {
-  width: 300px;
-  height: 353px;
-  background: #ffffff;
-  border: 1px solid #e2e3e9;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: all 1s;
-}
-.hedao .container .card:hover,
-.hedao .container .card.active {
-  background-image: linear-gradient(135deg, #22bcdc 0%, #0427b7 100%);
-  box-shadow: 0 10px 24px 0 rgba(16, 51, 198, 0.4);
-}
-
-.hedao .container .card .logo {
-  width: 120px;
-  height: 120px;
-  background: #ffffff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.hedao .container .card .logo,
-.hedao .container .card.active .logo {
-  transform: translateY(-20px);
-}
-.hedao .container .card .title .title-h1 {
-  font-family: MicrosoftYaHeiUI-Bold;
-  font-size: 18px;
-  color: #252323;
-  text-align: center;
-}
-
-.hedao .container .card .title .title-h2 {
-  font-family: MicrosoftYaHeiUI;
-  font-size: 14px;
-  color: #777575;
-  text-align: center;
-}
-.hedao .container .card:hover .title .title-h1,
-.hedao .container .card.active .title .title-h1 {
-  color: #ffffff;
-  transform: translateY(-10px);
-}
-.hedao .container .card:hover .title .title-h2,
-.hedao .container .card.active .title .title-h2 {
-  opacity: 0.45;
-  color: #ffffff;
-  transform: translateY(-10px);
-}
-
-.hedao .container .card .goin {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
-  background: rgba(226, 229, 241, 0.1);
-  cursor: pointer;
-}
-
-// 出问题 
-.hedao .container .card.active .goin,
-.hedao .container .card:hover .goin {
-  display: flex;
-}
-
-.hedao .container .card .goin:hover {
-  background: rgba(226, 229, 241, 0.3);
-}
-
-.hedao .container .card .logo img {
-  width: 72.1px;
-  height: 72.1px;
-}
-
-.left-lunbo {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-}
-.lunbo-card {
-  width: 56px;
-  height: 56px;
-  background: #ffffff;
-  box-shadow: 0 3px 11px 0 rgba(169, 177, 216, 0.4);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.mirrorRotateLevel {
-  transform: rotateY(180deg); /* 水平镜像翻转 */
-}
-.right-lunbo {
-  position: absolute;
-  top: 50%;
-  right: 10px;
+  .service-container {
+    padding-top: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .service-card {
+      width: 300px;
+      height: 353px;
+      background: #ffffff;
+      border: 1px solid #e2e3e9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: all 1s;
+      &:hover,
+      &.active {
+        background-image: linear-gradient(135deg, #22bcdc 0%, #0427b7 100%);
+        box-shadow: 0 10px 24px 0 rgba(16, 51, 198, 0.4);
+      }
+      .service-card-logo {
+        width: 120px;
+        height: 120px;
+        background: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 72.1px;
+          height: 72.1px;
+        }
+      }
+      &:hover .service-card-logo,
+      &.active .service-card-logo {
+        transform: translateY(-20px);
+      }
+      .service-card-title-top {
+        font-family: MicrosoftYaHeiUI-Bold;
+        font-size: 18px;
+        color: #252323;
+        text-align: center;
+      }
+      &:hover .service-card-title-top,
+      &.active .service-card-title-top {
+        color: #ffffff;
+        transform: translateY(-10px);
+      }
+      .service-card-title-bottom {
+        font-family: MicrosoftYaHeiUI;
+        font-size: 14px;
+        color: #777575;
+        text-align: center;
+      }
+      &:hover .service-card-title-bottom,
+      &.active .service-card-title-bottom {
+        opacity: 0.45;
+        color: #ffffff;
+        transform: translateY(-10px);
+      }
+      .service-card-goin {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        display: none;
+        background: rgba(226, 229, 241, 0.1);
+        cursor: pointer;
+      }
+      &.active .service-card-goin,
+      &:hover .service-card-goin {
+        display: flex;
+      }
+      .service-card-goin:hover {
+        background: rgba(226, 229, 241, 0.3);
+      }
+    }
+  }
+  .select-card {
+    width: 56px;
+    height: 56px;
+    background: #ffffff;
+    box-shadow: 0 3px 11px 0 rgba(169, 177, 216, 0.4);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .service-left-select {
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    .service-mirrorRotateLevel {
+      transform: rotateY(180deg); /* 水平镜像翻转 */
+    }
+  }
+  .service-right-select {
+    position: absolute;
+    top: 50%;
+    right: -25px;
+  }
 }
 
 /* ---------------地图--------------- */
@@ -897,7 +896,7 @@ export default {
           width: 20px;
           height: 20px;
           margin-left: 4px;
-          margin-bottom: 2px;
+          margin-bottom: 4px;
         }
       }
     }
