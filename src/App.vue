@@ -1,13 +1,30 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style>
-#app{
+#app {
   margin: 0 auto;
-  max-width: 1440px;
+  /* max-width: 1440px; */
   min-width: 1440px;
 }
+
+/* 修改elementui轮播图箭头 */
+
+.arrow-style .el-carousel__arrow--left {
+  left: 120px;
+}
+.arrow-style .el-carousel__arrow--right {
+  right: 120px;
+}
+.arrow-style .el-carousel__arrow {
+  border-radius: 0;
+  background: #ffffff50; 
+}
+.arrow-style .el-icon-arrow-left,.el-icon-arrow-right{
+  font-size:25px;
+}
+
 </style>

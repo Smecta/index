@@ -17,7 +17,7 @@
           }}</router-link>
         </div>
       </div>
-      <div class="header-search">
+      <div class="header-right">
         <span class="search-line search-line-left"></span>
         <div class="search-element">
           <!-- <input type="text" placeholder="搜索服务内容"> -->
@@ -26,17 +26,28 @@
         </div>
 
         <span class="search-line search-line-right"></span>
+        <div class="header-login">
+          <router-link to="/login" class="login-item">登录</router-link>
+          <div class="register">
+            <button>立即注册</button>
+          </div>
+        </div>
       </div>
-      <div class="header-login">
+      <!-- <div class="header-login">
         <router-link to="/login" class="login-item">登录</router-link>
         <div class="register">
           <button>立即注册</button>
         </div>
-      </div>
+      </div> -->
     </div>
     <!-- 轮播图 -->
     <div class="home-body">
-      <el-carousel :interval="5000" arrow="always" height="624px">
+      <el-carousel
+        :interval="5000"
+        arrow="always"
+        height="624px"
+        class="arrow-style"
+      >
         <el-carousel-item v-for="(item, index) in imgList" :key="index">
           <img class="carousel-img" src="../assets/img/ban1.jpg" alt="" />
           {{ item.id }}
@@ -455,15 +466,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.header-nav .nav-item,
-.search-element,
-.header-login .login-item {
+// 字体样式
+font-style {
   font-family: MicrosoftYaHeiUI;
   font-size: 16px;
   color: #ffffff;
 }
+// 头部导航
 .header-page {
   height: 80px;
+  width: 100vw;
   min-width: 1440px;
   position: absolute;
   top: 0;
@@ -472,93 +484,84 @@ export default {
   background: rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4);
   display: flex;
-  /* justify-content: space-around; */
+  justify-content: space-around;
   align-items: center;
-}
-.header-left {
-  display: flex;
-  align-items: center;
-  padding-left: 91px;
-}
-.header-logo img {
-  width: 56px;
-  height: 55px;
-}
-.header-name {
-  font-family: MicrosoftYaHeiUI-Bold;
-  font-size: 18px;
-  color: #ffffff;
-  letter-spacing: 1.5px;
-  padding-left: 8px;
-}
-
-/* nav css */
-.header-nav {
-  display: flex;
-  padding-left: 24px;
-}
-.header-nav .nav-item {
-  padding: 0 24px;
-  letter-spacing: 1.33px;
-}
-/* search css */
-.header-search {
-  display: flex;
-  align-items: center;
-}
-
-.search-line {
-  height: 81px;
-  opacity: 0.4;
-  border: 1px solid #ffffff;
-}
-.search-line-left {
-  margin-right: 19.5px;
-}
-.search-line-right {
-  margin-left: 23.5px;
-}
-.search-element {
-  opacity: 0.6;
-  letter-spacing: 1.33px;
-}
-/* .search-element input{
-	background:none;
-	outline:none;
-    border:1px solid #ccc;
-    -webkit-text-fill-color: #fff;
-}
-
-.search-element input:focus{
-	border:none;
-} */
-
-.search-element i {
-  padding-left: 19px;
-}
-.search-line {
-  padding-left: 19.5;
-}
-
-/* login css */
-.header-login {
-  display: flex;
-  align-items: center;
-}
-.header-login .login-item {
-  padding-left: 47.5px;
-  padding-right: 20px;
-  letter-spacing: 1.33px;
-}
-.header-login button {
-  width: 104px;
-  height: 40px;
-  font-family: MicrosoftYaHeiUISemibold;
-  font-size: 16px;
-  color: #ffffff;
-  border: none;
-  background: linear-gradient(to right, #20b3d9, #093ebd);
-  outline: none;
+  .header-left {
+    display: flex;
+    align-items: center;
+    padding-left: 91px;
+    .header-logo img {
+      width: 56px;
+      height: 55px;
+    }
+    .header-name {
+      font-family: MicrosoftYaHeiUI-Bold;
+      font-size: 18px;
+      color: #ffffff;
+      letter-spacing: 1.5px;
+      padding-left: 8px;
+    }
+  }
+  /* nav css */
+  .header-nav {
+    display: flex;
+    .nav-item {
+      padding: 0 24px;
+      letter-spacing: 1.33px;
+      @extend font-style;
+    }
+  }
+  /* right css */
+  .header-right {
+    display: flex;
+    align-items: center;
+    .search-line {
+      height: 81px;
+      opacity: 0.4;
+      border: 1px solid #ffffff;
+    }
+    .search-element {
+      opacity: 0.6;
+      letter-spacing: 1.33px;
+      @extend font-style;
+      .search-element i {
+        padding-left: 19px;
+      }
+    }
+    .search-line-left {
+      margin-right: 19.5px;
+    }
+    .search-line {
+      padding-left: 19.5;
+    }
+    .search-line-right {
+      margin-left: 23.5px;
+    }
+    /* login css */
+    .header-login {
+      display: flex;
+      align-items: center;
+      .login-item {
+        padding-left: 47.5px;
+        padding-right: 20px;
+        letter-spacing: 1.33px;
+        @extend font-style;
+      }
+      .register {
+        padding-right: 91px;
+        button {
+          width: 104px;
+          height: 40px;
+          font-family: MicrosoftYaHeiUISemibold;
+          font-size: 16px;
+          color: #ffffff;
+          border: none;
+          background: linear-gradient(to right, #20b3d9, #093ebd);
+          outline: none;
+        }
+      }
+    }
+  }
 }
 
 /* 跑马灯样式 */
@@ -574,6 +577,9 @@ export default {
   margin: 0;
 }
 
+.arrow >>> .el-carousel__arrow--left {
+  background: #fff;
+}
 .el-carousel__item:nth-child(2n) {
   background-color: #99a9bf;
 }
@@ -589,7 +595,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1204px;
+  // width: 1204px;
+  width: 80%;
   height: 120px;
   transform: translate(-50%, -50%);
   z-index: 999;
@@ -597,7 +604,8 @@ export default {
   box-shadow: 0px 0px 10px #999999;
   .numbers-card {
     display: flex;
-    width: 172px;
+    // width: 172px;
+    width: 80%;
     flex-direction: column;
     align-items: center;
     position: relative;
@@ -642,7 +650,7 @@ export default {
 }
 
 /* --------------服务指南-------------- */
-// service guild 
+// service guild
 .home-service {
   width: 100%;
   height: 557px;
@@ -653,17 +661,20 @@ export default {
   justify-content: center;
   align-items: center;
   .service-container {
+    width: 80%;
     padding-top: 54px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     .service-card {
-      width: 300px;
+      // width: 300px;
+      // width:100%;
       height: 353px;
       background: #ffffff;
       border: 1px solid #e2e3e9;
       display: flex;
+      flex: 1;
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -769,7 +780,7 @@ export default {
 }
 
 /* --------------部门单位-------------- */
-// department unit 
+// department unit
 .home-department {
   min-height: 428px;
   .department-menu {
@@ -896,7 +907,7 @@ export default {
     .resource-content {
       padding: 0 130px 80px 120px;
       .resource-content-card {
-        width: 580px;
+        // width: 580px;
         height: 108px;
         position: relative;
         background: white;
@@ -935,6 +946,7 @@ export default {
         }
         .reosurce-card-body {
           height: 108px;
+          width: 80%;
           position: absolute;
           left: 112px;
           display: flex;
@@ -947,7 +959,7 @@ export default {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            width: 384px;
+            width: 80%;
           }
           .reosurce-card-from {
             margin-left: 8px;
