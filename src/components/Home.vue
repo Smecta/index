@@ -90,30 +90,31 @@
       </div>
     </div>
     <!-- 地图 -->
-    <div class="map">
+    <div class="home-map">
       <img src="../assets/img/img-ditu.png" alt="" />
     </div>
 
-    <!-- 机构 -->
-    <div class="jigou">
-      <div class="top-menu">
+    <!-- 部门单位 -->
+    <!-- department unit -->
+    <div class="home-department">
+      <div class="department-menu">
         <div
-          class="top-card"
-          :class="{ active: item.uid === sel }"
-          v-for="(item, index) in jigouList"
+          class="department-menu-list"
+          :class="{ active: item.uid === selDepartmentMenu }"
+          v-for="(item, index) in departmentMenuList"
           :key="index"
-          @click="select(item)"
+          @click="selectDepartmentSelection(item)"
         >
           <img :src="item.img" alt="" />
-          <div class="jigou-name">{{ item.label }}</div>
+          <div class="department-name">{{ item.label }}</div>
           <span></span>
         </div>
       </div>
-      <div class="bottom-class">
-        <div class="bottom-card" v-show="sel === 1">
+      <div class="department-content">
+        <div v-show="selDepartmentMenu === 1">
           <el-row>
             <el-col
-              class="card-style"
+              class="department-content-card"
               :span="4"
               v-for="(item, index) in 12"
               :key="index"
@@ -123,10 +124,10 @@
             </el-col>
           </el-row>
         </div>
-        <div class="bottom-card" v-show="sel === 2">
+        <div v-show="selDepartmentMenu === 2">
           <el-row>
             <el-col
-              class="card-style"
+              class="department-content-card"
               :span="4"
               v-for="(item, index) in 2"
               :key="index"
@@ -136,12 +137,12 @@
             </el-col>
           </el-row>
         </div>
-        <div class="bottom-card" v-show="sel === 3">
+        <div v-show="selDepartmentMenu === 3">
           <el-row>
             <el-col
-              class="card-style"
+              class="department-content-card"
               :span="4"
-              v-for="(item, index) in 6"
+              v-for="(item, index) in 1"
               :key="index"
             >
               <img src="../assets/img/ic-jigou.png" alt="" />
@@ -399,9 +400,9 @@ export default {
         },
       ],
       // 设置机构默认展示
-      sel: 1,
+      selDepartmentMenu: 1,
       // 机构数据
-      jigouList: [
+      departmentMenuList: [
         {
           uid: 1,
           img: require("../assets/img/ic-neibujigou.png"),
@@ -443,8 +444,8 @@ export default {
       this.selected = item;
     },
     // 设置机构的下标
-    select(item) {
-      this.sel = item.uid;
+    selectDepartmentSelection(item) {
+      this.selDepartmentMenu = item.uid;
     },
     // 设置资源的下标
     selectResourceItem(item) {
@@ -725,6 +726,8 @@ export default {
   background: rgba(226, 229, 241, 0.1);
   cursor: pointer;
 }
+
+// 出问题 
 .hedao .container .card.active .goin,
 .hedao .container .card:hover .goin {
   display: flex;
@@ -764,90 +767,84 @@ export default {
   right: 10px;
 }
 
-/* 地图 */
-.map {
+/* ---------------地图--------------- */
+.home-map {
   width: 100%;
   height: 483px;
-}
-.map img {
-  width: 100%;
-  height: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
-/* 机构 */
-.jigou {
+/* ---------------部门单位--------------- */
+// department unit
+.home-department {
   min-height: 428px;
-}
-.jigou > .top-menu {
-  height: 258px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: relative;
-  background: url("../assets/img/bg-jigou.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-.jigou .top-menu .top-card {
-  padding-top: 111px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-}
-.top-menu .top-card .jigou-name {
-  font-family: MicrosoftYaHeiUI-Bold;
-  font-size: 18px;
-  color: #252323;
-  text-align: center;
-}
-
-.top-card.active::before {
-  content: "";
-  display: inline-block;
-  width: 181px;
-  height: 8px;
-  background: url("../assets/img/ic-xuanzhong.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  position: absolute;
-  bottom: 0;
-}
-.jigou .top-menu .top-card.active .jigou-name {
-  color: #0427b7;
-}
-
-.jigou .top-menu .top-card .jigou-name {
-  padding-top: 20px;
-}
-.jigou > .bottom-class {
-  min-height: 170px;
-  background: url("../assets/img/bg-zijigou.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-.bottom-card1 .card-content {
-  display: flex;
-}
-.bottom-class .bottom-card .card-style {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 25.5px;
-  min-width: 84px;
-  cursor: pointer;
-}
-
-.bottom-class .bottom-card .card-style img {
-  width: 20px;
-  height: 20px;
-}
-.bottom-class .bottom-card .card-style p {
-  padding-left: 8px;
-  font-family: MicrosoftYaHeiUI;
-  font-size: 14px;
-  color: #252323;
+  .department-menu {
+    height: 258px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    background: url("../assets/img/bg-jigou.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    .department-menu-list {
+      padding-top: 111px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      &.active::before {
+        content: "";
+        display: inline-block;
+        width: 181px;
+        height: 8px;
+        background: url("../assets/img/ic-xuanzhong.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        bottom: 0;
+      }
+      &.active {
+        .department-name {
+          color: #0427b7;
+        }
+      }
+      .department-name {
+        padding-top: 20px;
+        font-family: MicrosoftYaHeiUI-Bold;
+        font-size: 18px;
+        color: #252323;
+        text-align: center;
+      }
+    }
+  }
+  .department-content {
+    min-height: 170px;
+    background: url("../assets/img/bg-zijigou.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    .department-content-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 25.5px;
+      min-width: 84px;
+      cursor: pointer;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+      p {
+        padding-left: 8px;
+        font-family: MicrosoftYaHeiUI;
+        font-size: 14px;
+        color: #252323;
+      }
+    }
+  }
 }
 
 /* ---------------资源--------------- */
