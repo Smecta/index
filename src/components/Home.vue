@@ -153,118 +153,104 @@
     </div>
 
     <!-- 资源 -->
-    <div class="ziyuan">
-      <div class="ziyuan-menu">
-        <div class="ziyuan-top">
-          <div class="ziyuan-top-btn">
+    <!-- resource information -->
+    <div class="home-resource">
+      <!-- resource nav -->
+      <div class="resource-nav">
+        <div class="resource-nav-items">
+          <div class="resource-btn">
+            <!-- 遍历资源列表 resourceList -->
+            <!-- 方法：选择资源项 selectResourceItem -->
             <div
-              class="ziyuan-name"
-              :class="{ active: item.uid === defaultSel }"
-              v-for="(item, index) in ziyuanList"
+              class="resource-btn-name"
+              :class="{ active: item.uid === defaultResourceSelection }"
+              v-for="(item, index) in resourceList"
               :key="index"
-              @click="selectZiYuan(item)"
+              @click="selectResourceItem(item)"
             >
-              {{ item.name }}
+              <p>{{ item.name }}</p>
             </div>
           </div>
-          <div class="ziyuan-more">
+
+          <div class="resource-more">
             <p>更多</p>
             <img src="../assets/img/ic-more.png" alt="" />
           </div>
         </div>
-        <div class="ziyuan-bottom">
-          <div class="ziyuan-bottom-card" v-show="defaultSel === 1">
-            <el-row :gutter="30">
-              <el-col
-                class="ziyuan-style"
-                :span="12"
-                v-for="(item, index) in 8"
-                :key="index"
-              >
-                <div class="ziyuan-card">
-                  <div class="ziyuan-card-left">
-                    <div class="day">26</div>
-                    <div class="month">09月</div>
-                  </div>
-                  <div class="line"></div>
-                  <div class="center">
-                    <div class="title">
-                      【成都市水务数据资源交换中心】山洪灾害预测日报…
-                    </div>
-                    <div class="from">来源：成都市水务局</div>
-                  </div>
-                  <div class="ziyuan-card-right">
-                    <div class="category">资源目录</div>
-                  </div>
+        <div class="resource-content">
+          <el-row :gutter="30" v-show="defaultResourceSelection === 1">
+            <el-col :span="12" v-for="(item, index) in 8" :key="index">
+              <div class="resource-content-card">
+                <div class="resource-content-card-left">
+                  <div class="resource-day">26</div>
+                  <div class="reosurce-month">09月</div>
                 </div>
-              </el-col>
-            </el-row>
-          </div>
-          <div class="ziyuan-bottom-card" v-show="defaultSel === 2">
-            <el-row :gutter="30">
-              <el-col
-                class="ziyuan-style"
-                :span="12"
-                v-for="(item, index) in 2"
-                :key="index"
-              >
-                <div class="ziyuan-card">
-                  <div class="ziyuan-card-left">
-                    <div class="day">26</div>
-                    <div class="month">09月</div>
+                <div class="resource-line"></div>
+                <div class="reosurce-card-body">
+                  <div class="reosurce-card-title">
+                    【成都市水务数据资源交换中心】山洪灾害预测日报【成都市水务数据资源交换中心】山洪灾害预测日报…
                   </div>
-                  <div class="line"></div>
-                  <div class="center">
-                    <div class="title">
-                      【成都市水务数据资源交换中心】山洪灾害预测日报…
-                    </div>
-                    <div class="from">来源：成都市水务局</div>
-                  </div>
-                  <div class="ziyuan-card-right">
-                    <div class="category">资源目录</div>
-                  </div>
+                  <div class="reosurce-card-from">来源：成都市水务局</div>
                 </div>
-              </el-col>
-            </el-row>
-          </div>
-          <div class="ziyuan-bottom-card" v-show="defaultSel === 3">
-            <el-row :gutter="30">
-              <el-col
-                class="ziyuan-style"
-                :span="12"
-                v-for="(item, index) in 1"
-                :key="index"
-              >
-                <div class="ziyuan-card">
-                  <div class="ziyuan-card-left">
-                    <div class="day">26</div>
-                    <div class="month">09月</div>
-                  </div>
-                  <div class="line"></div>
-                  <div class="center">
-                    <div class="title">
-                      【成都市水务数据资源交换中心】山洪灾害预测日报…
-                    </div>
-                    <div class="from">来源：成都市水务局</div>
-                  </div>
-                  <div class="ziyuan-card-right">
-                    <div class="category">资源目录</div>
-                  </div>
+                <div class="resource-content-card-right">
+                  <div class="reosurce-category">资源目录</div>
                 </div>
-              </el-col>
-            </el-row>
-          </div>
+              </div>
+            </el-col>
+          </el-row>
+          <el-row :gutter="30" v-show="defaultResourceSelection === 2">
+            <el-col :span="12" v-for="(item, index) in 2" :key="index">
+              <div class="resource-content-card">
+                <div class="resource-content-card-left">
+                  <div class="resource-day">26</div>
+                  <div class="reosurce-month">09月</div>
+                </div>
+                <div class="resource-line"></div>
+                <div class="reosurce-card-body">
+                  <div class="reosurce-card-title">
+                    【成都市水务数据资源交换中心】山洪灾害预测日报【成都市水务数据资源交换中心】山洪灾害预测日报…
+                  </div>
+                  <div class="reosurce-card-from">来源：成都市水务局</div>
+                </div>
+                <div class="resource-content-card-right">
+                  <div class="reosurce-category">资源目录</div>
+                </div>
+              </div>
+            </el-col>
+          </el-row>
+          <el-row :gutter="30" v-show="defaultResourceSelection === 3">
+            <el-col :span="12" v-for="(item, index) in 1" :key="index">
+              <div class="resource-content-card">
+                <div class="resource-content-card-left">
+                  <div class="resource-day">26</div>
+                  <div class="reosurce-month">09月</div>
+                </div>
+                <div class="resource-line"></div>
+                <div class="reosurce-card-body">
+                  <div class="reosurce-card-title">
+                    【成都市水务数据资源交换中心】山洪灾害预测日报【成都市水务数据资源交换中心】山洪灾害预测日报…
+                  </div>
+                  <div class="reosurce-card-from">来源：成都市水务局</div>
+                </div>
+                <div class="resource-content-card-right">
+                  <div class="reosurce-category">资源目录</div>
+                </div>
+              </div>
+            </el-col>
+          </el-row>
         </div>
       </div>
-      <div class="ziyuan-foot">
+      <!-- resource footer -->
+      <div class="resource-footer">
         <img src="../assets/img/bg-jianbianlantiao.png" alt="" />
       </div>
     </div>
     <!-- 底部 -->
+    <!-- footer -->
     <div class="home-footer">
       <div class="top"></div>
-      <div class="bottom">
-        <div class="footer-text">
+      <div class="footer—content">
+        <div class="footer-link">
           <div class="about-us">
             <a>关于我们</a>
           </div>
@@ -272,7 +258,7 @@
             <a>联系我们</a>
           </div>
         </div>
-        <div class="all-rights-reserved">
+        <div class="copyright">
           <p>Copyrigh © 2020-2032 成都市水务数据版权所有</p>
         </div>
       </div>
@@ -432,7 +418,7 @@ export default {
           label: "直属单位",
         },
       ],
-      ziyuanList: [
+      resourceList: [
         {
           uid: 1,
           name: "热门资源",
@@ -446,7 +432,8 @@ export default {
           name: "热门服务",
         },
       ],
-      defaultSel: 1,
+      // 默认资源选择 defaultResourceSelection
+      defaultResourceSelection: 1,
     };
   },
   components: {},
@@ -460,14 +447,14 @@ export default {
       this.sel = item.uid;
     },
     // 设置资源的下标
-    selectZiYuan(item) {
-      this.defaultSel = item.uid;
+    selectResourceItem(item) {
+      this.defaultResourceSelection = item.uid;
     },
   },
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .header-nav .nav-item,
 .search-element,
 .header-login .login-item {
@@ -536,13 +523,13 @@ export default {
   letter-spacing: 1.33px;
 }
 /* .search-element input{
-	background:none;  
-	outline:none;  
+	background:none;
+	outline:none;
     border:1px solid #ccc;
     -webkit-text-fill-color: #fff;
 }
 
-.search-element input:focus{   
+.search-element input:focus{
 	border:none;
 } */
 
@@ -863,180 +850,191 @@ export default {
   color: #252323;
 }
 
-/* 资源 */
-.ziyuan {
+/* ---------------资源--------------- */
+// resource information
+.home-resource {
   /* width: 100%; */
   position: relative;
   min-height: 795px;
   background: url("../assets/img/bg-ziyuan.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  // resource nav css
+  .resource-nav {
+    .resource-nav-items {
+      display: flex;
+      justify-content: space-between;
+      padding: 80px 120px 58px 120px;
+      .resource-btn {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        .resource-btn-name {
+          width: 160px;
+          height: 56px;
+          text-align: center;
+          line-height: 56px;
+          font-family: MicrosoftYaHeiUI;
+          font-size: 16px;
+          color: #252323;
+          background: #fff;
+          &.active {
+            background: url("../assets/img/im-ziyuan-xuanzhong.png") no-repeat
+              center center;
+            font-family: MicrosoftYaHeiUI-Bold;
+            color: #ffffff;
+          }
+        }
+      }
+      // resource more css
+      .resource-more {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        p {
+          font-family: PingFangSC-Regular;
+          font-size: 18px;
+          color: #777575;
+        }
+        img {
+          width: 20px;
+          height: 20px;
+          margin-left: 4px;
+          margin-bottom: 2px;
+        }
+      }
+    }
+    // resource content css
+    .resource-content {
+      padding: 0 130px 80px 120px;
+      .resource-content-card {
+        width: 580px;
+        height: 108px;
+        position: relative;
+        background: white;
+        margin-bottom: 20px;
+        cursor: pointer;
+        .resource-content-card-left {
+          width: 87px;
+          height: 108px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          .resource-day {
+            font-family: MicrosoftYaHeiUI-Bold;
+            font-size: 24px;
+            color: #252323;
+          }
+          .reosurce-month {
+            font-family: MicrosoftYaHeiUI;
+            font-size: 14px;
+            color: #777575;
+          }
+        }
+        .resource-line {
+          width: 1px;
+          height: 48px;
+          background: #d8d8d8;
+          position: absolute;
+          left: 87px;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+        }
+        .reosurce-card-body {
+          height: 108px;
+          position: absolute;
+          left: 112px;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          .reosurce-card-title {
+            font-family: MicrosoftYaHeiUI-Bold;
+            font-size: 16px;
+            color: #252323;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 384px;
+          }
+          .reosurce-card-from {
+            margin-left: 8px;
+            font-family: MicrosoftYaHeiUI;
+            font-size: 14px;
+            color: #777575;
+          }
+        }
+        .resource-content-card-right {
+          width: 73px;
+          height: 35px;
+          background: url("../assets/img/tag-ziyuan.png") no-repeat 100% 100%;
+          position: absolute;
+          top: 10px;
+          right: -10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .reosurce-category {
+            font-family: MicrosoftYaHeiUI;
+            font-size: 12px;
+            color: #ffffff;
+            margin-top: -6px;
+          }
+        }
+      }
+    }
+  }
+  // resource footer css
+  .resource-footer {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    img {
+      width: 100%;
+    }
+  }
 }
 
-.ziyuan-more {
-  display: flex;
-}
-.ziyuan-menu .ziyuan-top {
-  display: flex;
-  justify-content: space-between;
-  /* background: #20b3d9; */
-  padding: 80px 120px 58px 120px;
-}
-.ziyuan-top .ziyuan-top-btn {
-  display: flex;
-  align-items: center;
-}
-.ziyuan-top .ziyuan-top-btn .ziyuan-name {
-  width: 160px;
-  height: 56px;
-  text-align: center;
-  line-height: 56px;
-  font-family: MicrosoftYaHeiUI;
-  font-size: 16px;
-  color: #252323;
-  background: #fff;
-}
-.ziyuan-top .ziyuan-top-btn .ziyuan-name.active {
-  background: url("../assets/img/im-ziyuan-xuanzhong.png") no-repeat center
-    center;
-  font-family: MicrosoftYaHeiUI-Bold;
-  color: #ffffff;
-}
-
-.ziyuan-top .ziyuan-more {
-  display: flex;
-  align-items: center;
-}
-.ziyuan-top .ziyuan-more img {
-  width: 20px;
-  height: 20px;
-  padding-left: 4px;
-}
-
-.ziyuan .ziyuan-foot {
-  width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-.ziyuan .ziyuan-foot img {
-  width: 100%;
-}
-
-.ziyuan-menu .ziyuan-bottom {
-  padding: 0 130px 80px 120px;
-}
-.ziyuan-style {
-  display: flex;
-}
-.ziyuan-card {
-  width: 580px;
-  height: 108px;
-  position: relative;
-  background: white;
-  margin-bottom: 20px;
-}
-.ziyuan-card .ziyuan-card-left {
-  width: 87px;
-  height: 108px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.ziyuan-card .ziyuan-card-left .day {
-  font-family: MicrosoftYaHeiUI-Bold;
-  font-size: 24px;
-  color: #252323;
-}
-.ziyuan-card .ziyuan-card-left .month,
-.ziyuan-card .center .from {
-  font-family: MicrosoftYaHeiUI;
-  font-size: 14px;
-  color: #777575;
-}
-.ziyuan-card .line {
-  width: 1px;
-  height: 48px;
-  background: #d8d8d8;
-  position: absolute;
-  left: 87px;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-}
-.ziyuan-card .center {
-  height: 108px;
-  position: absolute;
-  left: 112px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.ziyuan-card .center .title {
-  font-family: MicrosoftYaHeiUI-Bold;
-  font-size: 16px;
-  color: #252323;
-}
-.ziyuan-card .center .from {
-  margin-left: 8px;
-}
-.ziyuan-card .ziyuan-card-right {
-  width: 73px;
-  height: 35px;
-  background: url("../assets/img/tag-ziyuan.png") no-repeat 100% 100%;
-  position: absolute;
-  top: 10px;
-  right: -10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.ziyuan-card .ziyuan-card-right .category {
-  font-family: MicrosoftYaHeiUI;
-  font-size: 12px;
-  color: #ffffff;
-  margin-top: -6px;
-}
-
-/* 底部 */
+/* ---------------底部--------------- */
 .home-footer {
   height: 160px;
   background: #102537;
   color: #d3dce6;
-}
-.home-footer .top {
-  height: 43px;
-  opacity: 0.5;
-  border-bottom: 1px solid #ffffff;
-}
-.home-footer .bottom {
-  height: 117px;
-  display: flex;
-  padding-top: 48px;
-  justify-content: space-between;
-}
-.home-footer .bottom .footer-text {
-  display: flex;
-  padding: 0 0 49px 120px;
-}
-.home-footer .bottom .about-us {
-  padding-right: 80px;
-}
-.home-footer .bottom .about-us,
-.home-footer .bottom .contact-us {
-  font-family: MicrosoftYaHeiUI;
-  font-size: 16px;
-  color: #ffffff;
-}
-.all-rights-reserved p {
-  padding-right: 120px;
-  opacity: 0.6;
-  font-family: MicrosoftYaHeiUI;
-  font-size: 14px;
-  color: #ffffff;
+  .top {
+    height: 43px;
+    opacity: 0.5;
+    border-bottom: 1px solid #ffffff;
+  }
+  .footer—content {
+    height: 117px;
+    display: flex;
+    padding-top: 48px;
+    justify-content: space-between;
+    .footer-link {
+      display: flex;
+      padding: 0 0 49px 120px;
+      .about-us,
+      .contact-us {
+        font-family: MicrosoftYaHeiUI;
+        font-size: 16px;
+        color: #ffffff;
+      }
+      .about-us {
+        padding-right: 80px;
+      }
+    }
+    .copyright p {
+      padding-right: 120px;
+      opacity: 0.6;
+      font-family: MicrosoftYaHeiUI;
+      font-size: 14px;
+      color: #ffffff;
+    }
+  }
 }
 </style>
