@@ -1,5 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
+import axios from "axios"
+import VueAxios from 'vue-axios'
 // import './plugins/element.js'
 import "./assets/css/tailwind.css"
 import ElementUI from 'element-ui'
@@ -18,6 +20,8 @@ import "element-ui/lib/theme-chalk/index.css";
 import router from './router'
 import store from './store'
 
+Vue.use(VueAxios, axios)
+// axios.defaults.baseURL="http://10.88.212.43:18783";
 Vue.use(ElementUI)
 Vue.config.productionTip = false;
 

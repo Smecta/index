@@ -21,7 +21,7 @@
 }
 .arrow-style .el-carousel__arrow {
   border-radius: 0;
-  background: #ffffff50; 
+  background: #ffffff20; 
 }
 .arrow-style .el-icon-arrow-left,.el-icon-arrow-right{
   font-size:25px;

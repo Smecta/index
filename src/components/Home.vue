@@ -184,7 +184,7 @@
           </div>
 
           <div class="resource-more">
-            <p>更多</p>
+            <span>更多</span>
             <img src="../assets/img/ic-more.png" alt="" />
           </div>
         </div>
@@ -448,6 +448,9 @@ export default {
     };
   },
   components: {},
+  mounted(){
+    this.getHeader()
+  },
   methods: {
     // 设置服务的下标
     selectService(item) {
@@ -460,12 +463,36 @@ export default {
     // 设置资源的下标
     selectResourceItem(item) {
       this.defaultResourceSelection = item.uid;
+      this.axios.get("/api/sharedGateway/service/hottest").then((res) => {
+        console.log(res);
+      });
+    },
+    getHeader() {
+      // 导航实例
+      const headerEl = document.querySelector(".header-page");
+  
+      // 窗口滚动处理
+      window.addEventListener("scroll", () => {
+        // 固定导航
+        let height = headerEl.getBoundingClientRect().height;
+
+        if (window.pageYOffset - height > 50) {
+          if (!headerEl.classList.contains("sticky")) {
+            headerEl.classList.add("sticky");
+          }
+        } else {
+          headerEl.classList.remove("sticky");
+        }
+      });
     },
   },
 };
 </script>
 
 <style scoped lang="scss">
+.home {
+  position: relative;
+}
 // 字体样式
 font-style {
   font-family: MicrosoftYaHeiUI;
@@ -477,9 +504,9 @@ font-style {
   height: 80px;
   width: 100vw;
   min-width: 1440px;
-  position: absolute;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  z-index: 999;
 
   background: rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4);
@@ -564,6 +591,30 @@ font-style {
   }
 }
 
+.header-page.sticky {
+  position: fixed;
+  background-color: #fefefe;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
+  animation: dropDown 0.5s ease-in-out forwards;
+}
+/* 固定导航文字颜色为黑色 */
+.header-page.sticky .header-left .header-name,
+.header-page.sticky .header-nav .nav-items .nav-item, 
+.header-page.sticky .header-right .header-login .login-item, 
+.header-page.sticky .header-right .search-element {
+  color: #000;
+}
+
+/* 固定导航下滑动画 */
+@keyframes dropDown {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 /* 跑马灯样式 */
 .carousel-img {
   width: 100%;
@@ -599,7 +650,7 @@ font-style {
   width: 80%;
   height: 120px;
   transform: translate(-50%, -50%);
-  z-index: 999;
+  z-index: 888;
   background: #fff;
   box-shadow: 0px 0px 10px #999999;
   .numbers-card {
@@ -863,6 +914,7 @@ font-style {
     .resource-nav-items {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 80px 120px 58px 120px;
       .resource-btn {
         display: flex;
@@ -888,18 +940,16 @@ font-style {
       // resource more css
       .resource-more {
         display: flex;
-        align-items: center;
         cursor: pointer;
-        p {
+        span {
           font-family: PingFangSC-Regular;
           font-size: 18px;
           color: #777575;
+          // text-align: right;
         }
         img {
           width: 20px;
-          height: 20px;
           margin-left: 4px;
-          margin-bottom: 4px;
         }
       }
     }
