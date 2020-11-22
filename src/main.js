@@ -22,6 +22,7 @@ import store from './store'
 
 Vue.use(VueAxios, axios)
 // axios.defaults.baseURL="http://10.88.212.43:18783";
+axios.defaults.baseURL="http://192.168.124.149:3008";
 Vue.use(ElementUI)
 Vue.config.productionTip = false;
 

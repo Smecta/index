@@ -5,7 +5,9 @@ module.exports={
             // /api 来定义目标地址 
             "/api":{
                 // 目标地址
-                target:'http://10.88.212.43:18783',
+                // target:'http://10.88.212.43:18783',
+                // http://192.168.124.149:3008/courses
+                target:'http://192.168.124.149:3008',
                 ws:true,
                 //开启跨域
                 changeOrigin:true,
