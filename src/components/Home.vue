@@ -448,8 +448,8 @@ export default {
     };
   },
   components: {},
-  mounted(){
-    this.getHeader()
+  mounted() {
+    this.getHeader();
   },
   methods: {
     // 设置服务的下标
@@ -463,14 +463,14 @@ export default {
     // 设置资源的下标
     selectResourceItem(item) {
       this.defaultResourceSelection = item.uid;
-      this.axios.get("/api/sharedGateway/service/hottest").then((res) => {
+      this.axios.get("/courses").then((res) => {
         console.log(res);
       });
     },
     getHeader() {
       // 导航实例
       const headerEl = document.querySelector(".header-page");
-  
+
       // 窗口滚动处理
       window.addEventListener("scroll", () => {
         // 固定导航
@@ -599,8 +599,8 @@ font-style {
 }
 /* 固定导航文字颜色为黑色 */
 .header-page.sticky .header-left .header-name,
-.header-page.sticky .header-nav .nav-items .nav-item, 
-.header-page.sticky .header-right .header-login .login-item, 
+.header-page.sticky .header-nav .nav-items .nav-item,
+.header-page.sticky .header-right .header-login .login-item,
 .header-page.sticky .header-right .search-element {
   color: #000;
 }
