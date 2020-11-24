@@ -1,12 +1,12 @@
 <template>
   <div class="box">
     <el-row>
-      <el-col :span="8">
+      <!-- <el-col :span="8">
         <div id="line-container">折线图</div>
       </el-col>
       <el-col :span="8">
         <div id="column-container">统计图</div>
-      </el-col>
+      </el-col> -->
       <el-col :span="8">
         <div id="linePlot">多折线动画</div>
       </el-col>
@@ -34,6 +34,8 @@ import { Gauge } from "@antv/g2plot";
 export default {
   data() {
     return {
+      mydata: [],
+      linePlot: '', 
       lineDataMap: [
         { year: "1991", value: 3 },
         { year: "1992", value: 4 },
@@ -47,16 +49,71 @@ export default {
       ],
     };
   },
+  watch: {
+    mydata(b) {
+      this.linePlot.changeData(b);
+      this.linePlot.render();
+    },
+  },
   created() {},
   mounted() {
-    this.lineDemo();
-    this.getColumnData();
     this.getlinePlot();
-    this.getliquidPlot();
-    this.getGayge();
-    this.getColumn();
+    this.timer = window.setInterval(() => {
+      setTimeout(() => {
+        this.changeData();
+      }, 0);
+    }, 3000);
+    // this.lineDemo();
+    // this.getColumnData();
+    // this.getlinePlot();
+    // this.getliquidPlot();
+    // this.getGayge();
+    // this.getColumn();
   },
   methods: {
+    //test
+    changeData() {
+      this.axios
+        .get(   //轮询这里放置的是不匹配的url，为了检测页面是否会自动刷新，即3s后曲线图消失
+          "https://gw.alipayobjects.com/os/bmw-prod/be63e0a2-d2be-4c45-97fd-c00f752a66d4.json"
+        )
+        .then((res) => {
+          this.mydata = res.data;
+        })
+    },
+    getlinePlot() {
+      this.axios
+        .get(
+          "https://gw.alipayobjects.com/os/bmw-prod/e00d52f4-2fa6-47ee-a0d7-105dd95bde20.json"
+        )
+        .then((res) => {
+          const linePlot = new Line("linePlot", {
+            data: res.data,
+            xField: "year",
+            yField: "gdp",
+            seriesField: "name",
+            yAxis: {
+              label: {
+                formatter: (v) => `${(v / 10e8).toFixed(1)} B`,
+              },
+            },
+            legend: {
+              position: "top",
+            },
+            smooth: true,
+            // @TODO 后续会换一种动画方式
+            animation: {
+              appear: {
+                animation: "path-in",
+                duration: 5000,
+              },
+            },
+          });
+
+          linePlot.render();
+          this.linePlot = linePlot;
+        });
+    },
     lineDemo() {
       const line = new Line("line-container", {
         data: this.lineDataMap,
@@ -150,38 +207,6 @@ export default {
           });
 
           column.render();
-        });
-    },
-    getlinePlot() {
-      this.axios
-        .get(
-          "https://gw.alipayobjects.com/os/bmw-prod/e00d52f4-2fa6-47ee-a0d7-105dd95bde20.json"
-        )
-        .then((res) => {
-          const linePlot = new Line("linePlot", {
-            data: res.data,
-            xField: "year",
-            yField: "gdp",
-            seriesField: "name",
-            yAxis: {
-              label: {
-                formatter: (v) => `${(v / 10e8).toFixed(1)} B`,
-              },
-            },
-            legend: {
-              position: "top",
-            },
-            smooth: true,
-            // @TODO 后续会换一种动画方式
-            animation: {
-              appear: {
-                animation: "path-in",
-                duration: 5000,
-              },
-            },
-          });
-
-          linePlot.render();
         });
     },
     getliquidPlot() {
@@ -372,7 +397,6 @@ export default {
 </script>
 
 <style>
-
 .el-row {
   margin-bottom: 60px;
 }
