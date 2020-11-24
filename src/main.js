@@ -19,7 +19,9 @@ import "element-ui/lib/theme-chalk/index.css";
 
 import router from './router'
 import store from './store'
+import echarts from 'echarts'
 
+Vue.prototype.$echarts = echarts;
 Vue.use(VueAxios, axios)
 // axios.defaults.baseURL="http://10.88.212.43:18783";
 axios.defaults.baseURL="http://192.168.124.149:3008";

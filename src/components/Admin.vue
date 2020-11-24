@@ -18,8 +18,12 @@
               ><i class="el-icon-message"></i>antv图表demo</template
             >
             <el-menu-item-group>
-              <template slot="title">图标一</template>
+              <template slot="title">图表一</template>
               <el-menu-item index="antvDemo">antv快速上手</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <template slot="title">图表二</template>
+              <el-menu-item index="echartsDemo">Echarts图表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>

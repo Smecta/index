@@ -6,6 +6,7 @@ import Admin from "../components/Admin.vue";
 import Websocket from "../components/Websocket.vue";
 import AxiosPage from "../components/AxiosPage.vue";
 import AntvDemo from "../components/AntvDemo.vue";
+import EchartsDemo from "../components/EchartsDemo.vue";
 
 Vue.use(VueRouter);
 
@@ -23,7 +24,13 @@ const routes = [
       { path: "/websocket", component: Websocket },
       { path: "/axios", component: AxiosPage },
       { path: "/antvDemo", component: AntvDemo },
+      { path: "/echartsDemo", component: EchartsDemo },
     ],
+  },
+  {
+    path:"/demo",
+    name:'demo',
+    component:() => import("../components/demo.vue")
   },
   {
     path: "/about",
