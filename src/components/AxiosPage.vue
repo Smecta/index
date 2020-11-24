@@ -1,20 +1,30 @@
 <template>
-    <div>
-        轮询方式
-        <button @click="getStatus">发请求拿数据</button>
-        <span>状态：{{status}}</span>
+    <div class="axios-style">
+        <h1>轮询方式</h1>
+        <el-button @click="getStatus">发请求拿数据</el-button>
+        <p>随机一句：<span>{{status}}</span></p>
     </div>
 </template>
 <script>
     export default {
         data() {
             return {
-                status: ''
+                status: '',
+                
             }
+        },
+        mounted(){
+            this.getStatus()
+            this.timer = window.setInterval(()=>{
+                setTimeout(()=>{
+                    this.getStatus()
+                },0)
+            },3000)
         },
         computed: {
             // 计算属性
             // statusData() { return this.status }
+            
         },
         watch: {
             // statusData: function (newval) {
@@ -41,9 +51,33 @@
                     if (res.status == 200) this.$message.success('请求成功')
                     console.log(res);
                     this.status = res.data.sweet
-                    setTimeout(this.getStatus,10*1000)
                 })
-            }
+            },
         },
+        destroyed(){
+            window.clearInterval(this.timer)
+        }
     }
 </script>
+
+<style>
+.axios-style{
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.axios-style > *{
+    padding:20px 20px;
+}
+
+p{
+    font-size: 20px;
+    color:slateblue;
+}
+p span{
+    color:tomato;
+    font-weight: 700;
+}
+</style>

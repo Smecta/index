@@ -326,7 +326,7 @@ export default {
         },
         {
           name: "用户工作台",
-          url: "",
+          url: "/admin",
           active: "/workbench",
         },
       ],

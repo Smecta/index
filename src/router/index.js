@@ -5,6 +5,7 @@ import Home from "../components/Home.vue";
 import Admin from "../components/Admin.vue";
 import Websocket from "../components/Websocket.vue";
 import AxiosPage from "../components/AxiosPage.vue";
+import AntvDemo from "../components/AntvDemo.vue";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,7 @@ const routes = [
     children: [
       { path: "/websocket", component: Websocket },
       { path: "/axios", component: AxiosPage },
+      { path: "/antvDemo", component: AntvDemo },
     ],
   },
   {
