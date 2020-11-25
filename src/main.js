@@ -18,6 +18,7 @@ import ElementUI from 'element-ui'
 // Vue.use(Input);
 
 import "element-ui/lib/theme-chalk/index.css";
+import './assets/css/style.scss'
 
 import router from './router'
 import store from './store'

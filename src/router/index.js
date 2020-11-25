@@ -26,6 +26,7 @@ const routes = [
       { path: "/antvDemo", component: AntvDemo },
       { path: "/echartsDemo", component: EchartsDemo },
       { path: "/fontDemo",component:() => import("../components/FontDemo.vue")},
+      { path: "/tabsDemo",component:() => import("../components/TabsDemo.vue")},
     ],
   },
   {

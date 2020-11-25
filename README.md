@@ -41,3 +41,5 @@ import 'font-awesome/css/font-awesome.min.css'
 
 ### sass 开发环境安装
 npm i -D sass sass-loader
+在入口js中引入自己创建的 style.css
+import './src/assets/css/style.scss'

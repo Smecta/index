@@ -1,6 +1,6 @@
 <template>
   <div>
-    websocket方式
+    <h1 class="text-white text-center bg-dark fs-xl">websocket方式</h1>
     <button @click="initSocket">建立websocket连接</button>
   </div>
 </template>

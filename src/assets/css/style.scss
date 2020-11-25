@@ -1,0 +1,173 @@
+// 第一步 重置样式 rest
+
+// 任意元素
+* {
+  //修改默认盒模型 以边框为准 padding 不会把内容撑大而是会挤压
+  box-sizing: border-box;
+  //tab切换 关闭高亮
+  outline: none；;
+}
+
+html {
+  // 修改基本字体尺寸 默认16px
+  font-size: 13px;
+}
+
+body {
+  // 默认body 存在边距
+  margin: 0;
+  // 字体设置 从左到右找
+  font-family: Arial, Helvetica, sans-serif;
+  // 行高 尺寸后续调整
+  line-height: 1.2em;
+  // 设置默认背景颜色
+  background: #f1f1f1;
+}
+
+a {
+  color: #999;
+}
+
+// 第二步 网站色彩和字体定义
+
+// colors 定义colors的变量
+$colors: (
+  "primary": #db9e3f,
+  "white": #fff,
+  "light": #f9f9f9,
+  "grey": #999,
+  "dark-1": #343440,
+  "dark": #222,
+  "black": #000,
+);
+// 生成一些助手类
+@each $colorKey, $color in $colors {
+  // 文字颜色
+  .text-#{$colorKey} {
+    color: $color;
+  }
+  // 背景颜色
+  .bg-#{$colorKey} {
+    background: $color;
+  }
+}
+// text align 定义文本 对齐方式 左 中 右
+@each $var in (left, center, right) {
+  .text-#{$var} {
+    text-align: $var;
+  }
+}
+// font size 字体大小
+// vscode换算插件 px to rem  对着数值 alt + z 修改默认数值 alt + s
+$base-font-size: 1rem;
+$font-sizes: (
+  xs: 0.7692,
+  // 10px
+    sm: 0.9231,
+  // 12px
+    md: 1,
+  // 13px
+    lg: 1.0769,
+  // 14px
+    xl: 1.2308,
+  // 16px,,,,,
+);
+
+@each $sizeKey, $size in $font-sizes {
+  .fs-#{$sizeKey} {
+    font-size: $size * $base-font-size;
+  }
+}
+
+// 第三步 通用flex布局样式
+
+// flex
+.d-flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+// 主轴对齐方式
+$flex-jc: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+);
+@each $key, $value in $flex-jc {
+  .jc-#{$key} {
+    justify-content: $value;
+  }
+}
+// 交叉轴对齐方式
+$flex-ai: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch,
+);
+@each $key, $value in $flex-ai {
+  .ai-#{$key} {
+    align-items: $value;
+  }
+}
+.felx-1 {
+  flex: 1;
+}
+// 增长1 默认拉伸 占满剩余的宽度
+.felx-grow-1 {
+  flex-grow: 1;
+}
+
+// 第五步 常用边距定义
+
+// spacing 定义标准的边距
+$spacing-types: (
+  m: margin,
+  p: padding,
+);
+$spacing-directions: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+);
+$spacing-base-size: 1rem;
+$spacing-sizes: (
+  0: 0,
+  1: 0.25,
+  2: 0.5,
+  3: 1,
+  4: 1.5,
+  5: 3,
+);
+// 带方位的 
+@each $typeKey, $type in $spacing-types {
+    // .m-1
+    @each $sizeKey, $size in $spacing-sizes {
+        .#{$typeKey}-#{$sizeKey} {
+          #{$type}: $size * $spacing-base-size;
+        }
+      }
+    // .mx-1 .my-1 x left right y top bottom
+    @each $sizeKey, $size in $spacing-sizes {
+        .#{$typeKey}x-#{$sizeKey} {
+          #{$type}-left: $size * $spacing-base-size;
+          #{$type}-right: $size * $spacing-base-size;
+        }
+        .#{$typeKey}y-#{$sizeKey} {
+            #{$type}-top: $size * $spacing-base-size;
+            #{$type}-bottom: $size * $spacing-base-size;
+          }
+      }
+    // .mt-1
+  @each $directionKey, $direction in $spacing-directions {
+    @each $sizeKey, $size in $spacing-sizes {
+      .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+        #{$type}-#{$direction}: $size * $spacing-base-size;
+      }
+    }
+  }
+}
