@@ -1,12 +1,12 @@
 <template>
   <div class="box">
     <el-row>
-      <!-- <el-col :span="8">
+      <el-col :span="8">
         <div id="line-container">折线图</div>
       </el-col>
       <el-col :span="8">
         <div id="column-container">统计图</div>
-      </el-col> -->
+      </el-col>
       <el-col :span="8">
         <div id="linePlot">多折线动画</div>
       </el-col>
@@ -50,25 +50,25 @@ export default {
     };
   },
   watch: {
-    mydata(b) {
-      this.linePlot.changeData(b);
-      this.linePlot.render();
-    },
+    // mydata(b) {
+    //   this.linePlot.changeData(b);
+    //   this.linePlot.render();
+    // },
   },
   created() {},
   mounted() {
-    this.getlinePlot();
-    this.timer = window.setInterval(() => {
-      setTimeout(() => {
-        this.changeData();
-      }, 0);
-    }, 3000);
-    // this.lineDemo();
-    // this.getColumnData();
     // this.getlinePlot();
-    // this.getliquidPlot();
-    // this.getGayge();
-    // this.getColumn();
+    // this.timer = window.setInterval(() => {
+    //   setTimeout(() => {
+    //     this.changeData();
+    //   }, 0);
+    // }, 3000);
+    this.lineDemo();
+    this.getColumnData();
+    this.getlinePlot();
+    this.getliquidPlot();
+    this.getGayge();
+    this.getColumn();
   },
   methods: {
     //test

@@ -13,6 +13,8 @@
     "core-js": "^3.6.5",
     "echarts": "^4.9.0",
     "element-ui": "^2.14.1",
+    "font-awesome": "^4.7.0",
+    "normalize.css": "^8.0.1",
     "tailwindcss": "^1.9.6",
     "vue": "^2.6.11",
     "vue-axios": "^3.2.0",

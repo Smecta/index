@@ -4,6 +4,8 @@ import axios from "axios"
 import VueAxios from 'vue-axios'
 // import './plugins/element.js'
 import "./assets/css/tailwind.css"
+import 'font-awesome/css/font-awesome.css'
+import 'normalize.css/normalize.css'
 import ElementUI from 'element-ui'
 
 // 按需引入

@@ -26,6 +26,16 @@
               <el-menu-item index="echartsDemo">Echarts图表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
+          <el-submenu index="4">
+            <template slot="title"
+              ><i class="el-icon-message"></i>fontdemo演示</template
+            >
+            <el-menu-item-group>
+              <template slot="title">fontawesome</template>
+              <el-menu-item index="fontDemo">fontDemo</el-menu-item>
+            </el-menu-item-group>
+
+          </el-submenu>
         </el-menu>
       </el-aside>
 

@@ -25,12 +25,8 @@ const routes = [
       { path: "/axios", component: AxiosPage },
       { path: "/antvDemo", component: AntvDemo },
       { path: "/echartsDemo", component: EchartsDemo },
+      { path: "/fontDemo",component:() => import("../components/FontDemo.vue")},
     ],
-  },
-  {
-    path:"/demo",
-    name:'demo',
-    component:() => import("../components/demo.vue")
   },
   {
     path: "/about",
