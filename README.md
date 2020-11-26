@@ -26,6 +26,7 @@ yarn lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 菜菜是个坏蛋
+### 我来捣乱的来了，让你不拉取就提交不成功，切
 
 ### VUE使用normalize.css
 1. 安装
