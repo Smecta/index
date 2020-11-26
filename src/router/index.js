@@ -1,18 +1,25 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 // import Home from '../views/Home.vue'
+import Nav from "../views/Nav.vue"
 import Home from "../components/Home.vue";
 import Admin from "../components/Admin.vue";
 import Websocket from "../components/Websocket.vue";
 import AxiosPage from "../components/AxiosPage.vue";
 import AntvDemo from "../components/AntvDemo.vue";
 import EchartsDemo from "../components/EchartsDemo.vue";
+import Index from "../components/Index.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
+    name: "Nav",
+    component: Nav,
+  },
+  {
+    path: "/home",
     name: "Home",
     component: Home,
   },
@@ -25,8 +32,31 @@ const routes = [
       { path: "/axios", component: AxiosPage },
       { path: "/antvDemo", component: AntvDemo },
       { path: "/echartsDemo", component: EchartsDemo },
-      { path: "/fontDemo",component:() => import("../components/FontDemo.vue")},
-      { path: "/tabsDemo",component:() => import("../components/TabsDemo.vue")},
+      {
+        path: "/fontDemo",
+        component: () => import("../components/FontDemo.vue"),
+      },
+      {
+        path: "/tabsDemo",
+        component: () => import("../components/TabsDemo.vue"),
+      },
+    ],
+  },
+  {
+    path: "/index",
+    name: "Index",
+    component: Index,
+    children: [
+      {
+        path: "/index/dataSource",
+        name: "DataSource",
+        component: () => import("../views/DataSource.vue"),
+      },
+      {
+        path: "/index/ServiceMonitor",
+        name: "ServiceMonitor",
+        component: () => import("../views/service_monitor/ServiceMonitor.vue"),
+      },
     ],
   },
   {

@@ -36,7 +36,7 @@ $colors: (
   "white": #fff,
   "light": #f9f9f9,
   "grey": #999,
-  "dark-1": #343440,
+  // "dark-1": #343440,
   "dark": #222,
   "black": #000,
 );
@@ -69,8 +69,10 @@ $font-sizes: (
   // 13px
     lg: 1.0769,
   // 14px
-    xl: 1.2308,
-  // 16px,,,,,
+    xl: 0.9375,
+  // 15px
+    xxl: 1.2308,
+  // 16px
 );
 
 @each $sizeKey, $size in $font-sizes {
@@ -143,26 +145,26 @@ $spacing-sizes: (
   4: 1.5,
   5: 3,
 );
-// 带方位的 
+// 带方位的
 @each $typeKey, $type in $spacing-types {
-    // .m-1
-    @each $sizeKey, $size in $spacing-sizes {
-        .#{$typeKey}-#{$sizeKey} {
-          #{$type}: $size * $spacing-base-size;
-        }
-      }
-    // .mx-1 .my-1 x left right y top bottom
-    @each $sizeKey, $size in $spacing-sizes {
-        .#{$typeKey}x-#{$sizeKey} {
-          #{$type}-left: $size * $spacing-base-size;
-          #{$type}-right: $size * $spacing-base-size;
-        }
-        .#{$typeKey}y-#{$sizeKey} {
-            #{$type}-top: $size * $spacing-base-size;
-            #{$type}-bottom: $size * $spacing-base-size;
-          }
-      }
-    // .mt-1
+  // .m-1
+  @each $sizeKey, $size in $spacing-sizes {
+    .#{$typeKey}-#{$sizeKey} {
+      #{$type}: $size * $spacing-base-size;
+    }
+  }
+  // .mx-1 .my-1 x left right y top bottom
+  @each $sizeKey, $size in $spacing-sizes {
+    .#{$typeKey}x-#{$sizeKey} {
+      #{$type}-left: $size * $spacing-base-size;
+      #{$type}-right: $size * $spacing-base-size;
+    }
+    .#{$typeKey}y-#{$sizeKey} {
+      #{$type}-top: $size * $spacing-base-size;
+      #{$type}-bottom: $size * $spacing-base-size;
+    }
+  }
+  // .mt-1
   @each $directionKey, $direction in $spacing-directions {
     @each $sizeKey, $size in $spacing-sizes {
       .#{$typeKey}#{$directionKey}-#{$sizeKey} {
