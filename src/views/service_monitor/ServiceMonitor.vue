@@ -35,7 +35,7 @@
                 width="280"
               >
               </el-table-column>
-              <el-table-column prop="visits" label="访问量" width="180">
+              <el-table-column :prop="item.tableData" :label="item.tableName" width="180">
               </el-table-column>
               <el-table-column prop="type" label="类型" width="180">
               </el-table-column>
@@ -66,23 +66,40 @@
 export default {
   data() {
     return {
+      // 等接口联调 进行数据拼接 具体方法实现
       tabsData: [
         {
           label: "API访问量",
           name: "APIvisits",
+          tableName:"访问量",
+          tableData:"visits",
           data: [
             {
               order: 1,
               sourceOrganization: "成都市水务局",
               interfaceName: "市水务系统GPS定位",
-              visits: "21.29s",
+              visits: "1000",
               type: "http",
             },
             {
               order: 2,
               sourceOrganization: "成都市水务局",
               interfaceName: "市水务系统GPS定位",
-              visits: "21.29s",
+              visits: "2000",
+              type: "http",
+            },
+            {
+              order: 3,
+              sourceOrganization: "成都市水务局",
+              interfaceName: "市水务系统GPS定位",
+              visits: "1000",
+              type: "http",
+            },
+            {
+              order: 4,
+              sourceOrganization: "成都市水务局",
+              interfaceName: "市水务系统GPS定位",
+              visits: "2000",
               type: "http",
             },
           ],
@@ -90,131 +107,72 @@ export default {
         {
           label: "API耗时",
           name: "APItime",
+          tableName:'耗时',
+          tableData:"times",
+          data: [
+            {
+              order: 1,
+              sourceOrganization: "222成都市水务局",
+              interfaceName: "市水务系统GPS定位",
+              times: "21.29s",
+              type: "http",
+            },
+            {
+              order: 2,
+              sourceOrganization: "222成都市水务局",
+              interfaceName: "市水务系统GPS定位",
+              times: "21.29s",
+              type: "http",
+            },
+          ],
         },
         {
           label: "API成功率",
           name: "APIsuccess",
+          tableName:'成功率',
+          tableData:"success",
+          data: [
+            {
+              order: 1,
+              sourceOrganization: "333成都市水务局",
+              interfaceName: "市水务系统GPS定位",
+              success: "70%",
+              type: "http",
+            },
+            {
+              order: 2,
+              sourceOrganization: "333成都市水务局",
+              interfaceName: "市水务系统GPS定位",
+              success: "60%",
+              type: "http",
+            },
+          ],
         },
         {
           label: "API申请量",
           name: "APIapply",
+          tableName:'申请量',
+          tableData:"apply",
+          data: [
+            {
+              order: 1,
+              sourceOrganization: "444成都市水务局",
+              interfaceName: "市水务系统GPS定位",
+              apply: "34345",
+              type: "http",
+            },
+            {
+              order: 2,
+              sourceOrganization: "444成都市水务局",
+              interfaceName: "市水务系统GPS定位",
+              apply: "98945",
+              type: "http",
+            },
+          ],
+
         },
       ],
       activeName: "APIvisits",
-      tableData: [
-        {
-          order: 1,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 2,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 1,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 2,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 1,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 2,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 1,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 2,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 1,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 2,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 1,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 2,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 1,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 2,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 1,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-        {
-          order: 2,
-          sourceOrganization: "成都市水务局",
-          interfaceName: "市水务系统GPS定位",
-          visits: "21.29s",
-          type: "http",
-        },
-      ],
     };
   },
   methods: {
