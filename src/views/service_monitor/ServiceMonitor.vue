@@ -6,7 +6,7 @@
           <div class="top-name">服务监控</div>
         </div>
         <div class="top-right fs-md">
-          <el-button>服务管理</el-button>
+          <el-button @click="manage">服务管理</el-button>
         </div>
       </div>
       <div class="center-body">
@@ -16,8 +16,13 @@
             :key="index"
             :label="item.label"
             :name="item.name"
+            
           >
-            <el-table :data="item.data" style="width: 100%">
+            <el-table
+              :data="item.data"
+              style="width: 100%"
+              v-show="item.status === true"
+            >
               <el-table-column
                 prop="order"
                 label="序号"
@@ -35,7 +40,11 @@
                 width="280"
               >
               </el-table-column>
-              <el-table-column :prop="item.tableData" :label="item.tableName" width="180">
+              <el-table-column
+                :prop="item.tableData"
+                :label="item.tableName"
+                width="180"
+              >
               </el-table-column>
               <el-table-column prop="type" label="类型" width="180">
               </el-table-column>
@@ -59,6 +68,29 @@
         </el-tabs>
       </div>
     </div>
+    <el-dialog
+      title="服务管理"
+      :visible="dialogVisible"
+      width="50%"
+      @close="closeDialog"
+    >
+      <el-table :data="tabsData">
+        <el-table-column label="序号" prop="order"></el-table-column>
+        <el-table-column label="名称" prop="label"></el-table-column>
+        <el-table-column label="状态" prop="status">
+          <template slot-scope="scope">
+            <span>
+              {{scope.row.status === true ? "启用" : "禁用"}}
+            </span>
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" prop="status">
+          <template slot-scope="scope">
+            <el-switch v-model="scope.row.status"></el-switch>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-dialog>
   </div>
 </template>
 
@@ -71,8 +103,10 @@ export default {
         {
           label: "API访问量",
           name: "APIvisits",
-          tableName:"访问量",
-          tableData:"visits",
+          tableName: "访问量",
+          tableData: "visits",
+          status: false,
+          order: 1,
           data: [
             {
               order: 1,
@@ -107,8 +141,10 @@ export default {
         {
           label: "API耗时",
           name: "APItime",
-          tableName:'耗时',
-          tableData:"times",
+          tableName: "耗时",
+          tableData: "times",
+          status: true,
+          order: 2,
           data: [
             {
               order: 1,
@@ -129,8 +165,10 @@ export default {
         {
           label: "API成功率",
           name: "APIsuccess",
-          tableName:'成功率',
-          tableData:"success",
+          tableName: "成功率",
+          tableData: "success",
+          status: true,
+          order: 3,
           data: [
             {
               order: 1,
@@ -151,8 +189,10 @@ export default {
         {
           label: "API申请量",
           name: "APIapply",
-          tableName:'申请量',
-          tableData:"apply",
+          tableName: "申请量",
+          tableData: "apply",
+          status: true,
+          order: 4,
           data: [
             {
               order: 1,
@@ -169,16 +209,22 @@ export default {
               type: "http",
             },
           ],
-
         },
       ],
       activeName: "APIvisits",
+      dialogVisible: false,
     };
   },
   methods: {
     handleClick(tab) {
       // console.log(tab, event);
       console.log(tab.paneName);
+    },
+    manage() {
+      this.dialogVisible = true;
+    },
+    closeDialog() {
+      this.dialogVisible = false;
     },
   },
 };

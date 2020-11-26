@@ -2,7 +2,7 @@
   <div class="home">
     <Header></Header>
     <el-container style="height: 88vh;">
-      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+      <el-aside width="300" style="background-color: rgb(238, 241, 246);overflow:hidden">
         <el-menu
           router
           style="height: 100vh;"
@@ -59,7 +59,10 @@ export default {
   },
 };
 </script>
-<style>
+<style scope>
+.home{
+  overflow: hidden;
+}
 .el-menu-item.is-active {
   background-color: #00b4aa !important;
 }
