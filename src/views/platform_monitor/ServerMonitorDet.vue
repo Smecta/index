@@ -1,5 +1,8 @@
 <template>
-  <div>详细页面</div>
+  <div>详细页面
+    {{id}}
+    <el-button type="primary" @click="$router.replace('/index/ServerMonitor')">返回</el-button>
+  </div>
 </template>
 
 <script>
