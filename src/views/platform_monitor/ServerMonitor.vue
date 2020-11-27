@@ -90,35 +90,35 @@ export default {
               configureIntroduction: "双核四进程",
             },
             {
-              order: 3,
+              order: 4,
               project: "飞碟项目",
               operatingSystem: "Macos",
               IPaddress: "192.168.0.113",
               configureIntroduction: "双核四进程",
             },
             {
-              order: 3,
+              order: 5,
               project: "飞碟项目",
               operatingSystem: "Macos",
               IPaddress: "192.168.0.113",
               configureIntroduction: "双核四进程",
             },
             {
-              order: 3,
+              order: 6,
               project: "飞碟项目",
               operatingSystem: "Macos",
               IPaddress: "192.168.0.113",
               configureIntroduction: "双核四进程",
             },
             {
-              order: 3,
+              order: 7,
               project: "飞碟项目",
               operatingSystem: "Macos",
               IPaddress: "192.168.0.113",
               configureIntroduction: "双核四进程",
             },
             {
-              order: 3,
+              order: 8,
               project: "飞碟项目",
               operatingSystem: "Macos",
               IPaddress: "192.168.0.113",
@@ -161,7 +161,7 @@ export default {
       //查看详情
       // this.$router.push({ path: "mediaContent/" + row.id });
       console.log(row.order);
-      this.$router.push({ path: "/index/ServerMonitorDet/"+row.order});
+      this.$router.push({ path: "/index/ServerMonitor/"+row.order});
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);

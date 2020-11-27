@@ -58,12 +58,17 @@ const routes = [
         component: () => import('../views/service_monitor/ServiceMonitor.vue')
       },
       {
+        path: '/index/ServiceMonitor/:id',
+        name: 'ServiceMonitor',
+        component: () => import('../views/service_monitor/ServiceMonitorPage.vue')
+      },
+      {
         path: '/index/ServerMonitor',
         name: 'ServerMonitor',
         component: () => import('../views/platform_monitor/ServerMonitor.vue')
       },
       {
-        path: '/index/ServerMonitorDet/:id',
+        path: '/index/ServerMonitor/:id',
         name: 'ServerMonitorDet',
         component: () => import('../views/platform_monitor/ServerMonitorDet.vue')
       },

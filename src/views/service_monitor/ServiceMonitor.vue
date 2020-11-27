@@ -49,7 +49,7 @@
                   <el-button
                     type="text"
                     size="small"
-                    @click="$router.push(`/ServiceMonitor/${scope.row._id}`)"
+                    @click="$router.push(`/index/ServiceMonitor/${scope.row.order}`)"
                     >图表监控</el-button
                   >
                 </template>
@@ -96,7 +96,7 @@ export default {
           name: "APIvisits",
           tableName: "访问量",
           tableData: "visits",
-          status: false,
+          status: true,
           order: 1,
           data: [
             {
