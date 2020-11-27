@@ -50,16 +50,4 @@ export default {
   border-left: 5px solid #f36d64;
   font-size: 15px;
 }
-/* .service-monitor-card{
-    margin:0px;
-    padding:0px;
-} */
-/* .top-title{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-} */
-/* .center-body {
-  height: 400px;
-} */
 </style>

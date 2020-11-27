@@ -160,14 +160,14 @@ export default {
       activeName: "APIvisits",
       dialogVisible: false,
       currentPage4: 4,
-      num:1,
+      page:1,
       limit:10
     };
   },
   methods: {
     async getTab(){
       let res = await getServerList({
-        num:this.num,
+        page:this.page,
         limit:this.limit
       })
       console.log(res);

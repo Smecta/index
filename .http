@@ -2,5 +2,9 @@
 GET http://10.88.212.43:8888/ServerMachines/getInfoList
 
 
-### 服务器监控 总页数 = 总条数 / limit  
+### 服务器监控 总页数 = 总条数 / limit   参数： page limit 
 GET http://10.88.212.43:8888/ServerMachines/getInfoList?page=1&limit=10
+
+
+### 数据库监控列表 
+GET http://10.88.212.43:8888/databases/getDBList?page=1&limit=10
