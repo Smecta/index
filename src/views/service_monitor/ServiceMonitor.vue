@@ -16,38 +16,29 @@
             :key="index"
             :label="item.label"
             :name="item.name"
-            
           >
             <el-table
+              v-show="item.status === true"
               :data="item.data"
               style="width: 100%"
-              v-show="item.status === true"
             >
-              <el-table-column
-                prop="order"
-                label="序号"
-                width="80"
-              ></el-table-column>
+              <el-table-column prop="order" label="序号" width="80" />
               <el-table-column
                 prop="sourceOrganization"
                 label="来源机构"
                 width="280"
-              >
-              </el-table-column>
+              />
               <el-table-column
                 prop="interfaceName"
                 label="接口名称"
                 width="280"
-              >
-              </el-table-column>
+              />
               <el-table-column
                 :prop="item.tableData"
                 :label="item.tableName"
                 width="180"
-              >
-              </el-table-column>
-              <el-table-column prop="type" label="类型" width="180">
-              </el-table-column>
+              />
+              <el-table-column prop="type" label="类型" width="180" />
               <el-table-column
                 fixed="right"
                 prop="operation"
@@ -56,9 +47,9 @@
               >
                 <template slot-scope="scope">
                   <el-button
-                    @click="$router.push(`/ServiceMonitor/${scope.row._id}`)"
                     type="text"
                     size="small"
+                    @click="$router.push(`/ServiceMonitor/${scope.row._id}`)"
                     >图表监控</el-button
                   >
                 </template>
@@ -75,18 +66,18 @@
       @close="closeDialog"
     >
       <el-table :data="tabsData">
-        <el-table-column label="序号" prop="order"></el-table-column>
-        <el-table-column label="名称" prop="label"></el-table-column>
+        <el-table-column label="序号" prop="order" />
+        <el-table-column label="名称" prop="label" />
         <el-table-column label="状态" prop="status">
           <template slot-scope="scope">
             <span>
-              {{scope.row.status === true ? "启用" : "禁用"}}
+              {{ scope.row.status === true ? "启用" : "禁用" }}
             </span>
           </template>
         </el-table-column>
         <el-table-column label="操作" prop="status">
           <template slot-scope="scope">
-            <el-switch v-model="scope.row.status"></el-switch>
+            <el-switch v-model="scope.row.status" />
           </template>
         </el-table-column>
       </el-table>
