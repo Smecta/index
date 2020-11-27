@@ -21,6 +21,8 @@ export default {
       this.id = this.$route.params && this.$route.params.id;
       console.log(this.id);
     },
+    // 请求数据
+    
   },
 };
 </script>
