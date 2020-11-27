@@ -1,9 +1,7 @@
 <template>
   <div class="service">
     <div class="service-monitor-card ">
-      <div class="top-title d-flex jc-between ai-center mt-2 mb-3">
-        <div class="top-name">服务器监控</div>
-      </div>
+      <CardHeader cardTitle="服务器监控"></CardHeader>
       <div class="center-body">
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane
@@ -39,7 +37,7 @@
             </el-table>
           </el-tab-pane>
         </el-tabs>
-        <div class="d-flex jc-end">
+        <div class="d-flex jc-end mt-2">
           <el-pagination
             :current-page="currentPage4"
             :page-size="10"
@@ -55,7 +53,15 @@
 </template>
 
 <script>
+import CardHeader from "../../components/CardHeader"
+import { getServerList } from "../../api/ServerMonitor"
 export default {
+  components:{
+    CardHeader
+  },
+  mounted(){
+    this.getTab();
+  },
   data() {
     return {
       // 等接口联调 进行数据拼接 具体方法实现
@@ -154,9 +160,18 @@ export default {
       activeName: "APIvisits",
       dialogVisible: false,
       currentPage4: 4,
+      page:1,
+      limit:10
     };
   },
   methods: {
+    async getTab(){
+      let res = await getServerList({
+        page:this.page,
+        limit:this.limit
+      })
+      console.log(res);
+    },
     detail(row) {
       //查看详情
       // this.$router.push({ path: "mediaContent/" + row.id });

@@ -1,13 +1,9 @@
 <template>
   <div class="service">
     <div class="service-monitor-card">
-      <div class="top-title d-flex jc-between ai-center">
-        <div class="top-right fs-xl">
-          <div class="top-name">服务监控</div>
-        </div>
-        <div class="top-right fs-md">
-          <el-button @click="manage">服务管理</el-button>
-        </div>
+      <CardHeader cardTitle="服务监控"></CardHeader>
+      <div class="top-btn fs-md d-flex jc-end">
+          <el-button type="danger" @click="manage">服务管理</el-button>
       </div>
       <div class="center-body">
         <el-tabs v-model="activeName" @tab-click="handleClick">
@@ -86,7 +82,11 @@
 </template>
 
 <script>
+import CardHeader from "../../components/CardHeader"
 export default {
+  components:{
+    CardHeader
+  },
   data() {
     return {
       // 等接口联调 进行数据拼接 具体方法实现
@@ -222,21 +222,12 @@ export default {
 </script>
 
 <style scoped>
-.top-name {
-  padding-left: 10px;
-  border-left: 5px solid #f36d64;
-  font-size: 15px;
+.service-monitor-card{
+  position:relative
 }
-/* .service-monitor-card{
-    margin:0px;
-    padding:0px;
-} */
-/* .top-title{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-} */
-/* .center-body {
-  height: 400px;
-} */
+.top-btn{
+  position: absolute;
+  right:0;
+  top:0;
+}
 </style>
