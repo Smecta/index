@@ -28,8 +28,8 @@ Vue.prototype.$echarts = echarts;
 // Vue.use(VueAxios, axios)
 // axios.defaults.baseURL="http://10.88.212.43:18783";
 // axios.defaults.baseURL="http://192.168.124.149:3008";
-// import http from "./http";
-// Vue.prototype.$http = http;
+import http from "./http";
+Vue.prototype.$http = http;
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false;

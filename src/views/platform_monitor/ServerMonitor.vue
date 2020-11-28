@@ -3,30 +3,25 @@
     <div class="service-monitor-card ">
       <CardHeader cardTitle="服务器监控"></CardHeader>
       <div class="center-body">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tabs v-model="activeName" @tab-click="show_upsPage">
           <el-tab-pane
             v-for="(item, index) in tabsData"
             :key="index"
             :label="item.label"
             :name="item.name"
           >
+            <ServiceTables :name="navName" v-if="item.active" />
             <el-table
               v-show="item.status === true"
               :data="item.data"
               style="width: 100%"
+              height="400"
             >
               <el-table-column prop="order" label="序号" width="80" />
               <el-table-column prop="project" label="所属项目" />
               <el-table-column prop="operatingSystem" label="操作系统" />
               <el-table-column prop="IPaddress" label="IP地址" />
               <el-table-column prop="configureIntroduction" label="配置简介" />
-
-              <!-- <el-table-column
-                :prop="item.tableData"
-                :label="item.tableName"
-                width="180"
-              >
-              </el-table-column> -->
               <el-table-column prop="operation" label="操作">
                 <template slot-scope="scope">
                   <el-button type="text" size="small" @click="detail(scope.row)"
@@ -37,12 +32,13 @@
             </el-table>
           </el-tab-pane>
         </el-tabs>
-        <div class="d-flex jc-end mt-2">
+        <!-- 分页布局 -->
+        <div class="d-flex jc-end mt-2" v-if="total">
           <el-pagination
             :current-page="currentPage4"
             :page-size="10"
             layout="total, prev, pager, next, jumper"
-            :total="100"
+            :total="total"
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
           />
@@ -53,19 +49,21 @@
 </template>
 
 <script>
-import CardHeader from "../../components/CardHeader"
-import { getServerList } from "../../api/ServerMonitor"
+import CardHeader from "../../components/CardHeader";
+import { getServerList } from "../../api/ServerMonitor";
 export default {
-  components:{
-    CardHeader
+  components: {
+    CardHeader,
   },
-  mounted(){
-    this.getTab();
+  mounted() {
+    // this.getTabDemo();
+    // this.getServerNavDemo();
   },
   data() {
     return {
       // 等接口联调 进行数据拼接 具体方法实现
-      tabsData: [
+      tabsData: "",
+      tabsData1: [
         {
           label: "服务器列表",
           name: "APIvisits",
@@ -157,26 +155,58 @@ export default {
           ],
         },
       ],
+      navName: "",
+      tabData: "",
+      serverTabData: "", // 服务器列表数据
+      total: 0, //总数量
       activeName: "APIvisits",
       dialogVisible: false,
       currentPage4: 4,
-      page:1,
-      limit:10
+      page: 1,
+      limit: 10,
     };
   },
   methods: {
-    async getTab(){
+    async getTab() {
       let res = await getServerList({
-        page:this.page,
-        limit:this.limit
-      })
+        page: this.page,
+        limit: this.limit,
+      });
       console.log(res);
     },
+    // 获取 easy-mock 数据
+    // async getTabDemo() {
+    //   let params = {
+    //     page: this.page,
+    //     limit: this.limit,
+    //   };
+    //   const res = await this.$http.get(
+    //     "https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getInfoList",
+    //     {
+    //       params,
+    //     }
+    //   );
+    //   this.total = res.data.total;
+    //   this.serverTabData = res.data.data;
+    //   console.log(res.data);
+    // },
+    async getServerNavDemo() {
+      const res = await this.$http.get(
+        "https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getServerNar",
+        {}
+      );
+      // console.log(res.data.data);
+      this.tabsData = res.data.data;
+      // res.data.data.map((v) => {
+      //   console.log(v);
+      // });
+    },
+
     detail(row) {
       //查看详情
       // this.$router.push({ path: "mediaContent/" + row.id });
       console.log(row.order);
-      this.$router.push({ path: "/index/ServerMonitor/"+row.order});
+      this.$router.push({ path: "/index/ServerMonitor/" + row.order });
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
@@ -184,9 +214,21 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
-    handleClick(tab) {
+    show_upsPage(event) {
       // console.log(tab, event);
-      console.log(tab.paneName);
+      // console.log(this.tabsData);
+      // console.log(event.name);
+      this.tabsData.map(item =>{
+        console.log(item);
+        if(item.name == event.name){
+          this.navName = event.name
+          console.log(this.navName);
+          item.active = true
+        }else{
+          this.navName = event.name
+          item.active = false
+        }
+      })
     },
     manage() {
       this.dialogVisible = true;
@@ -204,16 +246,4 @@ export default {
   border-left: 5px solid #f36d64;
   font-size: 15px;
 }
-/* .service-monitor-card{
-    margin:0px;
-    padding:0px;
-} */
-/* .top-title{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-} */
-/* .center-body {
-  height: 400px;
-} */
 </style>

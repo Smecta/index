@@ -5,6 +5,24 @@ GET http://10.88.212.43:8888/ServerMachines/getInfoList
 ### 服务器监控 总页数 = 总条数 / limit   参数： page limit 
 GET http://10.88.212.43:8888/ServerMachines/getInfoList?page=1&limit=10
 
+### 另一种写法服务器监控 总页数 = 总条数 / limit   参数： page limit 
+GET http://10.88.212.43:8888/ServerMachines/getInfoList
+    ?page=1
+    &limit=10
 
 ### 数据库监控列表 
 GET http://10.88.212.43:8888/databases/getDBList?page=1&limit=10
+
+### test
+GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getlist
+
+### test1
+GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getdata
+
+###  模拟服务器列表
+GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getInfoList
+    ?page=2
+    &limit=10
+
+### 模拟服务器监控 tabs
+GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getServerNar

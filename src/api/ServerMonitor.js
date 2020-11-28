@@ -10,4 +10,3 @@ export const getServerList = (params) => {
     console.error(e);
   }
 }
-
