@@ -21,8 +21,13 @@ GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getdata
 
 ###  模拟服务器列表
 GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getInfoList
-    ?page=2
-    &limit=10
+    ?page=1
+    &limit=6
 
 ### 模拟服务器监控 tabs
 GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getServerNar
+
+###cipan
+GET https://www.easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getInfoList_copy_1606637282013
+?page=1
+&limit=6

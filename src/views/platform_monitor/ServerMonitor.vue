@@ -10,18 +10,17 @@
             :label="item.label"
             :name="item.name"
           >
-            <ServiceTables :name="navName" v-if="item.active" />
             <el-table
-              v-show="item.status === true"
-              :data="item.data"
+              v-show="total"
+              :data="serverTabData"
               style="width: 100%"
               height="400"
             >
               <el-table-column prop="order" label="序号" width="80" />
-              <el-table-column prop="project" label="所属项目" />
-              <el-table-column prop="operatingSystem" label="操作系统" />
-              <el-table-column prop="IPaddress" label="IP地址" />
-              <el-table-column prop="configureIntroduction" label="配置简介" />
+              <el-table-column prop="project" label="所属项目" width="250" />
+              <el-table-column prop="operatingSystem" label="操作系统" width="250"/>
+              <el-table-column prop="IPaddress" label="IP地址" width="250"/>
+              <el-table-column prop="configureIntroduction" label="配置简介" width="250"/>
               <el-table-column prop="operation" label="操作">
                 <template slot-scope="scope">
                   <el-button type="text" size="small" @click="detail(scope.row)"
@@ -30,19 +29,19 @@
                 </template>
               </el-table-column>
             </el-table>
+            <!-- 分页布局 -->
+            <div class="d-flex jc-end mt-2" v-if="total">
+              <el-pagination
+                :current-page="currentPage4"
+                :page-size="limit"
+                layout="total, prev, pager, next, jumper"
+                :total="total"
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+              />
+            </div>
           </el-tab-pane>
         </el-tabs>
-        <!-- 分页布局 -->
-        <div class="d-flex jc-end mt-2" v-if="total">
-          <el-pagination
-            :current-page="currentPage4"
-            :page-size="10"
-            layout="total, prev, pager, next, jumper"
-            :total="total"
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-          />
-        </div>
       </div>
     </div>
   </div>
@@ -56,112 +55,17 @@ export default {
     CardHeader,
   },
   mounted() {
-    // this.getTabDemo();
-    // this.getServerNavDemo();
+    this.getServerNavDemo();
+    this.getTabDemo(1);
   },
   data() {
     return {
-      // 等接口联调 进行数据拼接 具体方法实现
-      tabsData: "",
-      tabsData1: [
-        {
-          label: "服务器列表",
-          name: "APIvisits",
-          tableName: "访问量",
-          tableData: "visits",
-          status: true,
-          order: 1,
-          data: [
-            {
-              order: 1,
-              project: "冰山项目",
-              operatingSystem: "Windowserver2012R2",
-              IPaddress: "192.168.0.110",
-              configureIntroduction: "双核四进程",
-            },
-            {
-              order: 2,
-              project: "冰岛项目",
-              operatingSystem: "Linux",
-              IPaddress: "192.168.0.112",
-              configureIntroduction: "双核四进程",
-            },
-            {
-              order: 3,
-              project: "飞碟项目",
-              operatingSystem: "Macos",
-              IPaddress: "192.168.0.113",
-              configureIntroduction: "双核四进程",
-            },
-            {
-              order: 4,
-              project: "飞碟项目",
-              operatingSystem: "Macos",
-              IPaddress: "192.168.0.113",
-              configureIntroduction: "双核四进程",
-            },
-            {
-              order: 5,
-              project: "飞碟项目",
-              operatingSystem: "Macos",
-              IPaddress: "192.168.0.113",
-              configureIntroduction: "双核四进程",
-            },
-            {
-              order: 6,
-              project: "飞碟项目",
-              operatingSystem: "Macos",
-              IPaddress: "192.168.0.113",
-              configureIntroduction: "双核四进程",
-            },
-            {
-              order: 7,
-              project: "飞碟项目",
-              operatingSystem: "Macos",
-              IPaddress: "192.168.0.113",
-              configureIntroduction: "双核四进程",
-            },
-            {
-              order: 8,
-              project: "飞碟项目",
-              operatingSystem: "Macos",
-              IPaddress: "192.168.0.113",
-              configureIntroduction: "双核四进程",
-            },
-          ],
-        },
-        {
-          label: "磁盘列表",
-          name: "APItime",
-          tableName: "耗时",
-          tableData: "times",
-          status: true,
-          order: 2,
-          data: [
-            {
-              order: 1,
-              project: "冰山计划",
-              operatingSystem: "windowserver2012R2",
-              IPaddress: "192.168.0.110",
-              configureIntroduction: "双核四进程",
-            },
-            {
-              order: 2,
-              sourceOrganization: "222成都市水务局",
-              interfaceName: "市水务系统GPS定位",
-              times: "21.29s",
-              type: "http",
-            },
-          ],
-        },
-      ],
-      navName: "",
-      tabData: "",
-      serverTabData: "", // 服务器列表数据
-      total: 0, //总数量
-      activeName: "APIvisits",
-      dialogVisible: false,
-      currentPage4: 4,
+      tabsData: null, //导航数据 服务器列表 磁盘列表
+      serverTabData: null, // 服务器列表数据
+      total: 0, //列表总数量
+      activeName: "ServerList",  //默认选中
+      //dialogVisible: false,
+      currentPage4: 1,
       page: 1,
       limit: 10,
     };
@@ -175,36 +79,45 @@ export default {
       console.log(res);
     },
     // 获取 easy-mock 数据
-    // async getTabDemo() {
-    //   let params = {
-    //     page: this.page,
-    //     limit: this.limit,
-    //   };
-    //   const res = await this.$http.get(
-    //     "https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getInfoList",
-    //     {
-    //       params,
-    //     }
-    //   );
-    //   this.total = res.data.total;
-    //   this.serverTabData = res.data.data;
-    //   console.log(res.data);
-    // },
+    async getTabDemo(page) {
+      let params = {
+        page: page,
+        limit: this.limit,
+      };
+      const res = await this.$http.get(
+        "https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getInfoList",
+        {
+          params,
+        }
+      );
+      console.log(res);
+      this.total = res.data.total;
+      this.serverTabData = res.data.data;
+      console.log(res.data.data);
+    },
     async getServerNavDemo() {
       const res = await this.$http.get(
-        "https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getServerNar",
-        {}
+        "https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getServerNar"
       );
-      // console.log(res.data.data);
       this.tabsData = res.data.data;
-      // res.data.data.map((v) => {
-      //   console.log(v);
-      // });
     },
+    async getCipanNavDemo(page) {
+      let params = {
+        page: page,
+        limit: this.limit,
+      };
+      const res = await this.$http.get(
+        "https://www.easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getInfoList_copy_1606637282013",
+        {
+          params,
+        }
+      );
 
+      this.total = res.data.total;
+      this.serverTabData = res.data.data;
+    },
     detail(row) {
       //查看详情
-      // this.$router.push({ path: "mediaContent/" + row.id });
       console.log(row.order);
       this.$router.push({ path: "/index/ServerMonitor/" + row.order });
     },
@@ -213,29 +126,22 @@ export default {
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
+      this.getTabDemo(val);
     },
-    show_upsPage(event) {
-      // console.log(tab, event);
-      // console.log(this.tabsData);
-      // console.log(event.name);
-      this.tabsData.map(item =>{
-        console.log(item);
-        if(item.name == event.name){
-          this.navName = event.name
-          console.log(this.navName);
-          item.active = true
-        }else{
-          this.navName = event.name
-          item.active = false
-        }
-      })
+    show_upsPage(tab) {
+      console.log(tab);
+      if (tab.name === "ServerList") {
+        this.getTabDemo(1);
+      } else {
+        this.getCipanNavDemo(1);
+      }
     },
-    manage() {
-      this.dialogVisible = true;
-    },
-    closeDialog() {
-      this.dialogVisible = false;
-    },
+    // manage() {
+    //   this.dialogVisible = true;
+    // },
+    // closeDialog() {
+    //   this.dialogVisible = false;
+    // },
   },
 };
 </script>
