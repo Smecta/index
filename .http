@@ -13,21 +13,26 @@ GET http://10.88.212.43:8888/ServerMachines/getInfoList
 ### 数据库监控列表 
 GET http://10.88.212.43:8888/databases/getDBList?page=1&limit=10
 
-### test
-GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getlist
 
-### test1
-GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getdata
 
 ###  模拟服务器列表
 GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getInfoList
-    ?page=1
-    &limit=6
+    ?page=2
+    &limit=10
 
 ### 模拟服务器监控 tabs
 GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getServerNar
 
-###cipan
-GET https://www.easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/getInfoList_copy_1606637282013
-?page=1
-&limit=6
+### Post的模拟数据测试
+POST https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/postDataLIst
+content-type: application/json
+
+{
+    "page":1,
+    "pageSize":10
+}
+
+### 模拟服务监控数据
+GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/sreviceList
+    ?page=1
+    &limit=10

@@ -15,33 +15,29 @@
           active-text-color="#ffd04b"
           :default-active="$route.path"
         >
-          
           <el-submenu index="1">
             <template slot="title"
               ><i class="el-icon-message" />数据源监控</template
             >
-            <el-menu-item-group>
-              <el-menu-item index="/index/dataSource">数据源监控</el-menu-item>
-            </el-menu-item-group>
+
+            <el-menu-item index="/index/dataSource">数据源监控</el-menu-item>
           </el-submenu>
           <el-submenu index="3">
             <template slot="title"
               ><i class="el-icon-message" />共享监控</template
             >
-            <el-menu-item-group>
-              <el-menu-item index="/index/ServiceMonitor"
-                >服务监控</el-menu-item
-              >
-            </el-menu-item-group>
+
+            <el-menu-item index="/index/ServiceMonitor">服务监控</el-menu-item>
           </el-submenu>
           <el-submenu index="4">
             <template slot="title"
               ><i class="el-icon-message" />平台监控</template
             >
-            <el-menu-item-group>
-              <el-menu-item index="/index/ServerMonitor">服务器监控</el-menu-item>
-              <el-menu-item index="/index/DatabaseMonitor">数据库监控</el-menu-item>
-            </el-menu-item-group>
+
+            <el-menu-item index="/index/ServerMonitor">服务器监控</el-menu-item>
+            <el-menu-item index="/index/DatabaseMonitor"
+              >数据库监控</el-menu-item
+            >
           </el-submenu>
         </el-menu>
       </el-aside>

@@ -73,7 +73,7 @@ export default {
   methods: {
     //test
     changeData() {
-      this.axios
+      this.$http
         .get(   //轮询这里放置的是不匹配的url，为了检测页面是否会自动刷新，即3s后曲线图消失
           "https://gw.alipayobjects.com/os/bmw-prod/be63e0a2-d2be-4c45-97fd-c00f752a66d4.json"
         )
@@ -82,7 +82,7 @@ export default {
         })
     },
     getlinePlot() {
-      this.axios
+      this.$http
         .get(
           "https://gw.alipayobjects.com/os/bmw-prod/e00d52f4-2fa6-47ee-a0d7-105dd95bde20.json"
         )
@@ -184,7 +184,7 @@ export default {
       line.render();
     },
     getColumnData() {
-      this.axios
+      this.$http
         .get(
           "https://gw.alipayobjects.com/os/bmw-prod/be63e0a2-d2be-4c45-97fd-c00f752a66d4.json"
         )

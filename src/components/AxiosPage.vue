@@ -47,7 +47,7 @@
         },
         methods: {
             getStatus() {
-                this.axios("https://api.66mz8.com/api/sweet.php?format=json").then(res => {
+                this.$http.get("https://api.66mz8.com/api/sweet.php?format=json").then(res => {
                     if (res.status == 200) this.$message.success('请求成功')
                     console.log(res);
                     this.status = res.data.sweet

@@ -3,12 +3,12 @@
     <div class="service-monitor-card">
       <CardHeader cardTitle="服务监控"></CardHeader>
       <div class="top-btn fs-md d-flex jc-end">
-          <el-button type="danger" @click="manage">服务管理</el-button>
+        <el-button type="danger" @click="manage">服务管理</el-button>
       </div>
       <div class="center-body">
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane
-            v-for="(item, index) in tabsData"
+            v-for="(item, index) in tabsData1"
             :key="index"
             :label="item.label"
             :name="item.name"
@@ -18,39 +18,38 @@
               :data="item.data"
               style="width: 100%"
             >
-              <el-table-column prop="order" label="序号" width="80" />
-              <el-table-column
-                prop="sourceOrganization"
-                label="来源机构"
-                width="280"
-              />
-              <el-table-column
-                prop="interfaceName"
-                label="接口名称"
-                width="280"
-              />
-              <el-table-column
-                :prop="item.tableData"
-                :label="item.tableName"
-                width="180"
-              />
-              <el-table-column prop="type" label="类型" width="180" />
-              <el-table-column
-                fixed="right"
-                prop="operation"
-                label="操作"
-                width="180"
-              >
+              <el-table-column type="index" label="序号" :index="indexMethod">
+              </el-table-column>
+
+              <el-table-column prop="order" label="序号" />
+              <el-table-column prop="sourceOrganization" label="来源机构" />
+              <el-table-column prop="interfaceName" label="接口名称" />
+              <el-table-column :prop="item.tableData" :label="item.tableName" />
+              <el-table-column prop="type" label="类型" />
+              <el-table-column fixed="right" prop="operation" label="操作">
                 <template slot-scope="scope">
                   <el-button
                     type="text"
                     size="small"
-                    @click="$router.push(`/index/ServiceMonitor/${scope.row.order}`)"
+                    @click="
+                      $router.push(`/index/ServiceMonitor/${scope.row.order}`)
+                    "
                     >图表监控</el-button
                   >
                 </template>
               </el-table-column>
             </el-table>
+            <!-- 分页布局 -->
+            <div class="d-flex jc-end mt-2">
+              <el-pagination
+                :current-page="currentPage4"
+                :page-size="limit"
+                layout="total, prev, pager, next, jumper"
+                :total="total"
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+              />
+            </div>
           </el-tab-pane>
         </el-tabs>
       </div>
@@ -61,7 +60,7 @@
       width="50%"
       @close="closeDialog"
     >
-      <el-table :data="tabsData">
+      <el-table :data="tabsData1">
         <el-table-column label="序号" prop="order" />
         <el-table-column label="名称" prop="label" />
         <el-table-column label="状态" prop="status">
@@ -82,14 +81,15 @@
 </template>
 
 <script>
-import CardHeader from "../../components/CardHeader"
+import CardHeader from "../../components/CardHeader";
 export default {
-  components:{
-    CardHeader
+  components: {
+    CardHeader,
   },
   data() {
     return {
       // 等接口联调 进行数据拼接 具体方法实现
+      tabsData1: null,
       tabsData: [
         {
           label: "API访问量",
@@ -98,36 +98,6 @@ export default {
           tableData: "visits",
           status: true,
           order: 1,
-          data: [
-            {
-              order: 1,
-              sourceOrganization: "成都市水务局",
-              interfaceName: "市水务系统GPS定位",
-              visits: "1000",
-              type: "http",
-            },
-            {
-              order: 2,
-              sourceOrganization: "成都市水务局",
-              interfaceName: "市水务系统GPS定位",
-              visits: "2000",
-              type: "http",
-            },
-            {
-              order: 3,
-              sourceOrganization: "成都市水务局",
-              interfaceName: "市水务系统GPS定位",
-              visits: "1000",
-              type: "http",
-            },
-            {
-              order: 4,
-              sourceOrganization: "成都市水务局",
-              interfaceName: "市水务系统GPS定位",
-              visits: "2000",
-              type: "http",
-            },
-          ],
         },
         {
           label: "API耗时",
@@ -136,22 +106,6 @@ export default {
           tableData: "times",
           status: true,
           order: 2,
-          data: [
-            {
-              order: 1,
-              sourceOrganization: "222成都市水务局",
-              interfaceName: "市水务系统GPS定位",
-              times: "21.29s",
-              type: "http",
-            },
-            {
-              order: 2,
-              sourceOrganization: "222成都市水务局",
-              interfaceName: "市水务系统GPS定位",
-              times: "21.29s",
-              type: "http",
-            },
-          ],
         },
         {
           label: "API成功率",
@@ -160,22 +114,6 @@ export default {
           tableData: "success",
           status: true,
           order: 3,
-          data: [
-            {
-              order: 1,
-              sourceOrganization: "333成都市水务局",
-              interfaceName: "市水务系统GPS定位",
-              success: "70%",
-              type: "http",
-            },
-            {
-              order: 2,
-              sourceOrganization: "333成都市水务局",
-              interfaceName: "市水务系统GPS定位",
-              success: "60%",
-              type: "http",
-            },
-          ],
         },
         {
           label: "API申请量",
@@ -184,29 +122,23 @@ export default {
           tableData: "apply",
           status: true,
           order: 4,
-          data: [
-            {
-              order: 1,
-              sourceOrganization: "444成都市水务局",
-              interfaceName: "市水务系统GPS定位",
-              apply: "34345",
-              type: "http",
-            },
-            {
-              order: 2,
-              sourceOrganization: "444成都市水务局",
-              interfaceName: "市水务系统GPS定位",
-              apply: "98945",
-              type: "http",
-            },
-          ],
         },
       ],
       activeName: "APIvisits",
       dialogVisible: false,
+      total: 0, //列表总数量
+      currentPage4: 1,
+      page: 1,
+      limit: 10,
     };
   },
+  mounted() {
+    this.getList(1);
+  },
   methods: {
+    indexMethod(index){
+      return index + 1
+    },
     handleClick(tab) {
       // console.log(tab, event);
       console.log(tab.paneName);
@@ -217,17 +149,48 @@ export default {
     closeDialog() {
       this.dialogVisible = false;
     },
+    // 获取模拟假数据列表
+    async getList(page) {
+      let params = {
+        page: page,
+        limit: 10,
+      };
+      const res = await this.$http.get(
+        "https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/sreviceList",
+        {
+          params,
+        }
+      );
+      console.log(res.data.data);
+      // 拼接数据
+      this.tabsData.map((v) => {
+        // console.log(v);
+        v.data = res.data.data;
+      });
+      this.tabsData1 = this.tabsData;
+      this.total = res.data.total;
+      // console.log(this.tabsData);
+    },
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+      // this.getTabDemo(val);
+      this.getList(val);
+      this.currentpage4 = val;
+    },
   },
 };
 </script>
 
 <style scoped>
-.service-monitor-card{
-  position:relative
+.service-monitor-card {
+  position: relative;
 }
-.top-btn{
+.top-btn {
   position: absolute;
-  right:0;
-  top:0;
+  right: 0;
+  top: 0;
 }
 </style>
