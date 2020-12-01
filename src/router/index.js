@@ -7,6 +7,7 @@ import Admin from '../components/Admin.vue'
 import Websocket from '../components/Websocket.vue'
 import AxiosPage from '../components/AxiosPage.vue'
 import AntvDemo from '../components/AntvDemo.vue'
+import AntvG2Demo from '../components/AntvG2Demo.vue'
 import EchartsDemo from '../components/EchartsDemo.vue'
 import Index from '../components/Index.vue'
 
@@ -31,6 +32,7 @@ const routes = [
       { path: '/websocket', component: Websocket },
       { path: '/axios', component: AxiosPage },
       { path: '/antvDemo', component: AntvDemo },
+      { path: '/antvG2Demo', component: AntvG2Demo },
       { path: '/echartsDemo', component: EchartsDemo },
       {
         path: '/fontDemo',

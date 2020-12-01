@@ -30,12 +30,11 @@ import { Line } from "@antv/g2plot";
 import { Column } from "@antv/g2plot";
 import { Liquid, measureTextWidth } from "@antv/g2plot";
 import { Gauge } from "@antv/g2plot";
-
 export default {
   data() {
     return {
       mydata: [],
-      linePlot: '', 
+      linePlot: "",
       lineDataMap: [
         { year: "1991", value: 3 },
         { year: "1992", value: 4 },
@@ -74,12 +73,13 @@ export default {
     //test
     changeData() {
       this.$http
-        .get(   //轮询这里放置的是不匹配的url，为了检测页面是否会自动刷新，即3s后曲线图消失
+        .get(
+          //轮询这里放置的是不匹配的url，为了检测页面是否会自动刷新，即3s后曲线图消失
           "https://gw.alipayobjects.com/os/bmw-prod/be63e0a2-d2be-4c45-97fd-c00f752a66d4.json"
         )
         .then((res) => {
           this.mydata = res.data;
-        })
+        });
     },
     getlinePlot() {
       this.$http
@@ -392,6 +392,7 @@ export default {
       });
       columnPlot.render();
     },
+    
   },
 };
 </script>

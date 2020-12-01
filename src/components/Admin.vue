@@ -21,8 +21,12 @@
               <template slot="title">图表一</template>
               <el-menu-item index="antvDemo">antv快速上手</el-menu-item>
             </el-menu-item-group>
-            <el-menu-item-group>
+             <el-menu-item-group>
               <template slot="title">图表二</template>
+              <el-menu-item index="antvG2Demo">antv G2 快速上手</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <template slot="title">图表三</template>
               <el-menu-item index="echartsDemo">Echarts图表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>

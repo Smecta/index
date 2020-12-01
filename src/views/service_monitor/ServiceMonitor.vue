@@ -7,6 +7,12 @@
       </div>
       <div class="center-body">
         <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tabs-pane label="API访问量" name="APIvisits"></el-tabs-pane>
+          <el-tabs-pane label="API耗时" name="APItime"></el-tabs-pane>
+          <el-tabs-pane label="API成功率" name="APIsuccess"></el-tabs-pane>
+          <el-tabs-pane label="API申请量" name="APIapply"></el-tabs-pane>
+        </el-tabs>
+        <!-- <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane
             v-for="(item, index) in tabsData1"
             :key="index"
@@ -39,19 +45,17 @@
                 </template>
               </el-table-column>
             </el-table>
-            <!-- 分页布局 -->
             <div class="d-flex jc-end mt-2">
               <el-pagination
                 :current-page="currentPage4"
                 :page-size="limit"
                 layout="total, prev, pager, next, jumper"
                 :total="total"
-                @size-change="handleSizeChange"
                 @current-change="handleCurrentChange"
               />
             </div>
           </el-tab-pane>
-        </el-tabs>
+        </el-tabs> -->
       </div>
     </div>
     <el-dialog
@@ -163,17 +167,17 @@ export default {
       );
       console.log(res.data.data);
       // 拼接数据
-      this.tabsData.map((v) => {
-        // console.log(v);
-        v.data = res.data.data;
-      });
-      this.tabsData1 = this.tabsData;
-      this.total = res.data.total;
-      // console.log(this.tabsData);
+      // this.tabsData1 = this.tabsData.map((v) => {
+      //   // console.log(v);
+      //   v.data = res.data.data;
+      // });
+      
+      // this.total = res.data.total;
+      // console.log(this.tabsData1);
     },
-    handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
-    },
+    // handleSizeChange(val) {
+    //   console.log(`每页 ${val} 条`);
+    // },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
       // this.getTabDemo(val);
