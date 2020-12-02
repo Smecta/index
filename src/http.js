@@ -3,7 +3,8 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 // import Vue from 'vue'
 // import router from './router/router'
-
+// 关闭加载环
+NProgress.configure({ showSpinner: false })
 const http = axios.create({
     baseURL:'http://10.88.212.43:8888/'
 })

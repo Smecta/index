@@ -57,12 +57,18 @@ const routes = [
       {
         path: '/index/ServiceMonitor',
         name: 'ServiceMonitor',
-        component: () => import('../views/service_monitor/ServiceMonitor.vue')
+        component: () => import('../views/service_monitor/ServiceMonitor.vue'),
+        meta: {
+          keepAlive: true //此组件不需要被缓存
+        }
       },
       {
         path: '/index/ServiceMonitor/:id',
         name: 'ServiceMonitor',
-        component: () => import('../views/service_monitor/ServiceMonitorPage.vue')
+        component: () => import('../views/service_monitor/ServiceMonitorPage.vue'),
+        meta: {
+          keepAlive: true //此组件不需要被缓存
+        }
       },
       {
         path: '/index/ServerMonitor',

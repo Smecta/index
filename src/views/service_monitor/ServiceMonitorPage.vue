@@ -6,7 +6,7 @@
           <div class="top-name">服务监控</div>
         </div>
         <div class="top-right fs-md">
-          <el-button @click="$router.replace('/index/ServiceMonitor')"
+          <el-button @click="$router.go(-1)"
             >返回</el-button
           >
         </div>
