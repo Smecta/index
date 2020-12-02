@@ -12,7 +12,7 @@
           :default-openeds="['1', '3', '4']"
           background-color="#545c64"
           text-color="#fff"
-          active-text-color="#ffd04b"
+          active-text-color="#fff"
           :default-active="$route.path"
         >
           <el-submenu index="1">
@@ -73,6 +73,6 @@ export default {
   overflow: hidden;
 }
 .el-menu-item.is-active {
-  background-color: #00b4aa !important;
+  background-color: #D95F56 !important;
 }
 </style>

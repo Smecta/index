@@ -36,3 +36,6 @@ content-type: application/json
 GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/sreviceList
     ?page=1
     &limit=10
+
+### 模拟导航服务监控数据
+GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/service/nav

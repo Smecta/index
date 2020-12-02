@@ -1,24 +1,20 @@
 <template>
   <div class="service">
     <div class="service-monitor-card">
+      <!-- 头部组件 -->
       <CardHeader cardTitle="服务监控"></CardHeader>
       <div class="top-btn fs-md d-flex jc-end">
         <el-button type="danger" @click="manage">服务管理</el-button>
       </div>
       <div class="center-body">
         <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tabs-pane label="API访问量" name="APIvisits"></el-tabs-pane>
-          <el-tabs-pane label="API耗时" name="APItime"></el-tabs-pane>
-          <el-tabs-pane label="API成功率" name="APIsuccess"></el-tabs-pane>
-          <el-tabs-pane label="API申请量" name="APIapply"></el-tabs-pane>
-        </el-tabs>
-        <!-- <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane
-            v-for="(item, index) in tabsData1"
+            v-for="(item, index) in tabsData"
             :key="index"
             :label="item.label"
             :name="item.name"
           >
+            <!-- 表格页面 -->
             <el-table
               v-show="item.status === true"
               :data="item.data"
@@ -26,8 +22,6 @@
             >
               <el-table-column type="index" label="序号" :index="indexMethod">
               </el-table-column>
-
-              <el-table-column prop="order" label="序号" />
               <el-table-column prop="sourceOrganization" label="来源机构" />
               <el-table-column prop="interfaceName" label="接口名称" />
               <el-table-column :prop="item.tableData" :label="item.tableName" />
@@ -45,9 +39,10 @@
                 </template>
               </el-table-column>
             </el-table>
+            <!-- 分页标签 -->
             <div class="d-flex jc-end mt-2">
               <el-pagination
-                :current-page="currentPage4"
+                :current-page="currentPage"
                 :page-size="limit"
                 layout="total, prev, pager, next, jumper"
                 :total="total"
@@ -55,16 +50,17 @@
               />
             </div>
           </el-tab-pane>
-        </el-tabs> -->
+        </el-tabs>
       </div>
     </div>
+    <!-- 管理tabs页面 -->
     <el-dialog
       title="服务管理"
       :visible="dialogVisible"
       width="50%"
       @close="closeDialog"
     >
-      <el-table :data="tabsData1">
+      <el-table :data="tabsData">
         <el-table-column label="序号" prop="order" />
         <el-table-column label="名称" prop="label" />
         <el-table-column label="状态" prop="status">
@@ -92,59 +88,24 @@ export default {
   },
   data() {
     return {
-      // 等接口联调 进行数据拼接 具体方法实现
-      tabsData1: null,
-      tabsData: [
-        {
-          label: "API访问量",
-          name: "APIvisits",
-          tableName: "访问量",
-          tableData: "visits",
-          status: true,
-          order: 1,
-        },
-        {
-          label: "API耗时",
-          name: "APItime",
-          tableName: "耗时",
-          tableData: "times",
-          status: true,
-          order: 2,
-        },
-        {
-          label: "API成功率",
-          name: "APIsuccess",
-          tableName: "成功率",
-          tableData: "success",
-          status: true,
-          order: 3,
-        },
-        {
-          label: "API申请量",
-          name: "APIapply",
-          tableName: "申请量",
-          tableData: "apply",
-          status: true,
-          order: 4,
-        },
-      ],
+      tabsData:[],
+      ListData:null,
       activeName: "APIvisits",
       dialogVisible: false,
       total: 0, //列表总数量
-      currentPage4: 1,
+      currentPage: 1,
       page: 1,
       limit: 10,
     };
   },
   mounted() {
-    this.getList(1);
+    this.getNavList()
   },
   methods: {
-    indexMethod(index){
-      return index + 1
+    indexMethod(index) {
+      return index + 1;
     },
     handleClick(tab) {
-      // console.log(tab, event);
       console.log(tab.paneName);
     },
     manage() {
@@ -153,36 +114,41 @@ export default {
     closeDialog() {
       this.dialogVisible = false;
     },
+    // 模拟获取假数据导航nav
+    async getNavList(){
+      const res = await this.$http.get("https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/service/nav")
+      console.log(res);
+      this.tabsData = res.data.data
+      this.getList()
+    },
+
     // 获取模拟假数据列表
-    async getList(page) {
+    async getList() {
       let params = {
-        page: page,
-        limit: 10,
+        page: this.page,
+        limit: this.limit,
       };
+      // 接口偶尔会挂
       const res = await this.$http.get(
         "https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/sreviceList",
         {
           params,
         }
       );
-      console.log(res.data.data);
-      // 拼接数据
-      // this.tabsData1 = this.tabsData.map((v) => {
-      //   // console.log(v);
-      //   v.data = res.data.data;
-      // });
-      
-      // this.total = res.data.total;
-      // console.log(this.tabsData1);
+      // let res = this.data
+      this.total = res.data.total;
+      console.log(res.data);
+      let data = res.data.data
+      this.tabsData = this.tabsData.map((item) => {
+          return {...item,data};
+      });
     },
-    // handleSizeChange(val) {
-    //   console.log(`每页 ${val} 条`);
-    // },
+
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-      // this.getTabDemo(val);
-      this.getList(val);
-      this.currentpage4 = val;
+      this.page = val
+      this.getNavList()
+      console.log(this.tabsData);
     },
   },
 };
