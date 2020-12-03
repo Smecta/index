@@ -137,7 +137,7 @@ export default {
       );
       // let res = this.data
       this.total = res.data.total;
-      console.log(res.data);
+      // console.log(res.data);
       let data = res.data.data;
       this.tabsData = this.tabsData.map((item) => {
           return {...item,data};

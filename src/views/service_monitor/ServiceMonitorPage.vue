@@ -6,7 +6,7 @@
           <div class="top-name">服务监控</div>
         </div>
         <div class="top-right fs-md">
-          <el-button @click="$router.go(-1)"
+          <el-button @click="$router.back();"
             >返回</el-button
           >
         </div>
@@ -172,6 +172,12 @@ export default {
   },
   mounted() {
     this.getlinePlot();
+    // if(this.$route.query.page == undefined){
+    //   this.page = 1
+    // }else{
+    //   this.page = this.$route.query.page
+    // }
+    // console.log(this.page);
   },
   methods: {
     getlinePlot() {

@@ -107,3 +107,7 @@ npm 安装
 import _ from "lodash";
 在页面中使用： let data = _.cloneDeep(this.userInfoData)
 cloneDeep：深度克隆JavaScript对象
+
+
+### 学习手册
+https://panjiachen.gitee.io/vue-element-admin-site/zh/guide/advanced/chart.html#demo
