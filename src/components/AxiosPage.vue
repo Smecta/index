@@ -1,17 +1,25 @@
 <template>
     <div class="axios-style">
         <h1>轮询方式</h1>
+        <div class="history">
+            <!-- 组件部分 -->
+            <Scroll :scrollList="scrollList"></Scroll>
+        </div>
         <el-button @click="getStatus">发请求拿数据</el-button>
         <p>随机一句：<span>{{status}}</span></p>
     </div>
 </template>
 <script>
+import Scroll from './Scroll.vue'
     export default {
         data() {
             return {
                 status: '',
-                
+                scrollList:[],
             }
+        },
+        components:{
+            Scroll
         },
         mounted(){
             this.getStatus()
@@ -49,8 +57,13 @@
             getStatus() {
                 this.$http.get("https://api.66mz8.com/api/sweet.php?format=json").then(res => {
                     if (res.status == 200) this.$message.success('请求成功')
-                    console.log(res);
+                    // console.log(res);
                     this.status = res.data.sweet
+                    let arr= [] 
+                    arr.push(res.data.sweet)
+                    // // this.scrollList.map(v={
+                    // //     v.title: this.status
+                    // // })
                 })
             },
         },
