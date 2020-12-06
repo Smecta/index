@@ -111,3 +111,10 @@ cloneDeep：深度克隆JavaScript对象
 
 ### 学习手册
 https://panjiachen.gitee.io/vue-element-admin-site/zh/guide/advanced/chart.html#demo
+
+### serve 命令 
+``` bash
+npm i -g serve
+
+```
+使用方式 serve dist 

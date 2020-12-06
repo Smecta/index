@@ -1,9 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import Home from '../views/Home.vue'
-import Nav from '../views/Nav.vue'
-import Home from '../components/Home.vue'
-import Admin from '../components/Admin.vue'
+// 路由懒加载 方式  其中注释是定义生成的js文件分组是否同一个
+// import Nav from '../views/Nav.vue'
+const Nav = () => import(/* webpackChunkName: "home_index" */'../views/Nav.vue')
+// import Home from '../components/Home.vue'
+const Home = () => import(/* webpackChunkName: "home_index" */'../components/Home.vue')
+// import Admin from '../components/Admin.vue'
+const Admin = () => import(/* webpackChunkName: "home_index" */'../components/Admin.vue')
+
 import Websocket from '../components/Websocket.vue'
 import AxiosPage from '../components/AxiosPage.vue'
 import AntvDemo from '../components/AntvDemo.vue'
