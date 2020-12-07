@@ -1,0 +1,64 @@
+// vue 前端代理 解决 cors 跨域问题
+module.exports={
+    devServer:{
+        // proxy:{
+        //     // "/":{
+        //     //     target:'http://10.88.212.43:8888',
+        //     //     ws:true,
+        //     //     changeOrign:true,
+        //     //     pathRewrite:{
+        //     //         '^/':''
+        //     //     }
+        //     // }
+        //     // // /api 来定义目标地址 
+        //     // "/api":{
+        //     //     // 目标地址
+        //     //     // target:'http://10.88.212.43:18783',
+        //     //     // http://192.168.124.149:3008/courses
+        //     //     target:'http://192.168.124.149:3008',
+        //     //     ws:true,
+        //     //     //开启跨域
+        //     //     changeOrigin:true,
+        //     //     //路由重写  对应上面的目标地址 用法： 比如 http://10.88.212.43:18783/api/sharedGateway/service/hottest  
+        //     //     // axios 请求后不用设置baseURL 可直接 axios.get(/api/sharedGateway/service/hottest) 即可
+        //     //     pathRewrite:{
+        //     //         '^/api':''
+        //     //     }
+        //     // }
+        // }
+    },
+    // 链式编程的方式 配置
+    chainWebpack: config => {
+        // 产品发布阶段 默认打包入口文件
+        config.when(process.env.NODE_ENV === 'production', config => {
+            // 入门文件默认查找然后清除 然后自定义添加
+            config.entry('app').clear().add('./src/main-prod.js')
+            // 只有发布模式才会配置externals
+            // 通过externals 加载外部CDN资源 做项目优化策略  同时需要在public/index.html文件的头部，添加CDN资源引入
+            // config.set('externals',{
+            //     vue:'Vue',
+            //     'vue-router':'VueRouter',
+            //     axios:'axios',
+            //     lodash:'_',
+            //     echarts:'echarts',
+            //     nprogress:'NProgress',
+            //     'vue-quill-editor':'VueQuillEditor'
+            // })
+            // 为 html 的插件新增了一个自定义属性 isProd 来判断是否属于开发模式  在首页中根据这个值来决定
+            config.plugin('html').tap(args=>{
+                args[0].isProd = true
+                return args
+            })
+        }) 
+        // 开发环境 默认打包入口文件
+        config.when(process.env.NODE_ENV === 'development', config => {
+            config.entry('app').clear().add('./src/main-dev.js')
+
+            config.plugin('html').tap(args=>{
+                args[0].isProd = false
+                return args
+            })
+        }) 
+    }
+}
+

@@ -6,7 +6,8 @@ import 'nprogress/nprogress.css'
 // 关闭加载环
 NProgress.configure({ showSpinner: false })
 const http = axios.create({
-    baseURL:'http://10.88.212.43:8888/'
+  baseURL:process.env.VUE_APP_API_URL || '/api',
+    // baseURL:'http://10.88.212.43:8888/'
 })
 // 请求 拦截器
 http.interceptors.request.use(function (config) {
