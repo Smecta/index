@@ -60,18 +60,35 @@
 // console.log(obj);
 // console.log(obj2);
 
-let arr11 = [
-  ["ch",18],["caicai",20],["av",11]
-]
-// 目标数组
-// let a = ["ch","caicai","av"]
-// let b = [18,20,11]
-const xarr = []
-const yarr = []
-arr11.map(v => {
-  xarr.push(v[0])
-  yarr.push(v[1])
+// let arr11 = [
+//   ["ch",18],["caicai",20],["av",11]
+// ]
+// // 目标数组
+// // let a = ["ch","caicai","av"]
+// // let b = [18,20,11]
+// const xarr = []
+// const yarr = []
+// arr11.map(v => {
+//   xarr.push(v[0])
+//   yarr.push(v[1])
+// })
+
+// console.log(xarr);
+// console.log(yarr);
+
+let data = { errCount:22,inputCount:11,outCount:11 }
+
+// let newData = [
+//   {type:"errCount",value:22},
+//   {type:"inputCount",value:11},
+//   {type:"outCount",value:11}
+// ]
+
+
+// console.log(Object.entries(data));
+
+const ret = Object.entries(data).map(v =>{
+  return {type:v[0],value:v[1]}
 })
 
-console.log(xarr);
-console.log(yarr);
+console.log(ret);

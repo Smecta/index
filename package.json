@@ -15,6 +15,7 @@
     "echarts": "^4.9.0",
     "element-ui": "^2.14.1",
     "font-awesome": "^4.7.0",
+    "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "tailwindcss": "^1.9.6",
