@@ -46,6 +46,10 @@ const routes = [
       {
         path: '/tabsDemo',
         component: () => import('../components/TabsDemo.vue')
+      },
+      {
+        path: '/RouterDemo',
+        component: () => import('../components/RouterDemo.vue')
       }
     ]
   },

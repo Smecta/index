@@ -48,6 +48,10 @@
               <template slot="title">elementUI</template>
               <el-menu-item index="tabsDemo">tabsDemo</el-menu-item>
             </el-menu-item-group>
+            <el-menu-item-group>
+              <template slot="title">Routers</template>
+              <el-menu-item index="RouterDemo">RouterDemo</el-menu-item>
+            </el-menu-item-group>
 
           </el-submenu>
         </el-menu>
