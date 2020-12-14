@@ -2,7 +2,7 @@
   <div>
     <el-container style="height: 100vh; border: 1px solid #eee">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu router :default-openeds="['1', '3']">
+        <el-menu router :default-openeds="['1','6']">
           <el-submenu index="1">
             <template slot="title"
               ><i class="el-icon-message"></i>请求方式</template
@@ -52,8 +52,14 @@
               <template slot="title">Routers</template>
               <el-menu-item index="RouterDemo">RouterDemo</el-menu-item>
             </el-menu-item-group>
-
           </el-submenu>
+          <el-submenu index="6">
+            <template slot="title"><i class="el-icon-message"></i>slot插槽</template>
+            <el-menu-item-group>
+              <template slot="title">单个插槽/匿名插槽</template>
+              <el-menu-item index="Slot">单个slot</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>    
         </el-menu>
       </el-aside>
 

@@ -50,6 +50,10 @@ const routes = [
       {
         path: '/RouterDemo',
         component: () => import('../components/RouterDemo.vue')
+      },
+      {
+        path: '/Slot',
+        component: () => import('../components/Slot.vue')
       }
     ]
   },
@@ -73,7 +77,7 @@ const routes = [
       },
       {
         path: '/index/ServiceMonitor/:id',
-        name: 'ServiceMonitor',
+        name: 'ServiceMonitorPage',
         component: () => import('../views/service_monitor/ServiceMonitorPage.vue'),
         meta: {
           keepAlive: true //此组件不需要被缓存

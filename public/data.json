@@ -1,0 +1,45 @@
+{
+    "data": [
+        {
+          "code": "errorThroughput",
+          "name": "错误数吞吐量",
+          "data":[
+            {"methodCode": "average", "methodName": "所有数据的平均值"},
+            {"methodCode": "average_1_MINUTE", "methodName": "所有数据的平均值"},
+            {"methodCode": "average_5_MINUTES", "methodName": "5分钟内的平均值"},
+            {"methodCode": "average_15_MINUTES", "methodName": "15分钟内的平均值"}
+        ]
+        },
+        {
+          "code": "inputThroughput",
+          "name": "输入数吞吐量",
+          "data":[
+            {"methodCode": "11111", "methodName": "11111"},
+            {"methodCode": "22222", "methodName": "22222"},
+            {"methodCode": "33333", "methodName": "33333"},
+            {"methodCode": "99999", "methodName": "99999"}
+        ]
+        },
+        {
+          "code": "outputThroughput",
+          "name": "输出数吞吐量"
+        },
+        {
+          "code": "batchThroughput",
+          "name": "批次数吞吐量"
+        },
+        {
+          "code": "errorCount",
+          "name": "错误数"
+        },
+        {
+          "code": "inputCount",
+          "name": "输入数"
+        },
+        {
+          "code": "outputCount",
+          "name": "输出数"
+        }
+      ]
+    
+}

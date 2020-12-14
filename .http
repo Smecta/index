@@ -39,3 +39,10 @@ GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/sreviceList
 
 ### 模拟导航服务监控数据
 GET https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/service/nav
+
+
+###
+GET http://localhost:8081/data.json
+
+###
+GET http://10.88.212.177:8888/moduletype/keys?moduleTypeId=1&businessId=DR1P749N40ETSJ_SUB1P78XXFYNZ21
