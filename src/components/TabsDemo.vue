@@ -43,10 +43,10 @@
       </el-form-item> -->
 
       <el-form-item
-        v-for="(domain, index) in dynamicValidateForm.domains"
-        :label="'报警规则' + index"
+        v-for="(domain, index2) in dynamicValidateForm.domains"
+        :label="'报警规则' + index2"
         :key="domain.key"
-        :prop="'domains.' + index + '.value'"
+        :prop="'domains.' + index2 + '.value'"
         :rules="{
           required: true,
           message: '不能为空',
@@ -64,7 +64,7 @@
         </el-select>
         <el-select v-model="domain.value1" placeholder="请选择第二列"  @change="pullValue1($event)">
           <el-option
-            v-for="item in data2"
+            v-for="item in data2[index2]"
             :key="item.methodCode"
             :label="item.methodName"
             :value="item.methodCode"
@@ -153,7 +153,7 @@ export default {
       // const res = await axios.get("http://10.88.212.177:8888/moduletype/keys", {
       //   params
       // });
-      const res = await axios.get("http://10.88.212.121:8081/data.json")
+      const res = await axios.get("http://localhost:8080/data.json")
       console.log(res);
       this.data1 = res.data.data;
     },
@@ -167,7 +167,7 @@ export default {
         // console.log(item);
         if(val == item.code){
           console.log(1);
-          this.data2 = item.data
+          this.data2.push(item.data) 
         }
       })
       // this.keyCode = val
@@ -188,7 +188,7 @@ export default {
           keyCode: this.keyCode,
       }
       const res = await axios.get(
-        "http://10.88.212.177:8888/moduletype/method",
+        "http://localhost:8080/moduletype/method",
         {
           params
         }
