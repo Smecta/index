@@ -43,10 +43,10 @@
       </el-form-item> -->
 
       <el-form-item
-        v-for="(domain, index2) in dynamicValidateForm.domains"
-        :label="'报警规则' + index2"
+        v-for="(domain, index1) in dynamicValidateForm.domains"
+        :label="'报警规则' + index1"
         :key="domain.key"
-        :prop="'domains.' + index2 + '.value'"
+        :prop="'domains.' + index1 + '.value'"
         :rules="{
           required: true,
           message: '不能为空',
@@ -64,7 +64,7 @@
         </el-select>
         <el-select v-model="domain.value1" placeholder="请选择第二列"  @change="pullValue1($event)">
           <el-option
-            v-for="item in data2[index2]"
+            v-for="item in data2[index1]"
             :key="item.methodCode"
             :label="item.methodName"
             :value="item.methodCode"
