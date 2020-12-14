@@ -169,6 +169,7 @@ export default {
           console.log(1);
           this.data2.push(item.data) 
         }
+        
       })
       // this.keyCode = val
       // this.getValue2()
