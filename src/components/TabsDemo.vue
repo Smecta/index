@@ -55,8 +55,8 @@
       >
         <el-select v-model="domain.value" placeholder="请选择" value-key="code" @change="changeValue1($event)">
           <el-option
-            v-for="(item,index) in data1"
-            :key="index"
+            v-for="item in data1"
+            :key="item.code"
             :label="item.name"
             :value="item.code"
           >
@@ -64,7 +64,7 @@
         </el-select>
         <el-select v-model="domain.value1" placeholder="请选择第二列"  @change="pullValue1($event)">
           <el-option
-            v-for="item in data2"
+            v-for="item in data2[index]"
             :key="item.methodCode"
             :label="item.methodName"
             :value="item.methodCode"
@@ -146,15 +146,15 @@ export default {
   },
   methods: {
     async getValue() {
-      // let params = {
-      //   moduleTypeId: this.moduleTypeId,
-      //   businessId: this.businessId,
-      // }
-      // const res = await axios.get("http://10.88.212.177:8888/moduletype/keys", {
-      //   params
-      // });
-      const res = await axios.get("http://10.88.212.121:8081/data.json")
-      console.log(res);
+      let params = {
+        moduleTypeId: this.moduleTypeId,
+        businessId: this.businessId,
+      }
+      const res = await axios.get("http://10.88.212.177:8888/moduletype/keys", {
+        params
+      });
+      // const res = await axios.get("http://10.88.212.121:8081/data.json")
+      // console.log(res);
       this.data1 = res.data.data;
     },
     // changeValue(val) {
@@ -163,15 +163,15 @@ export default {
     // },
     changeValue1(val){
       console.log(val);
-      this.data1.map(item => {
-        // console.log(item);
-        if(val == item.code){
-          console.log(1);
-          this.data2 = item.data
-        }
-      })
-      // this.keyCode = val
-      // this.getValue2()
+      // this.data1.map(item => {
+      //   // console.log(item);
+      //   if(val == item.code){
+      //     console.log(1);
+      //     this.data2 = item.data
+      //   }
+      // })
+      this.keyCode = val
+      this.getValue2()
 
 
     },
@@ -194,7 +194,8 @@ export default {
         }
       );
       console.log(res);
-      this.data2 = res.data.data
+      // this.data2 = res.data.data
+      this.data2.push(res.data.data)
 
     },
     submitForm(formName) {
