@@ -80,7 +80,7 @@
           >
           </el-option>
         </el-select>
-        <el-button v-show="index > 0" @click.prevent="removeDomain(domain)"
+        <el-button v-show="index1 > 0" @click.prevent="removeDomain(domain)"
           >删除</el-button
         >
       </el-form-item>

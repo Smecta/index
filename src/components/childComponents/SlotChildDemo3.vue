@@ -1,7 +1,7 @@
 <template>
   <div>
       <span>
-          <slot :user="user" name="slot3">
+          <slot :user="user">
               {{user.name}}
           </slot>
 
