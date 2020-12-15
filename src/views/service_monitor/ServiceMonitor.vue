@@ -7,7 +7,7 @@
         <el-button type="danger" @click="manage">服务管理</el-button>
       </div>
       <div class="center-body">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane
             v-for="(item, index) in tabsData"
             :key="index"
@@ -16,7 +16,6 @@
           >
             <!-- 表格页面 -->
             <el-table
-              v-show="item.status === true"
               :data="item.data"
               style="width: 100%"
             >
@@ -24,7 +23,7 @@
               </el-table-column>
               <el-table-column prop="sourceOrganization" label="来源机构" />
               <el-table-column prop="interfaceName" label="接口名称" />
-              <el-table-column :prop="item.tableData" :label="item.tableName" />
+              <el-table-column :prop="item.name" :label="item.label" />
               <el-table-column prop="type" label="类型" />
               <el-table-column fixed="right" prop="operation" label="操作">
                 <template slot-scope="scope">
@@ -39,10 +38,10 @@
                 </template>
               </el-table-column>
             </el-table>
-            <!-- 分页标签 -->
+            <!-- 分页标签  -->
             <div class="d-flex jc-end mt-2">
               <el-pagination
-                :current-page="currentPage"
+                :current-page.sync="currentPage[item.name]"
                 :page-size="limit"
                 layout="total, prev, pager, next, jumper"
                 :total="total"
@@ -51,6 +50,7 @@
             </div>
           </el-tab-pane>
         </el-tabs>
+        
       </div>
     </div>
     <!-- 管理tabs页面 -->
@@ -88,12 +88,20 @@ export default {
   },
   data() {
     return {
-      tabsData:[],
+      tabsData:[
+       
+  
+      ],
       ListData:null,
-      activeName: "APIvisits",
+      activeName: sessionStorage.getItem('activeName') || "APIvisits",
       dialogVisible: false,
       total: 0, //列表总数量
-      currentPage: 1,
+      currentPage: JSON.parse(sessionStorage.getItem('curPage')) || {
+        APIvisits: 1,
+        APItime: 1,
+        APIsuccess: 1,
+        APIapply: 1
+      },
       page: 1,
       limit: 10,
     };
@@ -105,7 +113,10 @@ export default {
     indexMethod(index) {
       return index + 1;
     },
+
+    // QIE HUA  TAB 
     handleClick(tab) {
+      sessionStorage.setItem('activeName',tab.name)
       console.log(tab.paneName);
     },
     manage() {
@@ -116,6 +127,7 @@ export default {
     },
     // 模拟获取假数据导航nav
     async getNavList(){
+      // this.activeName = sessionStorage.setItem('activeTab') 
       const res = await this.$http.get("https://easy-mock.com/mock/5fc09b67bbfbda51199fe5ff/demo/service/nav")
       console.log(res);
       this.tabsData = res.data.data
@@ -125,7 +137,7 @@ export default {
     // 获取模拟假数据列表
     async getList() {
       let params = {
-        page: this.page,
+        page: this.currentPage,
         limit: this.limit,
       };
       // 接口偶尔会挂
@@ -143,12 +155,11 @@ export default {
           return {...item,data};
       });
     },
-
-    handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
-      this.page = val
+   // 我恢复了 不搞了 太麻烦了 放弃i了 睡觉了你也早点睡吧
+     handleCurrentChange(val) {
+      console.log(val);
+      sessionStorage.setItem('curPage',JSON.stringify(this.currentPage))
       this.getNavList()
-      console.log(this.tabsData);
     },
   },
 };
