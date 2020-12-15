@@ -11,6 +11,7 @@
               <template slot="title">方式一</template>
               <el-menu-item index="axios">轮询方式</el-menu-item>
               <el-menu-item index="websocket">websocket方式</el-menu-item>
+              <el-menu-item index="scroll">无缝播报</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="3">

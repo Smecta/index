@@ -11,6 +11,7 @@ const Admin = () => import(/* webpackChunkName: "home_index" */'../components/Ad
 
 import Websocket from '../components/Websocket.vue'
 import AxiosPage from '../components/AxiosPage.vue'
+import Scroll from '../components/Scroll.vue'
 import AntvDemo from '../components/AntvDemo.vue'
 import AntvG2Demo from '../components/AntvG2Demo.vue'
 import EchartsDemo from '../components/EchartsDemo.vue'
@@ -35,6 +36,7 @@ const routes = [
     component: Admin,
     children: [
       { path: '/websocket', component: Websocket },
+      { path: '/scroll', component: Scroll },
       { path: '/axios', component: AxiosPage },
       { path: '/antvDemo', component: AntvDemo },
       { path: '/antvG2Demo', component: AntvG2Demo },
