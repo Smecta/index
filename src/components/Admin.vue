@@ -83,7 +83,7 @@
           <span>王小虎</span>
         </el-header> -->
 
-        <el-main class="main-wrapper">
+        <el-main>
             <router-view></router-view>
           <!-- <el-table :data="tableData">
             <el-table-column prop="date" label="日期" width="140">
@@ -113,9 +113,4 @@ export default {
 };
 </script>
 <style>
-.main-wrapper{
-  width: 100%;
-  background: blue;
-  border: 1px solid black;
-}
 </style>
