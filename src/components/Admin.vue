@@ -59,6 +59,13 @@
               <template slot="title">单个插槽/匿名插槽</template>
               <el-menu-item index="Slot">单个slot</el-menu-item>
             </el-menu-item-group>
+          </el-submenu>  
+          <el-submenu index="7">
+            <template slot="title"><i class="el-icon-message"></i>全选</template>
+            <el-menu-item-group>
+              <template slot="title">CheckBox全选</template>
+              <el-menu-item index="checkAll">CheckBox全选</el-menu-item>
+            </el-menu-item-group>
           </el-submenu>    
         </el-menu>
       </el-aside>
@@ -76,7 +83,7 @@
           <span>王小虎</span>
         </el-header> -->
 
-        <el-main>
+        <el-main class="main-wrapper">
             <router-view></router-view>
           <!-- <el-table :data="tableData">
             <el-table-column prop="date" label="日期" width="140">
@@ -106,5 +113,9 @@ export default {
 };
 </script>
 <style>
-
+.main-wrapper{
+  width: 100%;
+  background: blue;
+  border: 1px solid black;
+}
 </style>

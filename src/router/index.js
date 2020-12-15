@@ -54,6 +54,10 @@ const routes = [
       {
         path: '/Slot',
         component: () => import('../components/Slot.vue')
+      },
+      {
+        path: '/checkAll',
+        component: () => import('../components/CheckAll.vue')
       }
     ]
   },
