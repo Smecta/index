@@ -64,6 +64,10 @@ const routes = [
       {
         path: '/checkAll',
         component: () => import('../components/CheckAll.vue')
+      },
+      {
+        path: '/SelectDemo',
+        component: () => import('../components/SelectDemo.vue')
       }
     ]
   },
