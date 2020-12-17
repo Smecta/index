@@ -2,7 +2,7 @@
   <div>
     <el-container style="height: 100vh; border: 1px solid #eee">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu router :default-openeds="['1','6']">
+        <el-menu router >
           <el-submenu index="1">
             <template slot="title"
               ><i class="el-icon-message"></i>请求方式</template
@@ -113,9 +113,4 @@ export default {
 };
 </script>
 <style>
-.main-wrapper{
-  width: 100%;
-  background: blue;
-  border: 1px solid black;
-}
 </style>
