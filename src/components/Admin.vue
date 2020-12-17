@@ -11,6 +11,7 @@
               <template slot="title">方式一</template>
               <el-menu-item index="axios">轮询方式</el-menu-item>
               <el-menu-item index="websocket">websocket方式</el-menu-item>
+              <el-menu-item index="scroll">无缝播报</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="3">
@@ -49,6 +50,10 @@
               <el-menu-item index="tabsDemo">tabsDemo</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
+              <template slot="title">elementUI</template>
+              <el-menu-item index="tabsDemo2">tabsDemo2</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
               <template slot="title">Routers</template>
               <el-menu-item index="RouterDemo">RouterDemo</el-menu-item>
             </el-menu-item-group>
@@ -83,7 +88,7 @@
           <span>王小虎</span>
         </el-header> -->
 
-        <el-main class="main-wrapper">
+        <el-main>
             <router-view></router-view>
           <!-- <el-table :data="tableData">
             <el-table-column prop="date" label="日期" width="140">

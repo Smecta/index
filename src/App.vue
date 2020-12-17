@@ -7,8 +7,6 @@
 <style>
 #app {
   margin: 0 auto;
-  /* max-width: 1440px; */
-  min-width: 1440px;
 }
 
 /* 修改elementui轮播图箭头 */
