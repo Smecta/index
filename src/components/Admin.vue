@@ -72,7 +72,11 @@
               <el-menu-item index="checkAll">CheckBox全选</el-menu-item>
               <el-menu-item index="select">select选择器</el-menu-item>
             </el-menu-item-group>
-          </el-submenu>    
+            <el-menu-item-group>
+              <template slot="title">Vue-multiselect</template>
+              <el-menu-item index="SelectDemo">SelectDemo</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>  
         </el-menu>
       </el-aside>
 

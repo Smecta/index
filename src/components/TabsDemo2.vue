@@ -16,10 +16,10 @@
             <el-button type="primary">导出数据</el-button>
           </div>
           
-          <el-button-group>
-            <el-button plain @click="wait">待尽调</el-button>
-            <el-button plain @click="done">已尽调</el-button>
-          </el-button-group>
+          <el-radio-group v-model="radio1">
+            <el-radio-button label="待尽调" plain></el-radio-button>
+            <el-radio-button label="已尽调" plain></el-radio-button>
+          </el-radio-group>
         </div>
       </div>
       <div class="body"></div>
@@ -32,22 +32,35 @@
 export default {
   data(){
     return{
-      isShow:""
+      isShow:"",
+      radio1: '待尽调',
+      input4:'',
     }
   },
   methods:{
-    wait(){
-      this.isShow = false
-    },
-    done(){
-      this.isShow = true
-    }
+    
+  },
+  watch:{
+     radio1(newval){//普通的watch监听
+        //  console.log("radio1 "+newval, oldVal);
+         if(newval == "待尽调"){
+           this.isShow = false
+         }else{
+           this.isShow = true
+         }
+     },
+    //  b:{//深度监听，可监听到对象、数组的变化
+    //      handler(val, oldVal){
+    //          console.log("b.c: "+val.c, oldVal.c);
+    //      },
+    //      deep:true //true 深度监听
+    //  }
   }
-
 };
 </script>
 
 <style>
+
 .el-input {
     width: 340px;
   }
