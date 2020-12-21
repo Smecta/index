@@ -66,10 +66,11 @@
             </el-menu-item-group>
           </el-submenu>  
           <el-submenu index="7">
-            <template slot="title"><i class="el-icon-message"></i>全选</template>
+            <template slot="title"><i class="el-icon-message"></i>小功能</template>
             <el-menu-item-group>
-              <template slot="title">CheckBox全选</template>
+              <template slot="title">一些组件的小应用</template>
               <el-menu-item index="checkAll">CheckBox全选</el-menu-item>
+              <el-menu-item index="select">select选择器</el-menu-item>
             </el-menu-item-group>
           </el-submenu>    
         </el-menu>
