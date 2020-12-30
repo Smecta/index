@@ -173,4 +173,7 @@ p span {
   color: tomato;
   font-weight: 700;
 }
+.history{
+  width: 90%;
+}
 </style>

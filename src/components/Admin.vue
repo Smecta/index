@@ -71,9 +71,7 @@
               <template slot="title">一些组件的小应用</template>
               <el-menu-item index="checkAll">CheckBox全选</el-menu-item>
               <el-menu-item index="select">select选择器</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group>
-              <template slot="title">Vue-multiselect</template>
+              <el-menu-item index="scroll">无缝播报</el-menu-item>
               <el-menu-item index="SelectDemo">SelectDemo</el-menu-item>
             </el-menu-item-group>
           </el-submenu>  

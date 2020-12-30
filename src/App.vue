@@ -25,4 +25,8 @@
   font-size:25px;
 }
 
+
+.el-radio-button__inner{
+  background-color: none;
+}
 </style>
