@@ -96,7 +96,9 @@ export default {
   },
   mounted() {
     this.startAutoPlay();
+    this.registerPageHide();    //解决切换页面，消息仍在滚动
     this.startAutoPlay2();
+    this.registerPageHide2();   //解决切换页面，公告初始化重叠的bug
   },
   methods: {
     goDetail(item) {
@@ -128,8 +130,15 @@ export default {
       this.data.shift();
       this.startAutoPlay();
     },
-
-    // 另一个
+    // 浏览器切换页面，停止定时器，切回开启
+    registerPageHide() {
+      const visibilityHandler = () => {
+        document.visibilityState === 'visible' ? this.startAutoPlay() : this.clearAutoPlay()
+      }
+      document.addEventListener('visibilitychange', visibilityHandler)
+      this.$on('hook:beforeDestroy', () => document.removeEventListener('visibilitychange', visibilityHandler))
+    },
+    // 另一个播报的相关内容
     startAutoPlay2() {
       if (this.currentIndex >= this.noticeData.length) {
         this.currentIndex = 0;
@@ -141,31 +150,35 @@ export default {
         }, 4000);
       }
     },
+    clearAutoPlay2() {
+      clearTimeout(this.timer2);
+      this.timer2 = null;
+    },
     upItem2() {
       this.clearAutoPlay();
       this.currentIndex =
-        this.currentIndex - 1 >= 0
-          ? this.currentIndex - 1
-          : this.noticeData.length - 1;
+        this.currentIndex - 1 >= 0 ? this.currentIndex - 1 : this.noticeData.length - 1;
       this.startAutoPlay();
     },
     downItem2() {
       this.clearAutoPlay2();
       this.currentIndex =
-        this.currentIndex < this.noticeData.length - 1
-          ? this.currentIndex + 1
-          : 0;
+        this.currentIndex < this.noticeData.length - 1 ? this.currentIndex + 1 : 0;
       this.startAutoPlay2();
-    },
-    clearAutoPlay2() {
-      clearTimeout(this.timer2);
-      this.timer2 = null;
     },
     selectItem(index) {
       this.clearAutoPlay2();
       this.currentIndex = index;
       this.startAutoPlay2();
     },
+    // 浏览器切换页面，停止定时器，切回开启
+    registerPageHide2() {
+      const visibilityHandler = () => {
+        document.visibilityState === 'visible' ? this.startAutoPlay2() : this.clearAutoPlay2()
+      }
+      document.addEventListener('visibilitychange', visibilityHandler)
+      this.$on('hook:beforeDestroy', () => document.removeEventListener('visibilitychange', visibilityHandler))
+    }
   },
 };
 </script>
