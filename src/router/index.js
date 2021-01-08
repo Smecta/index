@@ -7,11 +7,11 @@ const Nav = () => import(/* webpackChunkName: "home_index" */'../views/main/Nav.
 // import Home from '../components/Home.vue'
 const Home = () => import(/* webpackChunkName: "home_index" */'../views/home/Home.vue')
 // import Admin from '../components/Admin.vue'
-const Admin = () => import(/* webpackChunkName: "home_index" */'../components/Admin.vue')
+const Admin = () => import(/* webpackChunkName: "home_index" */'../views/admin/Admin.vue')
 
 import Websocket from '../components/Websocket.vue'
 import AxiosPage from '../components/AxiosPage.vue'
-import Scroll from '../components/Scroll.vue'
+import Scroll from '@/views/admin/components/Scroll.vue'
 import AntvDemo from '../components/AntvDemo.vue'
 import AntvG2Demo from '../components/AntvG2Demo.vue'
 import EchartsDemo from '../components/EchartsDemo.vue'
@@ -47,31 +47,31 @@ const routes = [
       },
       {
         path: '/tabsDemo',
-        component: () => import('../components/TabsDemo.vue')
+        component: () => import('@/views/admin/components/tabs/TabsDemo.vue')
       },
       {
         path: '/tabsDemo2',
-        component: () => import('../components/TabsDemo2.vue')
+        component: () => import('@/views/admin/components/tabs/TabsDemo2.vue')
       },
       {
         path: '/RouterDemo',
-        component: () => import('../components/RouterDemo.vue')
+        component: () => import('@/views/admin/components/tabs/RouterDemo.vue')
       },
       {
         path: '/Slot',
-        component: () => import('../components/Slot.vue')
+        component: () => import('@/views/admin/components/slot/Slot.vue')
       },
       {
         path: '/checkAll',
-        component: () => import('../components/CheckAll.vue')
+        component: () => import('@/views/admin/components/checkbox/CheckAll.vue')
       },
       {
         path: '/select',
-        component: () => import('../components/dialog/index.vue')
+        component: () => import('@/views/admin/components/dialog/index.vue')
       },
       {
         path: '/SelectDemo',
-        component: () => import('../components/SelectDemo.vue')
+        component: () => import('@/views/admin/components/SelectDemo.vue')
       }
     ]
   },

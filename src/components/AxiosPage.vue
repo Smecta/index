@@ -13,7 +13,7 @@
 </template>
 <script>
 import axios from "axios";
-import Scroll from "./Scroll.vue";
+import Scroll from "@/views/admin/components/Scroll.vue";
 export default {
   data() {
     return {

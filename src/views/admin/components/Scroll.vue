@@ -113,7 +113,7 @@ export default {
       }, 1000);
     },
     startAutoPlay() {
-      this.timer = setInterval(this.showScroll, 4000);
+      this.timer = setInterval(this.showScroll, 3000);
     },
     clearAutoPlay() {
       clearInterval(this.timer);
@@ -147,7 +147,7 @@ export default {
         this.timer2 = setTimeout(() => {
           this.currentIndex++;
           this.startAutoPlay2();
-        }, 4000);
+        }, 3000);
       }
     },
     clearAutoPlay2() {
