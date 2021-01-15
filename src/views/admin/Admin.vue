@@ -73,8 +73,9 @@
               <el-menu-item index="select">select选择器</el-menu-item>
               <el-menu-item index="scroll">无缝播报</el-menu-item>
               <el-menu-item index="SelectDemo">SelectDemo</el-menu-item>
+              <el-menu-item index="banner">banner轮播图</el-menu-item>
             </el-menu-item-group>
-          </el-submenu>  
+          </el-submenu>    
         </el-menu>
       </el-aside>
 

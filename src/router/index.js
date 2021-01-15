@@ -72,6 +72,10 @@ const routes = [
       {
         path: '/SelectDemo',
         component: () => import('@/views/admin/components/SelectDemo.vue')
+      },
+      {
+        path: '/banner',
+        component: () => import('@/views/admin/components/banner/banner.vue')
       }
     ]
   },
