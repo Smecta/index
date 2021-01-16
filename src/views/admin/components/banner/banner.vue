@@ -4,8 +4,11 @@
       <card-header cardTitle="用户动态" />
       <user-action />
     </div>
-    <div class="title">四种轮播图</div>
-    <card-header cardTitle="不闪现轮播图" />
+    <div class="title">四种轮播图 Swiper组件、手写轮播</div>
+    <card-header cardTitle="Swiper组件写的仿百度百科轮播" />
+    <swiper-banner class="ml-10"/>
+
+    <card-header cardTitle="普通轮播图" />
     <div class="frist-two mb-10">
       <div class="banner1">
         <img
@@ -34,35 +37,6 @@
       </div>
     </div>
 
-    <card-header cardTitle="闪现轮播图" />
-    <div class="frist-one mb-10">
-      <transition-group tag="div" class="banner1" name="fade">
-        <img
-          v-for="(item, index) in sourceData1"
-          :key="item.id"
-          :src="item.img"
-          v-show="currentPage1 === index"
-        />
-      </transition-group>
-      <div class="arrow">
-        <div class="arrow-left arrow-item" @click="leftItem">
-          <i class="el-icon-arrow-left icon" />
-        </div>
-        <div class="arrow-right arrow-item" @click="rightItem">
-          <i class="el-icon-arrow-right icon" />
-        </div>
-      </div>
-      <div class="dot-box">
-        <div
-          v-for="(item, index) in sourceData1"
-          :key="index"
-          class="dot"
-          :class="{ active: currentPage1 === index }"
-          @click="selectItem(index)"
-        />
-      </div>
-    </div>
-
     <card-header cardTitle="滑动轮播图-回滚" />
     <transition-banner class="mb-10" />
 
@@ -72,11 +46,12 @@
 </template>
 <script>
 import CardHeader from "../../../../components/CardHeader.vue";
+import SwiperBanner from './components/SwiperBanner.vue';
 import TransitionBanner from "./components/TransitionBanner.vue";
 import TransitionBanner2 from "./components/TransitionBanner2.vue";
 import UserAction from "./components/UserAction.vue";
 export default {
-  components: { CardHeader, TransitionBanner2, TransitionBanner, UserAction },
+  components: { CardHeader, TransitionBanner2, TransitionBanner, UserAction, SwiperBanner },
   data() {
     return {
       currentPage1: 0,
@@ -149,7 +124,7 @@ export default {
       top: 50%;
       transform: translateY(-52%);
       left: -10px;
-      width: 5px;
+      width: 4px;
       height: 17px;
       background: #1890ff;
     }
