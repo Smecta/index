@@ -119,9 +119,9 @@ export default {
         },
       ],
       swiperOption: {
-        slidesPerView: 4,    //一页显示几条
-        spaceBetween: 20,    //每个swiper-item的间距
-        slidesPerGroup: 4,   //一次滚动几条
+        slidesPerView: 4, //一页显示几条
+        spaceBetween: 20, //每个swiper-item的间距
+        slidesPerGroup: 4, //一次滚动几条
         loop: true,
         //设置自动播放
         autoplay: {
@@ -205,7 +205,7 @@ export default {
     align-items: center;
     justify-content: center;
     outline: none;
-    c &:hover {
+    &:hover {
       background: rgba(0, 0, 0, 0.7);
     }
     .icon {
