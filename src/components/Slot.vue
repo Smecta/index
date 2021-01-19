@@ -33,6 +33,11 @@
         {{ slotChild3.user.age }}
       </template>
     </SlotChildDemo3>
+    <h1>vue - 兄弟之间传值</h1>
+    <h2>组件A</h2>
+    <Plana></Plana>
+    <h2>组件B</h2>
+    <Planb></Planb>
   </div>
 </template>
 
@@ -40,11 +45,15 @@
 import SlotChildDemo from "./childComponents/SlotChildDemo";
 import SlotChildDemo2 from "./childComponents/SlotChildDemo2";
 import SlotChildDemo3 from "./childComponents/SlotChildDemo3";
+import Plana from "./childComponents/PlanA";
+import Planb from "./childComponents/PlanB";
 export default {
   components: {
     SlotChildDemo,
     SlotChildDemo2,
     SlotChildDemo3,
+    Plana,
+    Planb
   },
   created() {
     const spacing = "20px";
