@@ -7,7 +7,8 @@ import "./assets/css/tailwind.css"
 import 'font-awesome/css/font-awesome.css'
 import 'normalize.css/normalize.css'
 import ElementUI from 'element-ui'
-
+import Multiselect from 'vue-multiselect'
+import "vue-multiselect/dist/vue-multiselect.min.css"
 // 按需引入
 // import { Button, Menu, Submenu, MenuItem, MenuItemGroup, Input } from "element-ui";
 // Vue.use(Button);
@@ -24,6 +25,7 @@ import router from './router'
 import store from './store'
 import echarts from 'echarts'
 
+Vue.component('multiselect', Multiselect)
 Vue.prototype.$echarts = echarts;
 // Vue.use(VueAxios, axios)
 // axios.defaults.baseURL="http://10.88.212.43:18783";

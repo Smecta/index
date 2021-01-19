@@ -14,7 +14,7 @@
   </el-card>
 </template>
 <script>
-import DemandItem from "./childComponents/DemandItem.vue";
+import DemandItem from "./DemandItem.vue";
 export default {
   components: {
     DemandItem,

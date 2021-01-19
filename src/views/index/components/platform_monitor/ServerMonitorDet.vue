@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import CardHeader from "../../components/CardHeader"
+import CardHeader from "@/components/CardHeader"
 export default {
   components:{
     CardHeader

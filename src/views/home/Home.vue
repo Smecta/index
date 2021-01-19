@@ -4,7 +4,7 @@
     <div class="header-page">
       <div class="header-left">
         <div class="header-logo">
-          <img src="../assets/img/img-logo.png" alt="" />
+          <img src="@/assets/img/img-logo.png" alt="" />
         </div>
         <div class="header-name">
           {{ systemName }}
@@ -49,7 +49,7 @@
         class="arrow-style"
       >
         <el-carousel-item v-for="(item, index) in imgList" :key="index">
-          <img class="carousel-img" src="../assets/img/ban1.jpg" alt="" />
+          <img class="carousel-img" src="@/assets/img/ban1.jpg" alt="" />
           {{ item.id }}
         </el-carousel-item>
       </el-carousel>
@@ -78,32 +78,32 @@
         >
           <div class="service-card-logo">
             <!-- <img :src="item.img" alt="" /> -->
-            <img src="../assets/img/hedao.png" alt="" />
+            <img src="@/assets/img/hedao.png" alt="" />
           </div>
           <div>
             <div class="service-card-title-top">{{ item.title }}</div>
             <div class="service-card-title-bottom">{{ item.describe }}</div>
           </div>
           <div class="service-card-goin">
-            <img src="../assets/img/ic-enter.png" alt="" />
+            <img src="@/assets/img/ic-enter.png" alt="" />
           </div>
         </div>
         <!-- 服务左右箭头部分 -->
         <div class="service-left-select select-card">
           <img
             class="service-mirrorRotateLevel"
-            src="../assets/img/ic-lunbo-right.png"
+            src="@/assets/img/ic-lunbo-right.png"
             alt=""
           />
         </div>
         <div class="service-right-select select-card">
-          <img src="../assets/img/ic-lunbo-right.png" alt="" />
+          <img src="@/assets/img/ic-lunbo-right.png" alt="" />
         </div>
       </div>
     </div>
     <!-- 地图 -->
     <div class="home-map">
-      <img src="../assets/img/img-ditu.png" alt="" />
+      <img src="@/assets/img/img-ditu.png" alt="" />
     </div>
     <!-- 部门单位 -->
     <!-- department unit -->
@@ -130,7 +130,7 @@
               v-for="(item, index) in 12"
               :key="index"
             >
-              <img src="../assets/img/ic-jigou.png" alt="" />
+              <img src="@/assets/img/ic-jigou.png" alt="" />
               <p>内部机构</p>
             </el-col>
           </el-row>
@@ -143,7 +143,7 @@
               v-for="(item, index) in 2"
               :key="index"
             >
-              <img src="../assets/img/ic-jigou.png" alt="" />
+              <img src="@/assets/img/ic-jigou.png" alt="" />
               <p>内部机构</p>
             </el-col>
           </el-row>
@@ -156,7 +156,7 @@
               v-for="(item, index) in 1"
               :key="index"
             >
-              <img src="../assets/img/ic-jigou.png" alt="" />
+              <img src="@/assets/img/ic-jigou.png" alt="" />
               <p>内部机构</p>
             </el-col>
           </el-row>
@@ -185,7 +185,7 @@
 
           <div class="resource-more">
             <span>更多</span>
-            <img src="../assets/img/ic-more.png" alt="" />
+            <img src="@/assets/img/ic-more.png" alt="" />
           </div>
         </div>
         <div class="resource-content">
@@ -253,7 +253,7 @@
       </div>
       <!-- resource footer -->
       <div class="resource-footer">
-        <img src="../assets/img/bg-jianbianlantiao.png" alt="" />
+        <img src="@/assets/img/bg-jianbianlantiao.png" alt="" />
       </div>
     </div>
     <!-- 底部 -->
@@ -383,28 +383,28 @@ export default {
       ],
       //默认选中的，默认第一个服务
       selected: {
-        img: require("../assets/img/hedao.png"),
+        img: require("@/assets/img/hedao.png"),
         title: "河道",
         describe: "River course",
       },
       serviceList: [
         {
-          img: require("../assets/img/hedao.png"),
+          img: require("@/assets/img/hedao.png"),
           title: "河道",
           describe: "River course",
         },
         {
-          img: require("../assets/img/shuiku.png"),
+          img: require("@/assets/img/shuiku.png"),
           title: "水库水位",
           describe: "Reservoir water level",
         },
         {
-          img: require("../assets/img/shuizhi.png"),
+          img: require("@/assets/img/shuizhi.png"),
           title: "水质",
           describe: "Water Quality",
         },
         {
-          img: require("../assets/img/yuqing.png"),
+          img: require("@/assets/img/yuqing.png"),
           title: "雨情",
           describe: "Rain Condition",
         },
@@ -415,17 +415,17 @@ export default {
       departmentMenuList: [
         {
           uid: 1,
-          img: require("../assets/img/ic-neibujigou.png"),
+          img: require("@/assets/img/ic-neibujigou.png"),
           label: "内部机构",
         },
         {
           uid: 2,
-          img: require("../assets/img/ic-waibujigou.png"),
+          img: require("@/assets/img/ic-waibujigou.png"),
           label: "外部机构",
         },
         {
           uid: 3,
-          img: require("../assets/img/ic-zhishudanwei.png"),
+          img: require("@/assets/img/ic-zhishudanwei.png"),
           label: "直属单位",
         },
       ],
@@ -705,7 +705,7 @@ font-style {
 .home-service {
   width: 100%;
   height: 557px;
-  background: url("../assets/img/bg-qianlan.jpg");
+  background: url("~@/assets/img/bg-qianlan.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: flex;
@@ -840,7 +840,7 @@ font-style {
     justify-content: space-around;
     align-items: center;
     position: relative;
-    background: url("../assets/img/bg-jigou.png");
+    background: url("~@/assets/img/bg-jigou.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     .department-menu-list {
@@ -854,7 +854,7 @@ font-style {
         display: inline-block;
         width: 181px;
         height: 8px;
-        background: url("../assets/img/ic-xuanzhong.png");
+        background: url("~@/assets/img/ic-xuanzhong.png");
         background-repeat: no-repeat;
         background-size: 100% 100%;
         position: absolute;
@@ -876,7 +876,7 @@ font-style {
   }
   .department-content {
     min-height: 170px;
-    background: url("../assets/img/bg-zijigou.png");
+    background: url("~@/assets/img/bg-zijigou.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     .department-content-card {
@@ -906,7 +906,7 @@ font-style {
   /* width: 100%; */
   position: relative;
   min-height: 795px;
-  background: url("../assets/img/bg-ziyuan.png");
+  background: url("~@/assets/img/bg-ziyuan.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   // resource nav css
@@ -930,7 +930,7 @@ font-style {
           color: #252323;
           background: #fff;
           &.active {
-            background: url("../assets/img/im-ziyuan-xuanzhong.png") no-repeat
+            background: url("~@/assets/img/im-ziyuan-xuanzhong.png") no-repeat
               center center;
             font-family: MicrosoftYaHeiUI-Bold;
             color: #ffffff;
@@ -1021,7 +1021,7 @@ font-style {
         .resource-content-card-right {
           width: 73px;
           height: 35px;
-          background: url("../assets/img/tag-ziyuan.png") no-repeat 100% 100%;
+          background: url("~@/assets/img/tag-ziyuan.png") no-repeat 100% 100%;
           position: absolute;
           top: 10px;
           right: -10px;

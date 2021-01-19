@@ -72,7 +72,7 @@ export default {
 .home {
   overflow: hidden;
 }
-.el-menu-item.is-active {
+/* .el-menu-item.is-active {
   background-color: #D95F56 !important;
-}
+} */
 </style>

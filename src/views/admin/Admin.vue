@@ -2,7 +2,7 @@
   <div>
     <el-container style="height: 100vh; border: 1px solid #eee">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu router :default-openeds="['1','6']">
+        <el-menu router >
           <el-submenu index="1">
             <template slot="title"
               ><i class="el-icon-message"></i>请求方式</template
@@ -66,10 +66,14 @@
             </el-menu-item-group>
           </el-submenu>  
           <el-submenu index="7">
-            <template slot="title"><i class="el-icon-message"></i>全选</template>
+            <template slot="title"><i class="el-icon-message"></i>小功能</template>
             <el-menu-item-group>
-              <template slot="title">CheckBox全选</template>
+              <template slot="title">一些组件的小应用</template>
               <el-menu-item index="checkAll">CheckBox全选</el-menu-item>
+              <el-menu-item index="select">select选择器</el-menu-item>
+              <el-menu-item index="scroll">无缝播报</el-menu-item>
+              <el-menu-item index="SelectDemo">SelectDemo</el-menu-item>
+              <el-menu-item index="banner">banner轮播图</el-menu-item>
             </el-menu-item-group>
           </el-submenu>    
         </el-menu>

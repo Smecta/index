@@ -48,8 +48,8 @@
 </template>
 
 <script>
-import CardHeader from "../../components/CardHeader";
-import { getServerList } from "../../api/ServerMonitor";
+import CardHeader from "@/components/CardHeader";
+import { getServerList } from "@/api/ServerMonitor";
 export default {
   components: {
     CardHeader,
