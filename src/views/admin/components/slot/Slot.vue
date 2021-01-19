@@ -35,8 +35,10 @@
     </SlotChildDemo3>
     <h1>vue - 兄弟之间传值</h1>
     <h2>组件A</h2>
+    <hr>
     <Plana></Plana>
     <h2>组件B</h2>
+    <hr>
     <Planb></Planb>
   </div>
 </template>
