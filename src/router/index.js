@@ -76,6 +76,10 @@ const routes = [
       {
         path: '/banner',
         component: () => import('@/views/admin/components/banner/banner.vue')
+      },
+      {
+        path: '/video',
+        component: () => import('@/views/admin/components/video/Video.vue')
       }
     ]
   },

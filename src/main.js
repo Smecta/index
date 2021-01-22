@@ -9,6 +9,8 @@ import 'normalize.css/normalize.css'
 import ElementUI from 'element-ui'
 import Multiselect from 'vue-multiselect'
 import "vue-multiselect/dist/vue-multiselect.min.css"
+import VueCoreVideoPlayer from 'vue-core-video-player'
+
 // 按需引入
 // import { Button, Menu, Submenu, MenuItem, MenuItemGroup, Input } from "element-ui";
 // Vue.use(Button);
@@ -17,7 +19,7 @@ import "vue-multiselect/dist/vue-multiselect.min.css"
 // Vue.use(MenuItem);
 // Vue.use(MenuItemGroup);
 // Vue.use(Input);
-
+Vue.use(VueCoreVideoPlayer)
 import "element-ui/lib/theme-chalk/index.css";
 import './assets/css/style.scss'
 
