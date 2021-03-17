@@ -10,6 +10,7 @@
   "dependencies": {
     "@antv/g2": "^4.0.15",
     "@antv/g2plot": "^2.2.11",
+    "animate.css": "^4.1.1",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "echarts": "^4.9.0",

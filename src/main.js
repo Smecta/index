@@ -10,6 +10,8 @@ import ElementUI from 'element-ui'
 import Multiselect from 'vue-multiselect'
 import "vue-multiselect/dist/vue-multiselect.min.css"
 import VueCoreVideoPlayer from 'vue-core-video-player'
+import animate from 'animate.css'
+
 
 // 按需引入
 // import { Button, Menu, Submenu, MenuItem, MenuItemGroup, Input } from "element-ui";
@@ -35,6 +37,7 @@ Vue.prototype.$echarts = echarts;
 import http from "./http";
 Vue.prototype.$http = http;
 Vue.use(ElementUI)
+Vue.use(animate)
 
 Vue.config.productionTip = false;
 

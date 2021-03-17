@@ -118,3 +118,41 @@ npm i -g serve
 
 ```
 使用方式 serve dist 
+
+### animateCss@4.1.1
+``` bash
+
+npm install animate.css --save
+
+&
+
+yarn add animate.css
+
+```
+引入方式
+``` js
+// main.js
+import animate from 'animate.css'
+Vue.use(animate)
+
+```
+
+``` js
+<!-- template中使用 -->
+<div class="animate__animated animate__bounce animate__delay-2s">Example</div>
+```
+
+``` html
+//如何在transion使用
+
+    <transition
+      :duration="1000"
+      mode="out-in"
+      appear
+      enter-active-class="animated animate__zoomIn"
+      leave-active-class="animated animate__zoomOut"
+    >
+      <router-view />
+    </transition>
+    
+```

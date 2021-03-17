@@ -40,6 +40,9 @@
     <h2>组件B</h2>
     <hr>
     <Planb></Planb>
+    <hr>
+    <h1>animateCSS</h1>
+    <div class="animate__animated animate__bounce animate__delay-2s">Example</div>
   </div>
 </template>
 
